@@ -29,6 +29,12 @@ struct MACRO_DATA {
 	};
 	TCHAR szName[MAX_NAME + 1];
 	TCHAR szDescription[MAX_DESCRIPTION + 1];
+	enum TYPE {
+		// type of macro
+		STRING,
+		NUMBER,
+		UUID
+	} eTypeID;
 	TCHAR szValue[MAX_VALUE + 1];
 };
 

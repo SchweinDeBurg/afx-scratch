@@ -14,7 +14,7 @@ static char THIS_FILE[] = __FILE__;
 #endif	// _DEBUG
 
 // shared globals
-const WORD g_wVerMajor = 1;
-const WORD g_wVerMinor = 0;
+const WORD g_wVerMajor = $VERMAJOR$;
+const WORD g_wVerMinor = $VERMINOR$;
 
 // end of file

@@ -239,8 +239,7 @@ void CMainDialog::OnButtonValue(void)
 		int iItem = m_listMacros.GetNextSelectedItem(pos);
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(iItem));
 		ASSERT(pData != NULL);
-		CMacroValueDialog dlgMacroValue(pData->szName);
-		dlgMacroValue.m_strValue = pData->szValue;
+		CMacroValueDialog dlgMacroValue(pData);
 		if (dlgMacroValue.DoModal() == IDOK) {
 			::lstrcpy(pData->szValue, dlgMacroValue.m_strValue);
 			m_listMacros.AutosizeColumns();

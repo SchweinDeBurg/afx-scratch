@@ -42,6 +42,18 @@ public:
 		NUM_COLUMNS		// should be the LAST enumerator!
 	};
 
+// implementation helpers
+private:
+	BOOL IsMacroValueExists(MACRO_DATA* pData);
+	void SuggestMacroValue(MACRO_DATA* pData);
+	typedef void(CMacrosList::* PMF_SUGGEST)(LPTSTR);
+	CMap<CString, LPCTSTR, PMF_SUGGEST, PMF_SUGGEST> m_mapSuggest;
+	void Suggest_AUTHOR(LPTSTR pszDest);
+	void Suggest_COMPANY(LPTSTR pszDest);
+	void Suggest_VERMAJOR(LPTSTR pszDest);
+	void Suggest_VERBUILD(LPTSTR pszDest);
+	void Suggest_UUID(LPTSTR pszDest);
+
 // diagnostic services
 #if defined(_DEBUG)
 public:

@@ -14,7 +14,7 @@ class CMacroValueDialog: public CDialog
 
 // construction/destruction
 public:
-	CMacroValueDialog(LPCTSTR pszName, CWnd* pParentWnd = NULL);
+	CMacroValueDialog(MACRO_DATA* pData, CWnd* pParentWnd = NULL);
 	virtual ~CMacroValueDialog(void);
 
 // overridables
@@ -23,9 +23,15 @@ public:
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 
+// message map functions
+protected:
+	afx_msg void OnChangeEditValue(void);
+
 // attributes
 public:
 	CString m_strName;
+	CString m_strDescription;
+	MACRO_DATA::TYPE m_eTypeID;
 	CString m_strValue;
 
 // diagnostic services
