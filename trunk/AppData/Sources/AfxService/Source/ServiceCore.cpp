@@ -44,6 +44,9 @@ void WINAPI ServiceHandler(DWORD fdwControl)
 	ss.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
 	switch (fdwControl)
 	{
+	case SERVICE_CONTROL_SHUTDOWN:
+		WriteLogFileEntry(LL_MINIMAL, _T("Detected operating system shutdown."));
+		// fall through
 	case SERVICE_CONTROL_STOP:
 		WriteLogFileEntry(LL_MINIMAL, _T("Requested to stop %s service."), g_szServiceName);
 		::InterlockedExchange(&g_fStop, TRUE);
@@ -56,7 +59,7 @@ void WINAPI ServiceHandler(DWORD fdwControl)
 		ss.dwCurrentState = g_dwServiceState;
 		break;
 	}
-	ss.dwControlsAccepted = SERVICE_ACCEPT_STOP;
+	ss.dwControlsAccepted = SERVICE_ACCEPT_STOP | SERVICE_ACCEPT_SHUTDOWN;
 	ss.dwWin32ExitCode = NO_ERROR;
 	ss.dwServiceSpecificExitCode = 0;	// will be ignored
 	ss.dwCheckPoint = 0;
@@ -75,7 +78,7 @@ void WINAPI ServiceMain(DWORD /*dwArgc*/, LPTSTR /*apszArgv*/[])
 	g_hServiceStatus = ::RegisterServiceCtrlHandler(g_szServiceName, ServiceHandler);
 	ss.dwServiceType = SERVICE_WIN32_OWN_PROCESS;
 	ss.dwCurrentState = SERVICE_RUNNING;
-	ss.dwControlsAccepted = SERVICE_ACCEPT_STOP;
+	ss.dwControlsAccepted = SERVICE_ACCEPT_STOP | SERVICE_ACCEPT_SHUTDOWN;
 	ss.dwWin32ExitCode = NO_ERROR;
 	ss.dwServiceSpecificExitCode = 0;	// will be ignored
 	ss.dwCheckPoint = 0;
