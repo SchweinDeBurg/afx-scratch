@@ -7,6 +7,10 @@
 #if !defined(__MacrosList_h)
 #define __MacrosList_h
 
+#if defined(_MSC_VER) && (_MSC_VER > 1000)
+#pragma once
+#endif	// _MSC_VER
+
 class CMacrosList: public CSortingListCtrl
 {
 	DECLARE_DYNAMIC(CMacrosList)

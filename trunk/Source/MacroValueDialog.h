@@ -7,6 +7,10 @@
 #if !defined(__MacroValueDialog_h)
 #define __MacroValueDialog_h
 
+#if defined(_MSC_VER) && (_MSC_VER > 1000)
+#pragma once
+#endif	// _MSC_VER
+
 class CMacroValueDialog: public CDialog
 {
 	DECLARE_DYNAMIC(CMacroValueDialog)
