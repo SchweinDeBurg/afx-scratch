@@ -5,9 +5,9 @@
 // MacroValueDialog.cpp - implementation of the CMacroValueDialog class
 
 #include "stdafx.h"
+#include "AuxTypes.h"
 #include "MacroValueDialog.h"
 #include "Resource.h"
-#include "AuxTypes.h"
 
 #if defined(_DEBUG)
 #undef THIS_FILE
@@ -20,11 +20,15 @@ IMPLEMENT_DYNAMIC(CMacroValueDialog, CDialog)
 
 // message map
 BEGIN_MESSAGE_MAP(CMacroValueDialog, CDialog)
+	ON_EN_CHANGE(IDC_EDIT_VALUE, OnChangeEditValue)
 END_MESSAGE_MAP()
 
-CMacroValueDialog::CMacroValueDialog(LPCTSTR pszName, CWnd* pParentWnd):
+CMacroValueDialog::CMacroValueDialog(MACRO_DATA* pData, CWnd* pParentWnd):
 CDialog(IDD_MACRO_VALUE, pParentWnd),
-m_strName(pszName)
+m_strName(pData->szName),
+m_strDescription(pData->szDescription),
+m_eTypeID(pData->eTypeID),
+m_strValue(pData->szValue)
 {
 }
 
@@ -54,6 +58,26 @@ void CMacroValueDialog::DoDataExchange(CDataExchange* pDX)
 	DDV_MaxChars(pDX, m_strValue, MACRO_DATA::MAX_VALUE);
 }
 
+void CMacroValueDialog::OnChangeEditValue(void)
+{
+	using MACRO_DATA::MAX_VALUE;
+
+	unsigned char szTemp[MAX_VALUE + 1];
+	UUID uuid;
+	CString strNumber;
+	TCHAR* pchrStop;
+
+	if (m_eTypeID == MACRO_DATA::NUMBER) {
+		GetDlgItemText(IDC_EDIT_VALUE, strNumber);
+		_tcstol(strNumber, &pchrStop, 0);
+		GetDlgItem(IDOK)->EnableWindow(!strNumber.IsEmpty() && *pchrStop == 0);
+	}
+	else if (m_eTypeID == MACRO_DATA::UUID) {
+		GetDlgItemText(IDC_EDIT_VALUE, reinterpret_cast<LPTSTR>(szTemp), MAX_VALUE);
+		GetDlgItem(IDOK)->EnableWindow(::UuidFromString(szTemp, &uuid) == RPC_S_OK);
+	}
+}
+
 #if defined(_DEBUG)
 
 void CMacroValueDialog::AssertValid(void) const
@@ -70,6 +94,8 @@ void CMacroValueDialog::Dump(CDumpContext& dumpCtx) const
 		CDialog::Dump(dumpCtx);
 		// ...and then dump own unique members
 		dumpCtx << "m_strName = " << m_strName;
+		dumpCtx << "\nm_strDescription = " << m_strDescription;
+		dumpCtx << "\nm_eTypeID = " << m_eTypeID;
 		dumpCtx << "\nm_strValue = " << m_strValue;
 	}
 	catch (CFileException* pXcpt) {

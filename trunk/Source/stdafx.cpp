@@ -16,6 +16,7 @@ static char THIS_FILE[] = __FILE__;
 #pragma comment(lib, "shell32.lib")
 #pragma comment(lib, "version.lib")
 #pragma comment(lib, "shlwapi.lib")
+#pragma comment(lib, "rpcrt4.lib")
 
 // static libraries
 #if defined(__STL_CONFIG_H)

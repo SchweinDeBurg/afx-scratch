@@ -26,6 +26,9 @@
 #include <../src/afximpl.h>
 #endif	// _MFC_VER
 
+// ATL headers
+#include <atlbase.h>
+
 // PSDK headers
 #include <shlobj.h>
 #include <lmcons.h>

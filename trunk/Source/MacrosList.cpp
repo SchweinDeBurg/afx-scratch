@@ -5,9 +5,9 @@
 // MacrosList.cpp - implementation of the CMacrosList class
 
 #include "stdafx.h"
+#include "AuxTypes.h"
 #include "MacrosList.h"
 #include "Resource.h"
-#include "AuxTypes.h"
 #include "ProjectsList.h"
 #include "MainDialog.h"
 
@@ -27,6 +27,11 @@ END_MESSAGE_MAP()
 
 CMacrosList::CMacrosList(void)
 {
+	m_mapSuggest.SetAt(_T("$AUTHOR$"), Suggest_AUTHOR);
+	m_mapSuggest.SetAt(_T("$COMPANY$"), Suggest_COMPANY);
+	m_mapSuggest.SetAt(_T("$VERMAJOR$"), Suggest_VERMAJOR);
+	m_mapSuggest.SetAt(_T("$VERBUILD$"), Suggest_VERBUILD);
+	m_mapSuggest.SetAt(_T("$UUID$"), Suggest_UUID);
 }
 
 CMacrosList::~CMacrosList(void)
@@ -68,7 +73,6 @@ void CMacrosList::AutosizeColumns(void)
 void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 {
 	LVITEM lvi;
-	TCHAR szUserName[UNLEN + 1];
 
 	ASSERT(AfxIsValidString(pszConfigFile));
 
@@ -96,16 +100,23 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 			memset(pData, 0, sizeof(*pData));
 			::lstrcpy(pData->szName, branchMacro.GetAttribute(_T("Name")));
 			::lstrcpy(pData->szDescription, branchMacro.GetAttribute(_T("Description")));
+			CString strMacroType(branchMacro.GetAttribute(_T("Type")));
+			if (strMacroType == _T("number")) {
+				// numeric value
+				pData->eTypeID = MACRO_DATA::NUMBER;
+			}
+			else if (strMacroType == _T("uuid")) {
+				// UUID value
+				pData->eTypeID = MACRO_DATA::UUID;
+			}
+			else {
+				// assume string value
+				pData->eTypeID = MACRO_DATA::STRING;
+			}
 			::lstrcpy(pData->szValue, branchMacro.GetAttribute(_T("Default")));
-			if (::lstrlen(pData->szValue) == 0) {
-				// no default value was specified - try to suggest
-				CString strMacroName(pData->szName);
-				if (strMacroName == _T("$AUTHOR$")) {
-					// special case #1
-					DWORD cchNameLength = UNLEN + 1;
-					::GetUserName(szUserName, &cchNameLength);
-					::lstrcpy(pData->szValue, szUserName);
-				}
+			if (!IsMacroValueExists(pData)) {
+				// default value wasn't specified or invalid - try to suggest
+				SuggestMacroValue(pData);
 			}
 			lvi.lParam = reinterpret_cast<LPARAM>(pData);
 			VERIFY(InsertItem(&lvi) == lvi.iItem);
@@ -178,6 +189,135 @@ void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 	}
 }
 
+BOOL CMacrosList::IsMacroValueExists(MACRO_DATA* pData)
+{
+	TCHAR* pchrStop;
+	unsigned char szTemp[MACRO_DATA::MAX_VALUE + 1];
+	UUID uuid;
+
+	// precondition
+	ASSERT_POINTER(pData, MACRO_DATA);
+
+	if (::lstrlen(pData->szValue) > 0) {
+		// validate specified value
+		switch (pData->eTypeID)
+		{
+		case MACRO_DATA::NUMBER:
+			// numeric value
+			_tcstol(pData->szValue, &pchrStop, 0);
+			if (*pchrStop != 0) {
+				*pchrStop = 0;
+			}
+			return (pData->szValue[0] != 0);
+		case MACRO_DATA::UUID:
+			// UUID value
+			return (::UuidFromString(szTemp, &uuid) == RPC_S_OK);
+		default:
+			// assume string value
+			ASSERT(pData->eTypeID == MACRO_DATA::STRING);
+			return (TRUE);
+		}
+	}
+	else {
+		// passsed empty string
+		return (FALSE);
+	}
+}
+
+void CMacrosList::SuggestMacroValue(MACRO_DATA* pData)
+{
+	// precondition
+	ASSERT_POINTER(pData, MACRO_DATA);
+
+	PMF_SUGGEST pmfSuggest = NULL;
+	if (pData->eTypeID == MACRO_DATA::UUID) {
+		// very special case
+		m_mapSuggest.Lookup(_T("$UUID$"), pmfSuggest);
+		ASSERT(pmfSuggest != NULL);
+		(this->*pmfSuggest)(pData->szValue);
+	}
+	else if (m_mapSuggest.Lookup(pData->szName, pmfSuggest)) {
+		// common case
+		ASSERT(pmfSuggest != NULL);
+		(this->*pmfSuggest)(pData->szValue);
+	}
+	else if (pData->eTypeID == MACRO_DATA::NUMBER) {
+		// no suggestion found for the numeric value - use simple zero
+		::lstrcpy(pData->szValue, _T("0"));
+	}
+}
+
+void CMacrosList::Suggest_AUTHOR(LPTSTR pszDest)
+{
+	TCHAR szUserName[UNLEN + 1];
+
+	// precondition
+	ASSERT(AfxIsValidString(pszDest));
+
+	DWORD cchNameLength = UNLEN + 1;
+	if (::GetUserName(szUserName, &cchNameLength)) {
+		::lstrcpy(pszDest, szUserName);
+	}
+}
+
+void CMacrosList::Suggest_COMPANY(LPTSTR pszDest)
+{
+	CString strKeyName;
+	CRegKey regKey;
+
+	// precondition
+	ASSERT(AfxIsValidString(pszDest));
+
+	static TCHAR szFormat[] = _T("SOFTWARE\\Microsoft\\%s\\CurrentVersion");
+	strKeyName.Format(szFormat, (::GetVersion() & 0x80000000) ? _T("Windows") : _T("Windows NT"));
+	if (regKey.Open(HKEY_LOCAL_MACHINE, strKeyName) == ERROR_SUCCESS) {
+		DWORD cbSize = 256 * sizeof(TCHAR);
+		regKey.QueryValue(pszDest, _T("RegisteredOrganization"), &cbSize);
+		regKey.Close();
+	}
+}
+
+void CMacrosList::Suggest_VERMAJOR(LPTSTR pszDest)
+{
+	// precondition
+	ASSERT(AfxIsValidString(pszDest));
+
+	::lstrcpy(pszDest, _T("1"));
+}
+
+void CMacrosList::Suggest_VERBUILD(LPTSTR pszDest)
+{
+	// precondition
+	ASSERT(AfxIsValidString(pszDest));
+
+	CTime timeNow = CTime::GetCurrentTime();
+	union {
+		struct {
+			unsigned day : 5;
+			unsigned month : 4;
+			unsigned year : 5;
+		} date_t;
+		unsigned number;
+	} build = {{
+		timeNow.GetDay(),
+		timeNow.GetMonth(),
+		timeNow.GetYear() - 2000
+	}};
+	_ultot(build.number, pszDest, 10);
+}
+
+void CMacrosList::Suggest_UUID(LPTSTR pszDest)
+{
+	UUID uuid;
+	unsigned char* pszTemp;
+
+	::CoCreateGuid(&uuid);
+	::UuidToString(&uuid, &pszTemp);
+	::lstrcpy(pszDest, _A2T(reinterpret_cast<char*>(pszTemp)));
+	::CharUpper(pszDest);
+	::RpcStringFree(&pszTemp);
+}
+
 #if defined(_DEBUG)
 
 void CMacrosList::AssertValid(void) const
@@ -193,6 +333,7 @@ void CMacrosList::Dump(CDumpContext& dumpCtx) const
 		// first invoke inherited dumper...
 		CSortingListCtrl::Dump(dumpCtx);
 		// ...and then dump own unique members
+		dumpCtx << "m_mapSuggest = " << m_mapSuggest;
 	}
 	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
