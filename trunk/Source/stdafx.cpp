@@ -31,5 +31,6 @@ static char THIS_FILE[] = __FILE__;
 
 // linker options
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
+#pragma comment(linker, "/opt:ref")
 
 // end of file
