@@ -38,6 +38,7 @@ public:
 		// column indices
 		I_NAME,
 		I_DESCRIPTION,
+		I_TYPE,
 		I_VALUE,
 		NUM_COLUMNS		// should be the LAST enumerator!
 	};

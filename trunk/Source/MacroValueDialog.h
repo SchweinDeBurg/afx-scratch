@@ -14,7 +14,7 @@ class CMacroValueDialog: public CDialog
 
 // construction/destruction
 public:
-	CMacroValueDialog(MACRO_DATA* pData, CWnd* pParentWnd = NULL);
+	CMacroValueDialog(const MACRO_DATA* pData, CWnd* pParentWnd = NULL);
 	virtual ~CMacroValueDialog(void);
 
 // overridables
