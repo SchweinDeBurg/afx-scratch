@@ -25,7 +25,7 @@ MinVersion=4.90.3000,5.0.2195
 
 [Files]
 Source: "..\ReleaseA\AfxScratch.exe"; DestDir: "{app}"
-Source: "..\AppData\*"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
+Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
