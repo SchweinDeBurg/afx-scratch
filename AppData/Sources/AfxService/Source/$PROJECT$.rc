@@ -101,6 +101,30 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_APP_ICON            ICON    DISCARDABLE     "BinRes\\AppIcon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_LOG_BEGIN           ">>> begin of log\n"
+    IDS_WORKER_STARTED      "Started worker thread."
+    IDS_WORKER_FINISHED     "Finished worker thread."
+    IDS_OS_SHUTDOWN         "Detected operating system shutdown."
+    IDS_SERVICE_STOP        "Requested to stop %s service."
+    IDS_SERVICE_STOPPED     "Stopped %s service."
+    IDS_SERVICE_RUNNED      "Runned %s service."
+    IDS_EXE_STARTED         "Started %s executable."
+    IDS_SERVICE_REGISTERED  "Registered %s service."
+    IDS_SERVICE_UNREGISTERED "Unregistered %s service."
+    IDS_CMDLINE_BAD_ARGUMENT "Command-line argument %s unrecognized."
+    IDS_SCM_CONNECT         "Attempted to connect to the SCM."
+    IDS_SCM_DISCONNECTED    "Disconnected from the SCM."
+    IDS_EXE_FINISHED        "Finished %s executable.\n<<< end of log"
+END
+
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 

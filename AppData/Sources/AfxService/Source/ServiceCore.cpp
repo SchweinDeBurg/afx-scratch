@@ -7,6 +7,7 @@
 
 #include "stdafx.h"
 #include "ExecLogging.h"
+#include "Resource.h"
 
 #if defined(_DEBUG)
 #undef THIS_FILE
@@ -21,7 +22,7 @@ static LONG g_fStop = FALSE;
 // worker thread procedure
 static UINT WorkerProc(void* /*pParam*/)
 {
-	WriteLogFileEntry(LL_MINIMAL, _T("Started worker thread."));
+	LogFile_WriteEntry(LL_MINIMAL, IDS_WORKER_STARTED);
 
 	// enter worker loop
 	while (!g_fStop) {
@@ -31,7 +32,7 @@ static UINT WorkerProc(void* /*pParam*/)
 	::InterlockedExchange(&g_fStop, FALSE);
 
 	// successfully finished
-	WriteLogFileEntry(LL_MINIMAL, _T("Finished worker thread."));
+	LogFile_WriteEntry(LL_MINIMAL, IDS_WORKER_FINISHED);
 	AfxEndThread(0);
 	return (0);
 }
@@ -45,10 +46,10 @@ void WINAPI ServiceHandler(DWORD fdwControl)
 	switch (fdwControl)
 	{
 	case SERVICE_CONTROL_SHUTDOWN:
-		WriteLogFileEntry(LL_MINIMAL, _T("Detected operating system shutdown."));
+		LogFile_WriteEntry(LL_MINIMAL, IDS_OS_SHUTDOWN);
 		// fall through
 	case SERVICE_CONTROL_STOP:
-		WriteLogFileEntry(LL_MINIMAL, _T("Requested to stop %s service."), g_szServiceName);
+		LogFile_WriteEntry(LL_MINIMAL, IDS_SERVICE_STOP, g_szServiceName);
 		::InterlockedExchange(&g_fStop, TRUE);
 		::WaitForSingleObject(*g_pWorkerThread, INFINITE);
 		g_pWorkerThread = NULL;
@@ -66,7 +67,7 @@ void WINAPI ServiceHandler(DWORD fdwControl)
 	ss.dwWaitHint = 0;
 	::SetServiceStatus(g_hServiceStatus, &ss);
 	if (g_dwServiceState == SERVICE_STOPPED) {
-		WriteLogFileEntry(LL_MINIMAL, _T("Stopped %s service."), g_szServiceName);
+		LogFile_WriteEntry(LL_MINIMAL, IDS_SERVICE_STOPPED, g_szServiceName);
 	}
 }
 
@@ -85,7 +86,7 @@ void WINAPI ServiceMain(DWORD /*dwArgc*/, LPTSTR /*apszArgv*/[])
 	ss.dwWaitHint = 0;
 	::SetServiceStatus(g_hServiceStatus, &ss);
 	g_dwServiceState = ss.dwCurrentState;
-	WriteLogFileEntry(LL_MINIMAL, _T("Runned %s service."), g_szServiceName);
+	LogFile_WriteEntry(LL_MINIMAL, IDS_SERVICE_RUNNED, g_szServiceName);
 	g_pWorkerThread = AfxBeginThread(WorkerProc, NULL);
 }
 
