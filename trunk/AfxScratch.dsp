@@ -162,10 +162,6 @@ SOURCE=.\Source\ProjectsList.h
 # End Source File
 # Begin Source File
 
-SOURCE=.\Source\PugXML.h
-# End Source File
-# Begin Source File
-
 SOURCE=.\Source\Resource.h
 # End Source File
 # Begin Source File
