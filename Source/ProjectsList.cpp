@@ -56,8 +56,7 @@ void CProjectsList::AutosizeColumns(void)
 	SetColumnWidth(I_NAME, LVSCW_AUTOSIZE);
 	int cxName = GetColumnWidth(I_NAME);
 	GetClientRect(rectClient);
-	int cxVScroll = ::GetSystemMetrics(SM_CXVSCROLL);
-	int cxDescription = std::max(20, rectClient.Width() - cxName - cxVScroll);
+	int cxDescription = std::max(20, rectClient.Width() - cxName);
 	SetColumnWidth(I_DESCRIPTION, cxDescription);
 }
 

@@ -62,15 +62,13 @@ void CMacrosList::AutosizeColumns(void)
 	CRect rectClient;
 
 	SetColumnWidth(I_NAME, LVSCW_AUTOSIZE);
-	SetColumnWidth(I_TYPE, LVSCW_AUTOSIZE);
-	SetColumnWidth(I_VALUE, LVSCW_AUTOSIZE);
-
 	int cxName = GetColumnWidth(I_NAME);
+	SetColumnWidth(I_TYPE, LVSCW_AUTOSIZE);
 	int cxType = GetColumnWidth(I_TYPE);
+	SetColumnWidth(I_VALUE, LVSCW_AUTOSIZE);
 	int cxValue = GetColumnWidth(I_VALUE);
 	GetClientRect(rectClient);
-	int cxVScroll = ::GetSystemMetrics(SM_CXVSCROLL);
-	int cxDescription = std::max(20, rectClient.Width() - cxName - cxType - cxValue - cxVScroll);
+	int cxDescription = std::max(20, rectClient.Width() - cxName - cxType - cxValue);
 	SetColumnWidth(I_DESCRIPTION, cxDescription);
 }
 
