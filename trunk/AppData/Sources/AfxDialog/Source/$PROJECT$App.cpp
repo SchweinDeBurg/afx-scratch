@@ -42,6 +42,7 @@ HICON C$PROJECT$App::LoadSmIcon(LPCTSTR pszResName)
 BOOL C$PROJECT$App::InitInstance(void)
 {
 	CMainDialog dlgMain;
+	m_pMainWnd = &dlgMain;
 	dlgMain.DoModal();
 	return (FALSE);
 }
