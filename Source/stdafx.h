@@ -54,6 +54,7 @@ namespace std { using ::bad_cast; }
 #include "PugXML.h"
 #include "../../Repository/AfxGadgets/Source/StringConv.h"
 #include "../../Repository/AfxGadgets/Source/Win32Error.h"
+#include "../../Repository/AfxGadgets/Source/SortingListCtrl.h"
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
 
 #endif	// __stdafx_h

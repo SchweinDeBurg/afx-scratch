@@ -7,7 +7,7 @@
 #if !defined(__ProjectsList_h)
 #define __ProjectsList_h
 
-class CProjectsList: public CCustomListCtrl
+class CProjectsList: public CSortingListCtrl
 {
 	DECLARE_DYNAMIC(CProjectsList)
 	DECLARE_MESSAGE_MAP()
