@@ -7,7 +7,7 @@
 [Setup]
 AppName=AfxScratch
 AppVerName=AfxScratch 1.0.2222
-AppID={9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
+AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://home.peterstar.ru/zarezky
 AppSupportURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
