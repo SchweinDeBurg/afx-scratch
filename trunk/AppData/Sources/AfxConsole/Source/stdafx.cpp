@@ -16,4 +16,9 @@ static char THIS_FILE[] = __FILE__;
 // linker options
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
 
+// entry-point symbol for the Unicode builds
+#if defined(UNICODE) || defined(_UNICODE)
+#pragma comment(linker, "/entry:wWinMainCRTStartup")
+#endif	// UNICODE
+
 // end of file
