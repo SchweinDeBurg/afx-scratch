@@ -1,6 +1,6 @@
 @echo off
 echo.
-echo Compiling executable...
+echo Building executable...
 echo.
 msdev.com AfxScratch.dsw /MAKE "AfxScratch - Win32 Release" /REBUILD
 echo.
