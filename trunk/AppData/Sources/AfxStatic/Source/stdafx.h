@@ -8,6 +8,13 @@
 #if !defined(__stdafx_h)
 #define __stdafx_h
 
+// unreferenced inline/local function has been removed
+#pragma warning(disable: 4514)
+// function not inlined
+#pragma warning(disable: 4710)
+// identifier was truncated in the debug information
+#pragma warning(disable: 4786)
+
 // MFC headers
 #include <afxwin.h>			// MFC core and standard components
 
