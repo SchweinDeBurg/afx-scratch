@@ -18,17 +18,6 @@ static char THIS_FILE[] = __FILE__;
 #pragma comment(lib, "shlwapi.lib")
 #pragma comment(lib, "rpcrt4.lib")
 
-// static libraries
-#if defined(__STL_CONFIG_H)
-#if defined(_DEBUG)
-#pragma comment(linker, "/nodefaultlib:msvcprtd.lib")
-#pragma comment(lib, "libciod.lib")
-#else
-#pragma comment(linker, "/nodefaultlib:msvcprt.lib")
-#pragma comment(lib, "libcio.lib")
-#endif	// _DEBUG
-#endif	// __STL_CONFIG_H
-
 // linker options
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
 #pragma comment(linker, "/opt:ref")
