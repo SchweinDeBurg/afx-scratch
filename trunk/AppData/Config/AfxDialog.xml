@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project Name="AfxDialog" Description="Dialog based application">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.dsp" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\MainDialog.cpp" Type="text"/>
+		<File Name="\Source\MainDialog.h" Type="text"/>
+		<File Name="\Source\$PROJECT$App.cpp" Type="text"/>
+		<File Name="\Source\$PROJECT$App.h" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
+	</Files>
+</Project>
