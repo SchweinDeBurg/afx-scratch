@@ -22,6 +22,11 @@
 #include <tchar.h>
 #endif	// _INC_TCHAR
 
+#if !defined(_SHLOBJ_H_)
+#pragma message(__FILE__ " : put <shlobj.h> in your PCH to speed up compilation")
+#include <shlobj.h>
+#endif	// _SHLOBJ_H_
+
 #if !defined(_IOSTREAM_)
 #pragma message(__FILE__ " : put <iostream> in your PCH to speed up compilation")
 #include <iostream>
