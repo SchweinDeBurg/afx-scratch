@@ -5,7 +5,6 @@
 // ProjectsList.cpp - implementation of the CProjectsList class
 
 #include "stdafx.h"
-#include "CustomListCtrl.h"
 #include "ProjectsList.h"
 #include "Resource.h"
 #include "AuxTypes.h"
@@ -20,10 +19,10 @@ static char THIS_FILE[] = __FILE__;
 #endif	// _DEBUG
 
 // object model
-IMPLEMENT_DYNAMIC(CProjectsList, CCustomListCtrl)
+IMPLEMENT_DYNAMIC(CProjectsList, CSortingListCtrl)
 
 // message map
-BEGIN_MESSAGE_MAP(CProjectsList, CCustomListCtrl)
+BEGIN_MESSAGE_MAP(CProjectsList, CSortingListCtrl)
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
 
@@ -135,7 +134,7 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 	}
 
 	if (GetItemCount() > 0) {
-		SortContent(I_NAME, SORT_ASCENDING);
+		SortItems(I_NAME, SORT_ASCENDING);
 		AutosizeColumns();
 		SetItemState(0, LVIS_FOCUSED | LVIS_SELECTED, 0xFFFFFFFF);
 	}
@@ -197,7 +196,7 @@ void CProjectsList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 void CProjectsList::AssertValid(void) const
 {
 	// first perform inherited validity check...
-	CCustomListCtrl::AssertValid();
+	CSortingListCtrl::AssertValid();
 	// ...and then verify our own state as well
 }
 
@@ -205,7 +204,7 @@ void CProjectsList::Dump(CDumpContext& dumpCtx) const
 {
 	try {
 		// first invoke inherited dumper...
-		CCustomListCtrl::Dump(dumpCtx);
+		CSortingListCtrl::Dump(dumpCtx);
 		// ...and then dump own unique members
 	}
 	catch (CFileException* pXcpt) {

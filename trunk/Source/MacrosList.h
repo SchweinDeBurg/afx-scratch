@@ -7,7 +7,7 @@
 #if !defined(__MacrosList_h)
 #define __MacrosList_h
 
-class CMacrosList: public CCustomListCtrl
+class CMacrosList: public CSortingListCtrl
 {
 	DECLARE_DYNAMIC(CMacrosList)
 	DECLARE_MESSAGE_MAP()

@@ -6,7 +6,6 @@
 
 #include "stdafx.h"
 #include "AuxTypes.h"
-#include "CustomListCtrl.h"
 #include "ProjectsList.h"
 #include "MacrosList.h"
 #include "MainDialog.h"

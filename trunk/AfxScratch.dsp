@@ -105,11 +105,6 @@ SOURCE=.\Source\AfxScratchApp.cpp
 # End Source File
 # Begin Source File
 
-SOURCE=.\Source\CustomListCtrl.cpp
-# ADD CPP /Yu"stdafx.h"
-# End Source File
-# Begin Source File
-
 SOURCE=.\Source\MacrosList.cpp
 # ADD CPP /Yu"stdafx.h"
 # End Source File
@@ -148,10 +143,6 @@ SOURCE=.\Source\AfxScratchApp.h
 # Begin Source File
 
 SOURCE=.\Source\AuxTypes.h
-# End Source File
-# Begin Source File
-
-SOURCE=.\Source\CustomListCtrl.h
 # End Source File
 # Begin Source File
 

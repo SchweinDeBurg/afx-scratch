@@ -5,7 +5,6 @@
 // MacrosList.cpp - implementation of the CMacrosList class
 
 #include "stdafx.h"
-#include "CustomListCtrl.h"
 #include "MacrosList.h"
 #include "Resource.h"
 #include "AuxTypes.h"
@@ -19,10 +18,10 @@ static char THIS_FILE[] = __FILE__;
 #endif	// _DEBUG
 
 // object model
-IMPLEMENT_DYNAMIC(CMacrosList, CCustomListCtrl)
+IMPLEMENT_DYNAMIC(CMacrosList, CSortingListCtrl)
 
 // message map
-BEGIN_MESSAGE_MAP(CMacrosList, CCustomListCtrl)
+BEGIN_MESSAGE_MAP(CMacrosList, CSortingListCtrl)
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
 
@@ -117,7 +116,7 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 	}
 
 	if (GetItemCount() > 0) {
-		SortContent(I_NAME, SORT_ASCENDING);
+		SortItems(I_NAME, SORT_ASCENDING);
 		AutosizeColumns();
 		SetItemState(0, LVIS_FOCUSED | LVIS_SELECTED, 0xFFFFFFFF);
 	}
@@ -184,7 +183,7 @@ void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 void CMacrosList::AssertValid(void) const
 {
 	// first perform inherited validity check...
-	CCustomListCtrl::AssertValid();
+	CSortingListCtrl::AssertValid();
 	// ...and then verify our own state as well
 }
 
@@ -192,7 +191,7 @@ void CMacrosList::Dump(CDumpContext& dumpCtx) const
 {
 	try {
 		// first invoke inherited dumper...
-		CCustomListCtrl::Dump(dumpCtx);
+		CSortingListCtrl::Dump(dumpCtx);
 		// ...and then dump own unique members
 	}
 	catch (CFileException* pXcpt) {
