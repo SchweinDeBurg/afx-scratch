@@ -23,6 +23,10 @@ OutputBaseFilename=AfxScratch-1.0.2183-setup
 VersionInfoVersion=1.0.2183
 MinVersion=4.90.3000,5.0.2195
 
+[LangOptions]
+DialogFontName=Tahoma
+DialogFontSize=8
+
 [Files]
 Source: "..\ReleaseA\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
