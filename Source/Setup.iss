@@ -6,21 +6,21 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.0.2171
+AppVerName=AfxScratch 1.0.2183
 AppID={9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://home.peterstar.ru/zarezky
 AppSupportURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
 AppUpdatesURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
-AppVersion=1.0.2171
+AppVersion=1.0.2183
 DefaultDirName={pf}\PowerGadgets
 DefaultGroupName=PowerGadgets
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.0.2171-setup
-VersionInfoVersion=1.0.2171
+OutputBaseFilename=AfxScratch-1.0.2183-setup
+VersionInfoVersion=1.0.2183
 MinVersion=4.90.3000,5.0.2195
 
 [Files]
