@@ -10,6 +10,10 @@
 #if !defined(__Ax$CONTROL$App_h)
 #define __Ax$CONTROL$App_h
 
+#if defined(_MSC_VER) && (_MSC_VER > 1000)
+#pragma once
+#endif	// _MSC_VER
+
 class CAx$CONTROL$App: public COleControlModule
 {
 	DECLARE_DYNAMIC(CAx$CONTROL$App)

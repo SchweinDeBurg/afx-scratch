@@ -7,6 +7,10 @@
 #if !defined(__AfxScratchApp_h)
 #define __AfxScratchApp_h
 
+#if defined(_MSC_VER) && (_MSC_VER > 1000)
+#pragma once
+#endif	// _MSC_VER
+
 class CAfxScratchApp: public CWinApp
 {
 	DECLARE_DYNAMIC(CAfxScratchApp)
