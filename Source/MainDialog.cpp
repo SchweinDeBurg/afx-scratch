@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004 by Elijah Zarezky,
+// Copyright (c) 2004-2005 by Elijah Zarezky,
 // All rights reserved.
 
 // MainDialog.cpp - implementation of the CMainDialog class
@@ -112,9 +112,9 @@ BOOL CMainDialog::OnInitDialog(void)
 	// adjust system menu
 	CMenu* pSysMenu = GetSystemMenu(FALSE);
 	ASSERT_VALID(pSysMenu);
-	pSysMenu->AppendMenu(MF_BYPOSITION | MF_SEPARATOR);
+	pSysMenu->InsertMenu(0, MF_BYPOSITION | MF_SEPARATOR);
 	strAbout.LoadString(IDS_ABOUT);
-	pSysMenu->AppendMenu(MF_BYPOSITION, IDM_SC_ABOUT, strAbout);
+	pSysMenu->InsertMenu(0, MF_BYPOSITION, IDM_SC_ABOUT, strAbout);
 
 	// prepare projects list control
 	m_listProjects.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);

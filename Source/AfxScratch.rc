@@ -75,7 +75,7 @@ BEGIN
             VALUE "FileDescription", "AfxScratch executable module\0"
             VALUE "FileVersion", "1.0.2461\0"
             VALUE "InternalName", "AfxScratch\0"
-            VALUE "LegalCopyright", "Copyright © 2004 Elijah Zarezky\0"
+            VALUE "LegalCopyright", "Copyright © 2004-2005 Elijah Zarezky\0"
             VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation\0"
             VALUE "OriginalFilename", "AfxScratch.exe\0"
             VALUE "PrivateBuild", "\0"
@@ -137,18 +137,18 @@ BEGIN
     PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,322,226,44,16
 END
 
-IDD_ABOUT DIALOG DISCARDABLE  0, 0, 160, 90
+IDD_ABOUT DIALOG DISCARDABLE  0, 0, 162, 90
 STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "Tahoma"
 BEGIN
     ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
-    LTEXT           "",IDC_STATIC_TITLE,32,4,124,10
-    LTEXT           "Copyright © 2004 Elijah Zarezky\nAll rights reserved",
-                    IDC_STATIC,32,14,124,18
-    DEFPUSHBUTTON   "Close",IDOK,112,70,44,16
+    LTEXT           "",IDC_STATIC_TITLE,32,4,126,10
+    LTEXT           "Copyright © 2004-2005 Elijah Zarezky\nAll rights reserved",
+                    IDC_STATIC,32,14,126,18
+    DEFPUSHBUTTON   "Close",IDOK,114,70,44,16
     LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",
-                    IDC_STATIC,32,38,124,18
+                    IDC_STATIC,32,38,126,18
 END
 
 IDD_MACRO_VALUE DIALOG DISCARDABLE  0, 0, 186, 66
@@ -183,7 +183,7 @@ BEGIN
     IDD_ABOUT, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 153
+        RIGHTMARGIN, 155
         TOPMARGIN, 7
         BOTTOMMARGIN, 83
     END
