@@ -6,21 +6,21 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.0.2313
+AppVerName=AfxScratch 1.0.2461
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://home.peterstar.ru/zarezky
 AppSupportURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
 AppUpdatesURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
-AppVersion=1.0.2313
-DefaultDirName={pf}\PowerGadgets
-DefaultGroupName=PowerGadgets
+AppVersion=1.0.2461
+DefaultDirName={pf}\PowerGadgets\AfxScratch
+DefaultGroupName=PowerGadgets\AfxScratch
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.0.2313-setup
-VersionInfoVersion=1.0.2313
+OutputBaseFilename=AfxScratch-1.0.2461-setup
+VersionInfoVersion=1.0.2461
 MinVersion=4.90.3000,5.0.2195
 
 [LangOptions]
@@ -29,10 +29,12 @@ DialogFontSize=8
 
 [Files]
 Source: "..\ReleaseA\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
+Name: "{group}\AfxScratch Documentation"; Filename: "{app}\AfxScratch.chm"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
 Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon
