@@ -383,7 +383,7 @@ void CMainDialog::CreateMacrosDict(void)
 	CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
 	ASSERT_VALID(pApp);
 	pApp->GetVersionString(strAppVer);
-	strGenerator.Format(_T("%s %s"), AfxGetAppName(), static_cast<LPCTSTR>(strAppVer));
+	strGenerator.Format(_T("%s v%s"), AfxGetAppName(), static_cast<LPCTSTR>(strAppVer));
 	m_mapMacrosDict.SetAt(_T("$GENERATOR$"), strGenerator);
 
 	::GetLocalTime(&stNow);
