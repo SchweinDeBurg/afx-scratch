@@ -17,7 +17,11 @@
 #define IDS_CREATING_FORMAT             12
 #define IDS_GENERATED_FORMAT            13
 #define IDS_LOCATION_PROMPT             14
+#define IDS_MACRO_TYPE                  15
 #define IDM_SC_ABOUT                    0x0010
+#define IDS_TYPE_STRING                 16
+#define IDS_TYPE_NUMBER                 17
+#define IDS_TYPE_UUID                   18
 #define IDD_MAIN                        101
 #define IDD_ABOUT                       102
 #define IDI_PROJECT_ICON                103

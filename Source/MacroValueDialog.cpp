@@ -23,7 +23,7 @@ BEGIN_MESSAGE_MAP(CMacroValueDialog, CDialog)
 	ON_EN_CHANGE(IDC_EDIT_VALUE, OnChangeEditValue)
 END_MESSAGE_MAP()
 
-CMacroValueDialog::CMacroValueDialog(MACRO_DATA* pData, CWnd* pParentWnd):
+CMacroValueDialog::CMacroValueDialog(const MACRO_DATA* pData, CWnd* pParentWnd):
 CDialog(IDD_MACRO_VALUE, pParentWnd),
 m_strName(pData->szName),
 m_strDescription(pData->szDescription),

@@ -25,6 +25,7 @@ struct MACRO_DATA {
 		// field lengths
 		MAX_NAME = 15,
 		MAX_DESCRIPTION = 255,
+		MAX_TYPE = 7,
 		MAX_VALUE = 63
 	};
 	TCHAR szName[MAX_NAME + 1];
@@ -35,6 +36,7 @@ struct MACRO_DATA {
 		NUMBER,
 		UUID
 	} eTypeID;
+	TCHAR szType[MAX_TYPE + 1];
 	TCHAR szValue[MAX_VALUE + 1];
 };
 

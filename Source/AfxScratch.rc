@@ -220,6 +220,14 @@ BEGIN
     IDS_CREATING_FORMAT     "Creating %s"
     IDS_GENERATED_FORMAT    "Project %s successfully generated"
     IDS_LOCATION_PROMPT     "Choose a location for storing the folder which will contain the generated project:"
+    IDS_MACRO_TYPE          "Type"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_TYPE_STRING         "string"
+    IDS_TYPE_NUMBER         "number"
+    IDS_TYPE_UUID           "UUID"
 END
 
 #endif    // English (U.S.) resources

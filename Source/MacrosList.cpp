@@ -51,6 +51,8 @@ void CMacrosList::InsertColumns(void)
 	InsertColumn(I_NAME, strHeading, LVCFMT_LEFT, cxColumn);
 	strHeading.LoadString(IDS_MACRO_DESCRIPTION);
 	InsertColumn(I_DESCRIPTION, strHeading, LVCFMT_LEFT, cxColumn);
+	strHeading.LoadString(IDS_MACRO_TYPE);
+	InsertColumn(I_TYPE, strHeading, LVCFMT_LEFT, cxColumn);
 	strHeading.LoadString(IDS_MACRO_VALUE);
 	InsertColumn(I_VALUE, strHeading, LVCFMT_LEFT, cxColumn);
 }
@@ -60,19 +62,22 @@ void CMacrosList::AutosizeColumns(void)
 	CRect rectClient;
 
 	SetColumnWidth(I_NAME, LVSCW_AUTOSIZE);
+	SetColumnWidth(I_TYPE, LVSCW_AUTOSIZE);
 	SetColumnWidth(I_VALUE, LVSCW_AUTOSIZE);
 
 	int cxName = GetColumnWidth(I_NAME);
+	int cxType = GetColumnWidth(I_TYPE);
 	int cxValue = GetColumnWidth(I_VALUE);
 	GetClientRect(rectClient);
 	int cxVScroll = ::GetSystemMetrics(SM_CXVSCROLL);
-	int cxDescription = std::max(20, rectClient.Width() - cxName - cxValue - cxVScroll);
+	int cxDescription = std::max(20, rectClient.Width() - cxName - cxType - cxValue - cxVScroll);
 	SetColumnWidth(I_DESCRIPTION, cxDescription);
 }
 
 void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 {
 	LVITEM lvi;
+	UINT idsType;
 
 	ASSERT(AfxIsValidString(pszConfigFile));
 
@@ -104,15 +109,19 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 			if (strMacroType == _T("number")) {
 				// numeric value
 				pData->eTypeID = MACRO_DATA::NUMBER;
+				idsType = IDS_TYPE_NUMBER;
 			}
 			else if (strMacroType == _T("uuid")) {
 				// UUID value
 				pData->eTypeID = MACRO_DATA::UUID;
+				idsType = IDS_TYPE_UUID;
 			}
 			else {
 				// assume string value
 				pData->eTypeID = MACRO_DATA::STRING;
+				idsType = IDS_TYPE_STRING;
 			}
+			::LoadString(AfxGetResourceHandle(), idsType, pData->szType, MACRO_DATA::MAX_TYPE);
 			::lstrcpy(pData->szValue, branchMacro.GetAttribute(_T("Default")));
 			if (!IsMacroValueExists(pData)) {
 				// default value wasn't specified or invalid - try to suggest
@@ -159,6 +168,8 @@ int CMacrosList::CompareItems(int iItemLhs, int iItemRhs)
 		return (::lstrcmp(pDataLhs->szName, pDataRhs->szName) * m_nSortOrder);
 	case I_DESCRIPTION:
 		return (::lstrcmp(pDataLhs->szDescription, pDataRhs->szDescription) * m_nSortOrder);
+	case I_TYPE:
+		return (::lstrcmp(pDataLhs->szType, pDataRhs->szType) * m_nSortOrder);
 	case I_VALUE:
 		return (::lstrcmp(pDataLhs->szValue, pDataRhs->szValue) * m_nSortOrder);
 	default:
@@ -169,6 +180,8 @@ int CMacrosList::CompareItems(int iItemLhs, int iItemRhs)
 
 void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 {
+	CString strType;
+
 	LVITEM& lvi = reinterpret_cast<NMLVDISPINFO*>(pHdr)->item;
 	if ((lvi.mask & LVIF_TEXT) != 0) {
 		ASSERT(I_NAME <= lvi.iSubItem && lvi.iSubItem <= I_VALUE);
@@ -181,6 +194,9 @@ void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 			break;
 		case I_DESCRIPTION:
 			::lstrcpyn(lvi.pszText, pData->szDescription, lvi.cchTextMax);
+			break;
+		case I_TYPE:
+			::lstrcpyn(lvi.pszText, pData->szType, lvi.cchTextMax);
 			break;
 		case I_VALUE:
 			::lstrcpyn(lvi.pszText, pData->szValue, lvi.cchTextMax);
