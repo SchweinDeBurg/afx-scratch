@@ -30,12 +30,6 @@
 
 // STL headers
 #pragma warning(push, 3)
-#if (_MSC_VER <= 1200)
-#include <typeinfo.h>
-namespace std { using ::bad_cast; }
-#else
-#include <typeinfo>
-#endif	// _MSC_VER
 #include <iostream>
 #pragma warning(disable: 4706)	// assignment within conditional expression
 #include <fstream>
@@ -45,10 +39,13 @@ namespace std { using ::bad_cast; }
 // for compatibility with Dinkumware STL
 #if !defined(_IOSTREAM_)
 #define _IOSTREAM_
-#endif
+#endif	// _IOSTREAM_
+#if !defined(_FSTREAM_)
+#define _FSTREAM_
+#endif	// _FSTREAM_
 
 // additional headers
-#include "PugXML.h"
+#include "../../Repository/CodeProject/Source/PugXML.h"
 #include "../../Repository/AfxGadgets/Source/StringConv.h"
 #include "../../Repository/AfxGadgets/Source/Win32Error.h"
 #include "../../Repository/AfxGadgets/Source/SortingListCtrl.h"
