@@ -12,6 +12,12 @@
 #include "MainDialog.h"
 #include "AfxScratchApp.h"
 
+#if (_MFC_VER > 0x0600)
+#include <../src/mfc/afximpl.h>
+#else
+#include <../src/afximpl.h>
+#endif	// _MFC_VER
+
 #if defined(_DEBUG)
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;

@@ -20,12 +20,6 @@
 #include <afxtempl.h>		// MFC collection template classes
 #include <afxdlgs.h>			// MFC standard dialogs
 
-#if _MFC_VER > 0x0600
-#include <../src/mfc/afximpl.h>
-#else
-#include <../src/afximpl.h>
-#endif	// _MFC_VER
-
 // ATL headers
 #include <atlbase.h>
 
@@ -36,7 +30,7 @@
 
 // STL headers
 #pragma warning(push, 3)
-#if _MSC_VER <= 1200
+#if (_MSC_VER <= 1200)
 #include <typeinfo.h>
 namespace std { using ::bad_cast; }
 #else
