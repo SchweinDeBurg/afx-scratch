@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project Name="AfxConsole" Description="Generic console application">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.dsp" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\EntryPoint.cpp" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
+	</Files>
+</Project>
