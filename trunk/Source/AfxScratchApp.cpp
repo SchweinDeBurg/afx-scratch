@@ -73,6 +73,7 @@ BOOL CAfxScratchApp::InitInstance(void)
 {
 	SetRegistryKey(IDS_REGISTRY_KEY);
 	CMainDialog dlgMain;
+	m_pMainWnd = &dlgMain;
 	dlgMain.DoModal();
 	return (FALSE);
 }
