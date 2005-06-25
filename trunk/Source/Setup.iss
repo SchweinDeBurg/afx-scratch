@@ -9,9 +9,9 @@ AppName=AfxScratch
 AppVerName=AfxScratch 1.0.2461
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
-AppPublisherURL=http://home.peterstar.ru/zarezky
-AppSupportURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
-AppUpdatesURL=http://home.peterstar.ru/zarezky/projects/afx_scratch.html
+AppPublisherURL=http://zarezky.spb.ru/
+AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
+AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppVersion=1.0.2461
 DefaultDirName={pf}\PowerGadgets\AfxScratch
 DefaultGroupName=PowerGadgets\AfxScratch
@@ -41,7 +41,7 @@ Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: deskt
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: quicklaunchicon
 
 [INI]
-Filename: "{app}\AfxScratch.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://home.peterstar.ru/zarezky/projects/afx_scratch.html"
+Filename: "{app}\AfxScratch.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://zarezky.spb.ru/projects/afx_scratch.html"
 
 [Registry]
 Root: HKCU; Subkey: "Software\Elijah Zarezky"; Flags: uninsdeletekeyifempty
