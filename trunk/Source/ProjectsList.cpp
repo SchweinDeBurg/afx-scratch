@@ -12,10 +12,10 @@
 #include "MainDialog.h"
 #include "AfxScratchApp.h"
 
-#if (_MFC_VER > 0x0600)
-#include <../src/mfc/afximpl.h>
-#else
+#if (_MFC_VER < 0x0700)
 #include <../src/afximpl.h>
+#else
+#include <../src/mfc/afximpl.h>
 #endif	// _MFC_VER
 
 #if defined(__INTEL_COMPILER)
