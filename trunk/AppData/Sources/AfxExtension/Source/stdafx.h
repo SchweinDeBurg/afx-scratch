@@ -25,6 +25,13 @@
 #include <afxwin.h>			// MFC core and standard components
 #include <afxdllx.h>			// MFC extension DLL helpers
 
+// force ISO/IEC 14882 conformance in for loop scope
+#if _MSC_VER < 1300
+#define for if(false); else for
+#else
+#pragma conform(forScope, on)
+#endif	// _MSC_VER
+
 #endif	// __stdafx_h
 
 // end of file
