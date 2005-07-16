@@ -19,7 +19,9 @@ static char THIS_FILE[] = __FILE__;
 #pragma comment(lib, "rpcrt4.lib")
 
 // linker options
+#if (_MSC_VER < 1300)
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
 #pragma comment(linker, "/opt:ref")
+#endif	// _MSC_VER
 
 // end of file

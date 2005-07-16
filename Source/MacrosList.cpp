@@ -291,13 +291,18 @@ void CMacrosList::Suggest_COMPANY(LPTSTR pszDest)
 	CRegKey regKey;
 
 	// precondition
-	ASSERT(AfxIsValidString(pszDest));
+	ASSERT(AfxIsValidString(pszDest, 256));
 
 	static TCHAR szFormat[] = _T("SOFTWARE\\Microsoft\\%s\\CurrentVersion");
 	strKeyName.Format(szFormat, (::GetVersion() & 0x80000000) ? _T("Windows") : _T("Windows NT"));
 	if (regKey.Open(HKEY_LOCAL_MACHINE, strKeyName) == ERROR_SUCCESS) {
+#if (_MFC_VER < 0x0700)
 		DWORD cbSize = 256 * sizeof(TCHAR);
 		regKey.QueryValue(pszDest, _T("RegisteredOrganization"), &cbSize);
+#else
+		ULONG cchMaxLen = 256;
+		regKey.QueryStringValue(_T("RegisteredOrganization"), pszDest, &cchMaxLen);
+#endif	// _MFC_VER
 		regKey.Close();
 	}
 }

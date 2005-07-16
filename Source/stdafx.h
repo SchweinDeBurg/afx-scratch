@@ -32,6 +32,14 @@
 #include <lmcons.h>
 #include <shlwapi.h>			// light-weight utility APIs
 
+// remove stupid macros in order to use STL templates
+#if defined(min)
+#undef min
+#endif	// min
+#if defined(max)
+#undef max
+#endif	// max
+
 // STL headers
 #pragma warning(push, 3)
 #include <iostream>

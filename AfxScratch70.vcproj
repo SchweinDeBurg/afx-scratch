@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="7.00"
-	Name="$PROJECT$"
-	ProjectGUID="{$PRJGUID$}"
-	Keyword="Win32Proj">
+	Name="AfxScratch"
+	ProjectGUID="{93F352DB-6470-42FA-AC4C-2A3E621C38A8}"
+	Keyword="MFCProj">
 	<Platforms>
 		<Platform
 			Name="Win32"/>
@@ -12,9 +12,10 @@
 	<Configurations>
 		<Configuration
 			Name="MBCS_Debug|Win32"
-			OutputDirectory="DebugA"
-			IntermediateDirectory="DebugA"
+			OutputDirectory="70_DebugA"
+			IntermediateDirectory="70_DebugA"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -32,18 +33,18 @@
 				UsePrecompiledHeader="0"
 				BrowseInformation="1"
 				WarningLevel="4"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="3"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ignore:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/$PROJECT$.pdb"
+				ProgramDatabaseFile="$(OutDir)/AfxScratch.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -69,9 +70,10 @@
 		</Configuration>
 		<Configuration
 			Name="MBCS_Release|Win32"
-			OutputDirectory="ReleaseA"
-			IntermediateDirectory="ReleaseA"
+			OutputDirectory="70_ReleaseA"
+			IntermediateDirectory="70_ReleaseA"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="2">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -87,14 +89,14 @@
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ignore:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="FALSE"
@@ -124,9 +126,10 @@
 		</Configuration>
 		<Configuration
 			Name="Unicode_Debug|Win32"
-			OutputDirectory="DebugW"
-			IntermediateDirectory="DebugW"
+			OutputDirectory="70_DebugW"
+			IntermediateDirectory="70_DebugW"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="1">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -144,18 +147,18 @@
 				UsePrecompiledHeader="0"
 				BrowseInformation="1"
 				WarningLevel="4"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="3"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ignore:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="TRUE"
-				ProgramDatabaseFile="$(OutDir)/$PROJECT$.pdb"
+				ProgramDatabaseFile="$(OutDir)/AfxScratch.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -181,9 +184,10 @@
 		</Configuration>
 		<Configuration
 			Name="Unicode_Release|Win32"
-			OutputDirectory="ReleaseW"
-			IntermediateDirectory="ReleaseW"
+			OutputDirectory="70_ReleaseW"
+			IntermediateDirectory="70_ReleaseW"
 			ConfigurationType="1"
+			UseOfMFC="2"
 			CharacterSet="1">
 			<Tool
 				Name="VCCLCompilerTool"
@@ -199,14 +203,14 @@
 				RuntimeTypeInfo="TRUE"
 				UsePrecompiledHeader="0"
 				WarningLevel="4"
-				Detect64BitPortabilityProblems="TRUE"
+				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="0"/>
 			<Tool
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/ignore:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="FALSE"
@@ -240,7 +244,142 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
 			<File
-				RelativePath="Source\EntryPoint.cpp">
+				RelativePath="Source\AboutDialog.cpp">
+				<FileConfiguration
+					Name="MBCS_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Source\AfxScratchApp.cpp">
+				<FileConfiguration
+					Name="MBCS_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Source\MacroValueDialog.cpp">
+				<FileConfiguration
+					Name="MBCS_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Source\MacrosList.cpp">
+				<FileConfiguration
+					Name="MBCS_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Source\MainDialog.cpp">
+				<FileConfiguration
+					Name="MBCS_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Debug|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode_Release|Win32">
+					<Tool
+						Name="VCCLCompilerTool"
+						UsePrecompiledHeader="3"/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath="Source\ProjectsList.cpp">
 				<FileConfiguration
 					Name="MBCS_Debug|Win32">
 					<Tool
@@ -298,6 +437,27 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc">
 			<File
+				RelativePath="Source\AboutDialog.h">
+			</File>
+			<File
+				RelativePath="Source\AfxScratchApp.h">
+			</File>
+			<File
+				RelativePath="Source\AuxTypes.h">
+			</File>
+			<File
+				RelativePath="Source\MacroValueDialog.h">
+			</File>
+			<File
+				RelativePath="Source\MacrosList.h">
+			</File>
+			<File
+				RelativePath="Source\MainDialog.h">
+			</File>
+			<File
+				RelativePath="Source\ProjectsList.h">
+			</File>
+			<File
 				RelativePath="Source\Resource.h">
 			</File>
 			<File
@@ -308,10 +468,10 @@
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
 			<File
-				RelativePath="Source\BinRes\AppIcon.ico">
+				RelativePath="Source\AfxScratch.rc">
 			</File>
 			<File
-				RelativePath="Source\$PROJECT$.rc">
+				RelativePath="Source\BinRes\AppIcon.ico">
 			</File>
 		</Filter>
 	</Files>
