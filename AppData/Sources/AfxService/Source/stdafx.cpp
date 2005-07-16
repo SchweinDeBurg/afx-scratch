@@ -24,7 +24,9 @@ DWORD g_dwServiceState = SERVICE_STOPPED;
 #pragma comment(lib, "shlwapi.lib")
 
 // linker options
+#if defined(_MSC_VER) && (_MSC_VER < 1300)
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
+#endif	// _MSC_VER
 
 // entry-point symbol for the Unicode builds
 #if defined(UNICODE) || defined(_UNICODE)
