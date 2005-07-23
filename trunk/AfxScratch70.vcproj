@@ -473,6 +473,12 @@
 			<File
 				RelativePath="Source\BinRes\AppIcon.ico">
 			</File>
+			<File
+				RelativePath="Source\BinRes\MacroIcon.ico">
+			</File>
+			<File
+				RelativePath="Source\BinRes\ProjectIcon.ico">
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

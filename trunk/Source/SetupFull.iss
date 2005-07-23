@@ -2,7 +2,7 @@
 ;; Copyright (c) 2004-2005 by Elijah Zarezky,
 ;; All rights reserved.
 
-;; Setup.iss - setup script for Inno Setup compiler
+;; SetupFull.iss - setup script for Inno Setup compiler
 
 [Setup]
 AppName=AfxScratch
@@ -19,7 +19,7 @@ AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.0.2800-setup
+OutputBaseFilename=AfxScratch-1.0.2800-setup-full
 VersionInfoVersion=1.0.2800
 MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
@@ -33,6 +33,9 @@ DialogFontSize=8
 Source: "..\70_ReleaseA\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
+Source: "..\Redist\mfc70.dll"; DestDir: "{app}"
+Source: "..\Redist\msvcr70.dll"; DestDir: "{app}"
+Source: "..\Redist\msvcp70.dll"; DestDir: "{app}"
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
