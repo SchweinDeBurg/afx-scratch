@@ -30,10 +30,10 @@ static char THIS_FILE[] = __FILE__;
 #endif	// _DEBUG
 
 // object model
-IMPLEMENT_DYNAMIC(CMainDialog, CDialog)
+IMPLEMENT_DYNAMIC(CMainDialog, ETSLayoutDialog)
 
 // message map
-BEGIN_MESSAGE_MAP(CMainDialog, CDialog)
+BEGIN_MESSAGE_MAP(CMainDialog, ETSLayoutDialog)
 	ON_WM_CLOSE()
 	ON_WM_DESTROY()
 	ON_WM_CTLCOLOR()
@@ -49,7 +49,7 @@ BEGIN_MESSAGE_MAP(CMainDialog, CDialog)
 END_MESSAGE_MAP()
 
 CMainDialog::CMainDialog(CWnd* pParentWnd):
-CDialog(IDD_MAIN, pParentWnd),
+ETSLayoutDialog(IDD_MAIN, pParentWnd, _T("MainDialog"), false),
 m_hIcon(NULL),
 m_hSmIcon(NULL),
 m_iProjectIcon(-1),
@@ -112,7 +112,7 @@ BOOL CMainDialog::OnInitDialog(void)
 	CString strAppVer;
 	CString strStatus;
 
-	CDialog::OnInitDialog();
+	ETSLayoutDialog::OnInitDialog();
 
 	// set dialog's icons
 	SetIcon(m_hIcon, TRUE);
@@ -124,6 +124,33 @@ BOOL CMainDialog::OnInitDialog(void)
 	pSysMenu->InsertMenu(0, MF_BYPOSITION | MF_SEPARATOR);
 	strAbout.LoadString(IDS_ABOUT);
 	pSysMenu->InsertMenu(0, MF_BYPOSITION, IDM_SC_ABOUT, strAbout);
+
+	// define the layout
+	CPane paneGroupProjects = paneCtrl(IDC_GROUP_PROJECTS, HORIZONTAL, GREEDY, 8, 10, 10)
+		<< item(IDC_LIST_PROJECTS, GREEDY);
+	CPane paneGroupMacros = paneCtrl(IDC_GROUP_MACROS, VERTICAL, GREEDY, 8, 10, 10)
+		<< item(IDC_LIST_MACROS, GREEDY)
+		<< (pane(HORIZONTAL, ABSOLUTE_VERT)
+		<< item(IDC_BUTTON_SAVE, NORESIZE)
+		<< itemSpaceBetween(HORIZONTAL, IDC_BUTTON_SAVE, IDC_BUTTON_RESTORE)
+		<< item(IDC_BUTTON_RESTORE, NORESIZE)
+		<< itemGrowing(HORIZONTAL)
+		<< item(IDC_BUTTON_VALUE, NORESIZE));
+	CPane paneGroupLocation = paneCtrl(IDC_GROUP_LOCATION, HORIZONTAL, ABSOLUTE_VERT, 8, 10, 10)
+		<< item(IDC_EDIT_LOCATION, ABSOLUTE_VERT)
+		<< item(IDC_BUTTON_BROWSE, NORESIZE);
+	CreateRoot(VERTICAL, 8, 2)
+		<< paneGroupProjects
+		<< paneGroupMacros
+		<< paneGroupLocation
+		<< itemSpaceBetween(VERTICAL, IDC_GROUP_LOCATION, IDC_STATIC_STATUS)
+		<< (pane(HORIZONTAL, ABSOLUTE_VERT)
+		<< item(IDC_STATIC_STATUS, GREEDY)
+		<< itemSpaceBetween(HORIZONTAL, IDC_STATIC_STATUS, IDC_BUTTON_GENERATE)
+		<< item(IDC_BUTTON_GENERATE, NORESIZE)
+		<< itemSpaceBetween(HORIZONTAL, IDC_BUTTON_GENERATE, IDC_BUTTON_EXIT)
+		<< item(IDC_BUTTON_EXIT, NORESIZE));
+	UpdateLayout();
 
 	// prepare projects list control
 	m_listProjects.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
@@ -151,7 +178,7 @@ BOOL CMainDialog::OnInitDialog(void)
 
 void CMainDialog::DoDataExchange(CDataExchange* pDX)
 {
-	CDialog::DoDataExchange(pDX);
+	ETSLayoutDialog::DoDataExchange(pDX);
 
 	DDX_Control(pDX, IDC_LIST_PROJECTS, m_listProjects);
 	DDX_Control(pDX, IDC_LIST_MACROS, m_listMacros);
@@ -191,7 +218,7 @@ void CMainDialog::OnDestroy(void)
 {
 	m_listMacros.ResetContent();
 	m_listProjects.ResetContent();
-	CDialog::OnDestroy();
+	ETSLayoutDialog::OnDestroy();
 }
 
 HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
@@ -208,7 +235,7 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 			break;
 		}
 	default:
-		hbr = CDialog::OnCtlColor(pDC, pWnd, uCtlColor);
+		hbr = ETSLayoutDialog::OnCtlColor(pDC, pWnd, uCtlColor);
 	}
 	return (hbr);
 }
@@ -220,7 +247,7 @@ void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)
 		dlgAbout.DoModal();
 	}
 	else {
-		CDialog::OnSysCommand(uID, lParam);
+		ETSLayoutDialog::OnSysCommand(uID, lParam);
 	}
 }
 
@@ -518,7 +545,7 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 void CMainDialog::AssertValid(void) const
 {
 	// first perform inherited validity check...
-	CDialog::AssertValid();
+	ETSLayoutDialog::AssertValid();
 	// ...and then verify our own state as well
 	ASSERT_VALID(&m_listProjects);
 	ASSERT_VALID(&m_listMacros);
@@ -529,7 +556,7 @@ void CMainDialog::Dump(CDumpContext& dumpCtx) const
 {
 	try {
 		// first invoke inherited dumper...
-		CDialog::Dump(dumpCtx);
+		ETSLayoutDialog::Dump(dumpCtx);
 		// ...and then dump own unique members
 		dumpCtx << "m_strAppData = " << m_strAppData;
 		dumpCtx << "\nm_hIcon = " << m_hIcon;

@@ -69,7 +69,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,2800,51
+ FILEVERSION 1,0,2807,53
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -88,7 +88,7 @@ BEGIN
             VALUE "Comments", "none"
             VALUE "CompanyName", "Spb Software House"
             VALUE "FileDescription", "AfxScratch executable module"
-            VALUE "FileVersion", "1.0.2800"
+            VALUE "FileVersion", "1.0.2807"
             VALUE "InternalName", "AfxScratch"
             VALUE "LegalCopyright", "Copyright © 2004-2005 Elijah Zarezky"
             VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation"
@@ -121,17 +121,17 @@ IDI_MACRO_ICON          ICON                    "BinRes\\MacroIcon.ico"
 //
 
 IDD_MAIN DIALOGEX 0, 0, 370, 246
-STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
-    WS_SYSMENU
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
 EXSTYLE WS_EX_APPWINDOW
 CAPTION "AfxScratch"
 FONT 8, "Tahoma", 0, 0, 0x1
 BEGIN
-    GROUPBOX        "Projects",IDC_STATIC,4,4,362,74,WS_GROUP
+    GROUPBOX        "Projects",IDC_GROUP_PROJECTS,4,4,362,74,WS_GROUP
     CONTROL         "List1",IDC_LIST_PROJECTS,"SysListView32",LVS_REPORT | 
                     LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_GROUP | 
                     WS_TABSTOP,10,16,350,56,WS_EX_CLIENTEDGE
-    GROUPBOX        "Macros",IDC_STATIC,4,84,362,94,WS_GROUP
+    GROUPBOX        "Macros",IDC_GROUP_MACROS,4,84,362,94,WS_GROUP
     CONTROL         "List2",IDC_LIST_MACROS,"SysListView32",LVS_REPORT | 
                     LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_GROUP | 
                     WS_TABSTOP,10,96,350,56,WS_EX_CLIENTEDGE
@@ -139,7 +139,7 @@ BEGIN
     PUSHBUTTON      "Restore defaults",IDC_BUTTON_RESTORE,86,156,64,16
     PUSHBUTTON      "Change value...",IDC_BUTTON_VALUE,296,156,64,16,
                     WS_GROUP
-    GROUPBOX        "Location",IDC_STATIC,4,184,362,30,WS_GROUP
+    GROUPBOX        "Location",IDC_GROUP_LOCATION,4,184,362,30,WS_GROUP
     EDITTEXT        IDC_EDIT_LOCATION,10,196,332,12,ES_AUTOHSCROLL | 
                     ES_READONLY | WS_GROUP
     PUSHBUTTON      "...",IDC_BUTTON_BROWSE,346,196,14,12,WS_GROUP
@@ -149,18 +149,20 @@ BEGIN
     PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,322,226,44,16
 END
 
-IDD_ABOUT DIALOG  0, 0, 162, 90
+IDD_ABOUT DIALOGEX 0, 0, 168, 106
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
-FONT 8, "Tahoma"
+FONT 8, "Tahoma", 0, 0, 0x0
 BEGIN
     ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
-    LTEXT           "",IDC_STATIC_TITLE,32,4,126,10
+    LTEXT           "",IDC_STATIC_TITLE,32,4,132,10
     LTEXT           "Copyright © 2004-2005 Elijah Zarezky\nAll rights reserved",
-                    IDC_STATIC,32,14,126,18
-    DEFPUSHBUTTON   "Close",IDOK,114,70,44,16
+                    IDC_STATIC,32,14,132,18
+    DEFPUSHBUTTON   "Close",IDOK,120,86,44,16
     LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",
-                    IDC_STATIC,32,38,126,18
+                    IDC_STATIC,32,38,132,18
+    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",
+                    IDC_STATIC,32,58,132,16
 END
 
 IDD_MACRO_VALUE DIALOG  0, 0, 186, 66
@@ -195,9 +197,9 @@ BEGIN
     IDD_ABOUT, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 155
+        RIGHTMARGIN, 161
         TOPMARGIN, 7
-        BOTTOMMARGIN, 83
+        BOTTOMMARGIN, 99
     END
 
     IDD_MACRO_VALUE, DIALOG

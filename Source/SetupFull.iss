@@ -6,21 +6,21 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.0.2800
+AppVerName=AfxScratch 1.0.2807
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.0.2800
+AppVersion=1.0.2807
 DefaultDirName={pf}\PowerGadgets\AfxScratch
 DefaultGroupName=PowerGadgets\AfxScratch
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.0.2800-setup-full
-VersionInfoVersion=1.0.2800
+OutputBaseFilename=AfxScratch-1.0.2807-setup-full
+VersionInfoVersion=1.0.2807
 MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp

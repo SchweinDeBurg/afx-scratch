@@ -23,6 +23,7 @@
 #include <afxcmn.h>			// MFC common control classes
 #include <afxtempl.h>		// MFC collection template classes
 #include <afxdlgs.h>			// MFC standard dialogs
+#include <afxext.h>			// MFC extensions and customizable classes
 
 // ATL headers
 #include <atlbase.h>
@@ -62,6 +63,7 @@
 #include "../../Repository/AfxGadgets/Source/Win32Error.h"
 #include "../../Repository/AfxGadgets/Source/SortingListCtrl.h"
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
+#include "../../Repository/CodeProject/Source/ETSLayout.h"
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
