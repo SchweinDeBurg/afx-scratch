@@ -47,6 +47,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"
@@ -101,6 +102,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
 				SetChecksum="TRUE"
 				TargetMachine="1"/>
 			<Tool
@@ -159,6 +161,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
 				TargetMachine="1"/>
 			<Tool
 				Name="VCMIDLTool"
@@ -213,6 +216,7 @@
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
+				OptimizeForWindows98="1"
 				SetChecksum="TRUE"
 				TargetMachine="1"/>
 			<Tool

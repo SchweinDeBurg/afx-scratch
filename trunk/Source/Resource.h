@@ -1,5 +1,5 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by AfxScratch.rc
 //
 #define IDI_APP_ICON                    1
@@ -39,6 +39,9 @@
 #define IDC_BUTTON_EXIT                 1010
 #define IDC_BUTTON_SAVE                 1011
 #define IDC_BUTTON_RESTORE              1012
+#define IDC_GROUP_PROJECTS              1013
+#define IDC_GROUP_MACROS                1014
+#define IDC_GROUP_LOCATION              1015
 
 // Next default values for new objects
 // 
@@ -46,7 +49,7 @@
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        106
 #define _APS_NEXT_COMMAND_VALUE         40001
-#define _APS_NEXT_CONTROL_VALUE         1013
+#define _APS_NEXT_CONTROL_VALUE         1016
 #define _APS_NEXT_SYMED_VALUE           102
 #endif
 #endif

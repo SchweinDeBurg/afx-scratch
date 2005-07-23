@@ -11,7 +11,7 @@
 #pragma once
 #endif	// _MSC_VER
 
-class CMainDialog: public CDialog
+class CMainDialog: public ETSLayoutDialog
 {
 	DECLARE_DYNAMIC(CMainDialog)
 	DECLARE_MESSAGE_MAP()
