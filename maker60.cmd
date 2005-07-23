@@ -2,7 +2,9 @@
 echo.
 echo Building executable...
 echo.
-devenv.com AfxScratch70.sln /rebuild MBCS_Release /project AfxScratch /nologo
+msdev.com AfxScratch.dsw /MAKE "AfxScratch - Win32 Release" /REBUILD
+echo.
+echo.
 echo Compiling documentation...
 echo.
 cd .\HTML
@@ -15,8 +17,4 @@ echo.
 cd ..\Source
 if exist ..\Setup\*.exe del ..\Setup\*.exe
 iscc.exe Setup.iss
-echo.
-echo Creating full installer...
-echo.
-iscc.exe SetupFull.iss
 cd ..
