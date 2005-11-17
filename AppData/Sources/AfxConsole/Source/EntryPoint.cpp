@@ -22,7 +22,8 @@ static CWinApp g_app$PROJECT$;
 int _tmain(int /*argc*/, TCHAR* /*argv*/[], TCHAR* /*envp*/[])
 {
 	// try to initialize MFC
-	if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), SW_HIDE)) {
+	if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), SW_HIDE))
+	{
 		return (-1);
 	}
 
