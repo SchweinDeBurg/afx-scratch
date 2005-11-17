@@ -99,11 +99,14 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 	// walk through the configuration files
 	CString strFileMask = CString(pszAppData) + _T("\\Config\\*.xml");
 	BOOL fStop = !finder.FindFile(strFileMask);
-	while (!fStop) {
+	while (!fStop)
+	{
 		fStop = !finder.FindNextFile();
-		if (!finder.IsDots() && !finder.IsDirectory()) {
+		if (!finder.IsDots() && !finder.IsDirectory())
+		{
 			CString strFilePath = finder.GetFilePath();
-			if (pParser->ParseFile(strFilePath)) {
+			if (pParser->ParseFile(strFilePath))
+			{
 				PROJECT_DATA* pData = new PROJECT_DATA;
 				memset(pData, 0, sizeof(*pData));
 				::lstrcpy(pData->szConfigFile, strFilePath);
@@ -114,12 +117,14 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 				::lstrcpy(pData->szName, branchProject.GetAttribute(_T("Name")));
 				::lstrcpy(pData->szDescription, branchProject.GetAttribute(_T("Description")));
 				CString strIcon(branchProject.GetAttribute(_T("Icon")));
-				if (!strIcon.IsEmpty()) {
+				if (!strIcon.IsEmpty())
+				{
 					CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
 					ASSERT_VALID(pApp);
 					CString strIconPath = CString(pszAppData) + _T("\\Config\\") + strIcon;
 					HICON hCustomIcon = pApp->LoadSmIconFromFile(strIconPath);
-					if (hCustomIcon != NULL) {
+					if (hCustomIcon != NULL)
+					{
 						// use specified custom icon
 						CImageList* pImageList = GetImageList(LVSIL_SMALL);
 						ASSERT_VALID(pImageList);
@@ -143,13 +148,15 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 			}
 		}
 		// pump waiting messages (if any)
-		while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+		while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		{
 			::TranslateMessage(&msg);
 			::DispatchMessage(&msg);
 		}
 	}
 
-	if (GetItemCount() > 0) {
+	if (GetItemCount() > 0)
+	{
 		SortItems(I_NAME, SORT_ASCENDING);
 		AutosizeColumns();
 		SetItemState(0, LVIS_FOCUSED | LVIS_SELECTED, 0xFFFFFFFF);
@@ -161,7 +168,8 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 
 void CProjectsList::ResetContent(void)
 {
-	while (GetItemCount() > 0) {
+	while (GetItemCount() > 0)
+	{
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(GetItemData(0));
 		ASSERT(pData != NULL);
 		DeleteItem(0);
@@ -191,7 +199,8 @@ int CProjectsList::CompareItems(int iItemLhs, int iItemRhs)
 void CProjectsList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 {
 	LVITEM& lvi = reinterpret_cast<NMLVDISPINFO*>(pHdr)->item;
-	if ((lvi.mask & LVIF_TEXT) != 0) {
+	if ((lvi.mask & LVIF_TEXT) != 0)
+	{
 		ASSERT(I_NAME <= lvi.iSubItem && lvi.iSubItem <= I_DESCRIPTION);
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(GetItemData(lvi.iItem));
 		ASSERT(pData != NULL);
@@ -218,12 +227,14 @@ void CProjectsList::AssertValid(void) const
 
 void CProjectsList::Dump(CDumpContext& dumpCtx) const
 {
-	try {
+	try
+	{
 		// first invoke inherited dumper...
 		CSortingListCtrl::Dump(dumpCtx);
 		// ...and then dump own unique members
 	}
-	catch (CFileException* pXcpt) {
+	catch (CFileException* pXcpt)
+	{
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}
