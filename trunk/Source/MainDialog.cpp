@@ -63,7 +63,8 @@ m_iMacroIcon(-1)
 
 	// obtain the application data folder
 	m_strAppData = pApp->GetProfileString(_T("Settings"), _T("AppData"));
-	if (m_strAppData.IsEmpty()) {
+	if (m_strAppData.IsEmpty())
+	{
 		// use default - within application data for all users
 		::SHGetSpecialFolderPath(NULL, m_strAppData.GetBuffer(_MAX_PATH), CSIDL_COMMON_APPDATA, TRUE);
 		m_strAppData.ReleaseBuffer();
@@ -80,7 +81,8 @@ m_iMacroIcon(-1)
 
 	// obtain the generated projects location
 	m_strLocation = pApp->GetProfileString(_T("Settings"), _T("Location"));
-	if (m_strLocation.IsEmpty()) {
+	if (m_strLocation.IsEmpty())
+	{
 		// use default - common repository for documents
 		::SHGetSpecialFolderPath(NULL, m_strLocation.GetBuffer(_MAX_PATH), CSIDL_PERSONAL, TRUE);
 		m_strLocation.ReleaseBuffer();
@@ -228,7 +230,8 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 	switch (pWnd->GetDlgCtrlID())
 	{
 	case IDC_EDIT_LOCATION:
-		if (uCtlColor == CTLCOLOR_STATIC) {
+		if (uCtlColor == CTLCOLOR_STATIC)
+		{
 			pDC->SetBkColor(::GetSysColor(COLOR_WINDOW));
 			pDC->SetTextColor(::GetSysColor(COLOR_WINDOWTEXT));
 			hbr = ::GetSysColorBrush(COLOR_WINDOW);
@@ -242,7 +245,8 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 
 void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)
 {
-	if ((uID & 0xFFF0) == IDM_SC_ABOUT) {
+	if ((uID & 0xFFF0) == IDM_SC_ABOUT)
+	{
 		CAboutDialog dlgAbout;
 		dlgAbout.DoModal();
 	}
@@ -254,7 +258,8 @@ void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)
 void CMainDialog::OnItemChangedListProjects(NMHDR* pHdr, LRESULT* /*pnResult*/)
 {
 	NMLISTVIEW* pNMLV = reinterpret_cast<NMLISTVIEW*>(pHdr);
-	if ((pNMLV->uNewState & LVIS_SELECTED) != 0) {
+	if ((pNMLV->uNewState & LVIS_SELECTED) != 0)
+	{
 		m_listMacros.ResetContent();
 		// populate macros list
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(pNMLV->iItem));
@@ -271,12 +276,14 @@ void CMainDialog::OnDblClkListMacros(NMHDR* /*pHdr*/, LRESULT* /*pnResult*/)
 void CMainDialog::OnButtonValue(void)
 {
 	POSITION pos = m_listMacros.GetFirstSelectedItemPosition();
-	if (pos != NULL) {
+	if (pos != NULL)
+	{
 		int iItem = m_listMacros.GetNextSelectedItem(pos);
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(iItem));
 		ASSERT(pData != NULL);
 		CMacroValueDialog dlgMacroValue(pData);
-		if (dlgMacroValue.DoModal() == IDOK) {
+		if (dlgMacroValue.DoModal() == IDOK)
+		{
 			::lstrcpy(pData->szValue, dlgMacroValue.m_strValue);
 			m_listMacros.AutosizeColumns();
 			m_listMacros.RedrawItems(iItem, iItem);
@@ -291,24 +298,28 @@ void CMainDialog::OnButtonValue(void)
 void CMainDialog::OnButtonSave(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL) {
+	if (pos != NULL)
+	{
 		int iItem = m_listProjects.GetNextSelectedItem(pos);
 		PROJECT_DATA* pPrjData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem));
 		ASSERT(pPrjData != NULL);
 		CPugXmlParser* pParser = new CPugXmlParser();
-		if (pParser->ParseFile(pPrjData->szConfigFile)) {
+		if (pParser->ParseFile(pPrjData->szConfigFile))
+		{
 			CPugXmlBranch branchRoot = pParser->GetRoot();
 			ASSERT(!branchRoot.IsNull());
 			CPugXmlBranch branchMacros = branchRoot.FindByPath(_T("./Project/Macros"));
 			ASSERT(!branchMacros.IsNull());
 			int nNumMacros = m_listMacros.GetItemCount();
-			for (int i = 0; i < nNumMacros; ++i) {
+			for (int i = 0; i < nNumMacros; ++i)
+			{
 				MACRO_DATA* pMacData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
 				ASSERT(pMacData != NULL);
 				CPugXmlBranch branchMacro = branchMacros.FindFirstElemAttr(_T("Macro"), _T("Name"),
 					pMacData->szName);
 				ASSERT(!branchMacro.IsNull());
-				if (::lstrlen(pMacData->szValue) > 0) {
+				if (::lstrlen(pMacData->szValue) > 0)
+				{
 					// change or add default macro value
 					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue)) {
 						branchMacro.AddAttribute(_T("Default"), pMacData->szValue);
@@ -320,11 +331,13 @@ void CMainDialog::OnButtonSave(void)
 				}
 			}
 			// serialize modified XML tree to the stream
-			try {
+			try
+			{
 				std::ofstream ofsXML(_T2A(pPrjData->szConfigFile), std::ios::trunc);
 				branchRoot.Serialize(ofsXML);
 			}
-			catch (const std::exception& xcpt) {
+			catch (const std::exception& xcpt)
+			{
 				AfxMessageBox(_A2T(xcpt.what()), MB_ICONSTOP | MB_OK);
 			}
 		}
@@ -335,7 +348,8 @@ void CMainDialog::OnButtonSave(void)
 void CMainDialog::OnButtonRestore(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL) {
+	if (pos != NULL)
+	{
 		m_listMacros.ResetContent();
 		int iItem = m_listProjects.GetNextSelectedItem(pos);
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem));
@@ -350,7 +364,8 @@ void CMainDialog::OnButtonBrowse(void)
 
 	strPrompt.LoadString(IDS_LOCATION_PROMPT);
 	CFolderDialog dlgFolder(strPrompt, m_strLocation, this);
-	if (dlgFolder.DoModal() == IDOK) {
+	if (dlgFolder.DoModal() == IDOK)
+	{
 		m_strLocation = dlgFolder.GetFolderPath();
 		SetDlgItemText(IDC_EDIT_LOCATION, m_strLocation);
 		CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
@@ -362,9 +377,11 @@ void CMainDialog::OnButtonBrowse(void)
 void CMainDialog::OnButtonGenerate(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL) {
+	if (pos != NULL)
+	{
 		// retrieve and validate dialog data
-		if (UpdateData()) {
+		if (UpdateData())
+		{
 			int iItem = m_listProjects.GetNextSelectedItem(pos);
 			GenerateProject(reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem)));
 		}
@@ -411,7 +428,8 @@ void CMainDialog::CreateMacrosDict(void)
 	m_mapMacrosDict.RemoveAll();
 
 	int nNumMacros = m_listMacros.GetItemCount();
-	for (int i = 0; i < nNumMacros; ++i) {
+	for (int i = 0; i < nNumMacros; ++i)
+	{
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
 		m_mapMacrosDict.SetAt(pData->szName, pData->szValue);
 	}
@@ -440,9 +458,11 @@ void CMainDialog::SubstituteMacros(CString& strText)
 	CString strName;
 	CString strValue;
 
-	if (!strText.IsEmpty()) {
+	if (!strText.IsEmpty())
+	{
 		POSITION pos = m_mapMacrosDict.GetStartPosition();
-		while (pos != NULL) {
+		while (pos != NULL)
+		{
 			m_mapMacrosDict.GetNextAssoc(pos, strName, strValue);
 			strText.Replace(strName, strValue);
 		}
@@ -468,17 +488,21 @@ void CMainDialog::GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& b
 	SetStatusTextPath(strFormat, strDestName);
 
 	::SHCreateDirectoryEx(NULL, strDestName.Left(strDestName.ReverseFind(_T('\\'))), NULL);
-	if (CString(branchFile.GetAttribute(_T("Type"))) == _T("text")) {
+	if (CString(branchFile.GetAttribute(_T("Type"))) == _T("text"))
+	{
 		// text file - perform macro substitution
-		try {
+		try
+		{
 			CStdioFile fileDest(strDestName, CFile::modeCreate | CFile::modeWrite | CFile::typeText);
 			CStdioFile fileSrc(strSrcName, CFile::modeRead | CFile::typeText);
-			while (fileSrc.ReadString(strLine)) {
+			while (fileSrc.ReadString(strLine))
+			{
 				SubstituteMacros(strLine);
 				fileDest.WriteString(strLine + _T('\n'));
 			}
 		}
-		catch (CFileException* pXcpt) {
+		catch (CFileException* pXcpt)
+		{
 			pXcpt->ReportError();
 			pXcpt->Delete();
 			RestoreWaitCursor();
@@ -504,10 +528,12 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 	// create the XML parser
 	CPugXmlParser* pParser = new CPugXmlParser();
 
-	if (pParser->ParseFile(pData->szConfigFile)) {
+	if (pParser->ParseFile(pData->szConfigFile))
+	{
 		// prepare the macros "dictionary"
 		CreateMacrosDict();
-		if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty()) {
+		if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty())
+		{
 			strProjectName = pData->szName;
 			m_mapMacrosDict.SetAt(_T("$PROJECT$"), strProjectName);
 		}
@@ -524,7 +550,8 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 		CPugXmlBranch branchFiles = branchRoot.FindByPath(_T("./Project/Files"));
 		ASSERT(!branchFiles.IsNull());
 		int nNumFiles = branchFiles.GetChildrenCount();
-		for (int i = 0; i < nNumFiles; ++i) {
+		for (int i = 0; i < nNumFiles; ++i)
+		{
 			CPugXmlBranch branchFile = branchFiles.GetChildAt(i);
 			ASSERT(!branchFile.IsNull());
 			GenerateFile(strProjectFolder, strSrcFolder, branchFile);
@@ -554,7 +581,8 @@ void CMainDialog::AssertValid(void) const
 
 void CMainDialog::Dump(CDumpContext& dumpCtx) const
 {
-	try {
+	try
+	{
 		// first invoke inherited dumper...
 		ETSLayoutDialog::Dump(dumpCtx);
 		// ...and then dump own unique members
@@ -568,7 +596,8 @@ void CMainDialog::Dump(CDumpContext& dumpCtx) const
 		dumpCtx << "\nm_iProjectIcon = " << m_iProjectIcon;
 		dumpCtx << "\nm_iMacroIcon = " << m_iMacroIcon;
 	}
-	catch (CFileException* pXcpt) {
+	catch (CFileException* pXcpt)
+	{
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}

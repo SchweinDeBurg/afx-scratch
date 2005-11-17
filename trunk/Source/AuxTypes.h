@@ -12,7 +12,8 @@
 #endif	// _MSC_VER
 
 // projects list item data
-struct PROJECT_DATA {
+struct PROJECT_DATA
+{
 	enum {
 		// field lengths
 		MAX_NAME = 31,
@@ -24,7 +25,8 @@ struct PROJECT_DATA {
 };
 
 // macros list item data
-struct MACRO_DATA {
+struct MACRO_DATA
+{
 	enum {
 		// field lengths
 		MAX_NAME = 15,
@@ -34,7 +36,8 @@ struct MACRO_DATA {
 	};
 	TCHAR szName[MAX_NAME + 1];
 	TCHAR szDescription[MAX_DESCRIPTION + 1];
-	enum TYPE {
+	enum TYPE
+	{
 		// type of macro
 		STRING,
 		NUMBER,

@@ -76,12 +76,14 @@ void CMacroValueDialog::OnChangeEditValue(void)
 	CString strNumber;
 	TCHAR* pchrStop;
 
-	if (m_eTypeID == MACRO_DATA::NUMBER) {
+	if (m_eTypeID == MACRO_DATA::NUMBER)
+	{
 		GetDlgItemText(IDC_EDIT_VALUE, strNumber);
 		_tcstol(strNumber, &pchrStop, 0);
 		GetDlgItem(IDOK)->EnableWindow(!strNumber.IsEmpty() && *pchrStop == 0);
 	}
-	else if (m_eTypeID == MACRO_DATA::UUID) {
+	else if (m_eTypeID == MACRO_DATA::UUID)
+	{
 		GetDlgItemText(IDC_EDIT_VALUE, reinterpret_cast<LPTSTR>(szTemp), MAX_VALUE);
 		GetDlgItem(IDOK)->EnableWindow(::UuidFromString(szTemp, &uuid) == RPC_S_OK);
 	}
@@ -98,7 +100,8 @@ void CMacroValueDialog::AssertValid(void) const
 
 void CMacroValueDialog::Dump(CDumpContext& dumpCtx) const
 {
-	try {
+	try
+	{
 		// first invoke inherited dumper...
 		CDialog::Dump(dumpCtx);
 		// ...and then dump own unique members
@@ -107,7 +110,8 @@ void CMacroValueDialog::Dump(CDumpContext& dumpCtx) const
 		dumpCtx << "\nm_eTypeID = " << m_eTypeID;
 		dumpCtx << "\nm_strValue = " << m_strValue;
 	}
-	catch (CFileException* pXcpt) {
+	catch (CFileException* pXcpt)
+	{
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}
