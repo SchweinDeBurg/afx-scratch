@@ -6,8 +6,11 @@
 
 #include "stdafx.h"
 #include "AuxTypes.h"
+#include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
 #include "MacrosList.h"
+#include "CustomGroupBox.h"
+#include "ResizableLayout.h"
 #include "MainDialog.h"
 #include "Resource.h"
 #include "AfxScratchApp.h"
@@ -37,6 +40,7 @@ BEGIN_MESSAGE_MAP(CMainDialog, ETSLayoutDialog)
 	ON_WM_CLOSE()
 	ON_WM_DESTROY()
 	ON_WM_CTLCOLOR()
+	ON_WM_ERASEBKGND()
 	ON_WM_SYSCOMMAND()
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST_PROJECTS, OnItemChangedListProjects)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST_MACROS, OnDblClkListMacros)
@@ -154,15 +158,34 @@ BOOL CMainDialog::OnInitDialog(void)
 		<< item(IDC_BUTTON_EXIT, NORESIZE));
 	UpdateLayout();
 
+	// initialize clipping support
+	AddAnchor(IDC_GROUP_PROJECTS, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_LIST_PROJECTS, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_GROUP_MACROS, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_LIST_MACROS, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_BUTTON_SAVE, TOP_LEFT);
+	AddAnchor(IDC_BUTTON_RESTORE, TOP_LEFT);
+	AddAnchor(IDC_BUTTON_VALUE, TOP_RIGHT);
+	AddAnchor(IDC_GROUP_LOCATION, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_EDIT_LOCATION, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_BUTTON_BROWSE, TOP_RIGHT);
+	AddAnchor(IDC_STATIC_STATUS, TOP_LEFT, BOTTOM_RIGHT);
+	AddAnchor(IDC_BUTTON_GENERATE, TOP_RIGHT);
+	AddAnchor(IDC_BUTTON_EXIT, TOP_RIGHT);
+
 	// prepare projects list control
 	m_listProjects.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_listProjects.InsertColumns();
 	m_listProjects.SetImageList(&m_imageList, LVSIL_SMALL);
+	HWND hProjestsListHeader = reinterpret_cast<HWND>(m_listProjects.SendMessage(LVM_GETHEADER, 0, 0));
+	m_listProjects.m_headerCustom.SubclassWindow(hProjestsListHeader);
 
 	// prepare macros list control
 	m_listMacros.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_listMacros.InsertColumns();
 	m_listMacros.SetImageList(&m_imageList, LVSIL_SMALL);
+	HWND hMacrosListHeader = reinterpret_cast<HWND>(m_listMacros.SendMessage(LVM_GETHEADER, 0, 0));
+	m_listMacros.m_headerCustom.SubclassWindow(hMacrosListHeader);
 
 	// initialize projects list
 	m_listProjects.InitContent(m_strAppData);
@@ -176,6 +199,11 @@ BOOL CMainDialog::OnInitDialog(void)
 
 	// initialized
 	return (TRUE);
+}
+
+CWnd* CMainDialog::GetResizableWnd(void) const
+{
+	return (CWnd::FromHandle(m_hWnd));
 }
 
 void CMainDialog::DoDataExchange(CDataExchange* pDX)
@@ -220,6 +248,7 @@ void CMainDialog::OnDestroy(void)
 {
 	m_listMacros.ResetContent();
 	m_listProjects.ResetContent();
+	RemoveAllAnchors();
 	ETSLayoutDialog::OnDestroy();
 }
 
@@ -241,6 +270,14 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 		hbr = ETSLayoutDialog::OnCtlColor(pDC, pWnd, uCtlColor);
 	}
 	return (hbr);
+}
+
+BOOL CMainDialog::OnEraseBkgnd(CDC* pDC)
+{
+	ClipChildren(pDC, FALSE);
+	BOOL fErased = CDialog::OnEraseBkgnd(pDC);
+	ClipChildren(pDC, TRUE);
+	return (fErased);
 }
 
 void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)

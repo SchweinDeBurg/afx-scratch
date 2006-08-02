@@ -8,8 +8,11 @@
 #include "AfxScratchApp.h"
 #include "Resource.h"
 #include "AuxTypes.h"
+#include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
 #include "MacrosList.h"
+#include "CustomGroupBox.h"
+#include "ResizableLayout.h"
 #include "MainDialog.h"
 
 #if defined(_DEBUG)

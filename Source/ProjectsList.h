@@ -34,6 +34,8 @@ protected:
 
 // message map functions
 protected:
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
+	afx_msg void OnPaint(void);
 	afx_msg void OnGetDispInfo(NMHDR* pHdr, LRESULT* pnResult);
 
 // attributes
@@ -44,6 +46,7 @@ public:
 		I_DESCRIPTION,
 		NUM_COLUMNS		// should be the LAST enumerator!
 	};
+	CCustomHeaderCtrl m_headerCustom;
 
 // diagnostic services
 #if defined(_DEBUG)

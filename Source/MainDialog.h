@@ -11,7 +11,7 @@
 #pragma once
 #endif	// _MSC_VER
 
-class CMainDialog: public ETSLayoutDialog
+class CMainDialog: public ETSLayoutDialog, public CResizableLayout
 {
 	DECLARE_DYNAMIC(CMainDialog)
 	DECLARE_MESSAGE_MAP()
@@ -24,6 +24,7 @@ public:
 // overridables
 public:
 	virtual BOOL OnInitDialog(void);
+	virtual CWnd* GetResizableWnd(void) const;
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual void OnOK(void);
@@ -34,6 +35,7 @@ protected:
 	afx_msg void OnClose(void);
 	afx_msg void OnDestroy(void);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor);
+	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnSysCommand(UINT uID, LPARAM lParam);
 	afx_msg void OnItemChangedListProjects(NMHDR* pHdr, LRESULT* pnResult);
 	afx_msg void OnDblClkListMacros(NMHDR* pHdr, LRESULT* pnResult);
@@ -49,8 +51,11 @@ public:
 	CString m_strAppData;
 	HICON m_hIcon;
 	HICON m_hSmIcon;
+	CCustomGroupBox m_groupProjects;
 	CProjectsList m_listProjects;
+	CCustomGroupBox m_groupMacros;
 	CMacrosList m_listMacros;
+	CCustomGroupBox m_groupLocation;
 	CString m_strLocation;
 	CStatic m_staticStatus;
 	CImageList m_imageList;

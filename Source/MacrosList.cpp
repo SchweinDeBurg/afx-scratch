@@ -6,9 +6,12 @@
 
 #include "stdafx.h"
 #include "AuxTypes.h"
+#include "CustomHeaderCtrl.h"
 #include "MacrosList.h"
 #include "Resource.h"
 #include "ProjectsList.h"
+#include "CustomGroupBox.h"
+#include "ResizableLayout.h"
 #include "MainDialog.h"
 
 #if defined(__INTEL_COMPILER)
@@ -33,6 +36,8 @@ IMPLEMENT_DYNAMIC(CMacrosList, CSortingListCtrl)
 
 // message map
 BEGIN_MESSAGE_MAP(CMacrosList, CSortingListCtrl)
+	ON_WM_ERASEBKGND()
+	ON_WM_PAINT()
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
 
@@ -192,6 +197,25 @@ int CMacrosList::CompareItems(int iItemLhs, int iItemRhs)
 	default:
 		// shouldn't be reached
 		return (0);
+	}
+}
+
+BOOL CMacrosList::OnEraseBkgnd(CDC* /*pDC*/)
+{
+	return (TRUE);
+}
+
+void CMacrosList::OnPaint(void)
+{
+	{
+		CPaintDC dcPaint(this);
+		CMemDC dcMem(&dcPaint);
+		enum { fuOptions = PRF_NONCLIENT | PRF_CLIENT };
+		SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
+	}
+	if (::IsWindow(m_headerCustom.GetSafeHwnd()))
+	{
+		m_headerCustom.RedrawWindow();
 	}
 }
 

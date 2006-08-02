@@ -64,6 +64,7 @@
 #include "../../Repository/AfxGadgets/Source/SortingListCtrl.h"
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
 #include "../../Repository/CodeProject/Source/ETSLayout.h"
+#include "../../Repository/CodeProject/Source/memdc.h"
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
