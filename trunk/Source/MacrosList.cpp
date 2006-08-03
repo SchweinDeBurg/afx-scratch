@@ -262,7 +262,8 @@ BOOL CMacrosList::IsMacroValueExists(MACRO_DATA* pData)
 		case MACRO_DATA::NUMBER:
 			// numeric value
 			_tcstol(pData->szValue, &pchrStop, 0);
-			if (*pchrStop != 0) {
+			if (*pchrStop != 0)
+			{
 				*pchrStop = 0;
 			}
 			return (pData->szValue[0] != 0);
@@ -395,6 +396,7 @@ void CMacrosList::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CSortingListCtrl::AssertValid();
+
 	// ...and then verify our own state as well
 }
 
@@ -404,6 +406,7 @@ void CMacrosList::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		CSortingListCtrl::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 		dumpCtx << "m_mapSuggest = " << m_mapSuggest;
 	}

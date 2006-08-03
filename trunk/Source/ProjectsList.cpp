@@ -152,11 +152,15 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 				SetItemText(lvi.iItem, I_DESCRIPTION, LPSTR_TEXTCALLBACK);
 			}
 		}
+
 		// pump waiting messages (if any)
-		while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+		while (::PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
 		{
-			::TranslateMessage(&msg);
-			::DispatchMessage(&msg);
+#if (_MFC_VER < 0x0700)
+			AfxGetThread()->PumpMessage();
+#else
+			AfxPumpMessage();
+#endif	// _MFC_VER
 		}
 	}
 
@@ -244,6 +248,7 @@ void CProjectsList::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CSortingListCtrl::AssertValid();
+
 	// ...and then verify our own state as well
 }
 
@@ -253,6 +258,7 @@ void CProjectsList::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		CSortingListCtrl::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 	}
 	catch (CFileException* pXcpt)

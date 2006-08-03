@@ -87,6 +87,7 @@ void CAfxScratchApp::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CWinApp::AssertValid();
+
 	// ...and then verify our own state as well
 }
 
@@ -96,6 +97,7 @@ void CAfxScratchApp::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		CWinApp::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 	}
 	catch (CFileException* pXcpt)

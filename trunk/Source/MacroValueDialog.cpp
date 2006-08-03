@@ -95,6 +95,7 @@ void CMacroValueDialog::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CDialog::AssertValid();
+
 	// ...and then verify our own state as well
 }
 
@@ -104,6 +105,7 @@ void CMacroValueDialog::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		CDialog::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 		dumpCtx << "m_strName = " << m_strName;
 		dumpCtx << "\nm_strDescription = " << m_strDescription;
