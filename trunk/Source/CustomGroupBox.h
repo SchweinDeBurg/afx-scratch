@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2005 by Elijah Zarezky,
+// Copyright (c) 2004-2006 by Elijah Zarezky,
 // All rights reserved.
 
 // CustomGroupBox.h - interface of the CCustomGroupBox class
