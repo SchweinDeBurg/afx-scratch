@@ -55,6 +55,7 @@ void CAboutDialog::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CDialog::AssertValid();
+
 	// ...and then verify our own state as well
 }
 
@@ -64,6 +65,7 @@ void CAboutDialog::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		CDialog::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 	}
 	catch (CFileException* pXcpt)

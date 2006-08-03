@@ -298,6 +298,7 @@ void CMainDialog::OnItemChangedListProjects(NMHDR* pHdr, LRESULT* /*pnResult*/)
 	if ((pNMLV->uNewState & LVIS_SELECTED) != 0)
 	{
 		m_listMacros.ResetContent();
+
 		// populate macros list
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(pNMLV->iItem));
 		ASSERT(pData != NULL);
@@ -358,7 +359,8 @@ void CMainDialog::OnButtonSave(void)
 				if (::lstrlen(pMacData->szValue) > 0)
 				{
 					// change or add default macro value
-					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue)) {
+					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue))
+					{
 						branchMacro.AddAttribute(_T("Default"), pMacData->szValue);
 					}
 				}
@@ -574,13 +576,16 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 			strProjectName = pData->szName;
 			m_mapMacrosDict.SetAt(_T("$PROJECT$"), strProjectName);
 		}
+
 		// create the project folder
 		CString strProjectFolder = m_strLocation + _T('\\') + strProjectName;
 		strFormat.LoadString(IDS_CREATING_FORMAT);
 		SetStatusTextPath(strFormat, strProjectFolder);
 		::SHCreateDirectoryEx(NULL, strProjectFolder, NULL);
+
 		// obtain the source folder
 		CString strSrcFolder = m_strAppData + _T("\\Sources\\") + CString(pData->szName);
+
 		// parse source files
 		CPugXmlBranch branchRoot = pParser->GetRoot();
 		ASSERT(!branchRoot.IsNull());
@@ -593,6 +598,7 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 			ASSERT(!branchFile.IsNull());
 			GenerateFile(strProjectFolder, strSrcFolder, branchFile);
 		}
+
 		// finished
 		strFormat.LoadString(IDS_GENERATED_FORMAT);
 		SetStatusTextPath(strFormat, strProjectFolder);
@@ -610,6 +616,7 @@ void CMainDialog::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	ETSLayoutDialog::AssertValid();
+
 	// ...and then verify our own state as well
 	ASSERT_VALID(&m_listProjects);
 	ASSERT_VALID(&m_listMacros);
@@ -622,6 +629,7 @@ void CMainDialog::Dump(CDumpContext& dumpCtx) const
 	{
 		// first invoke inherited dumper...
 		ETSLayoutDialog::Dump(dumpCtx);
+
 		// ...and then dump own unique members
 		dumpCtx << "m_strAppData = " << m_strAppData;
 		dumpCtx << "\nm_hIcon = " << m_hIcon;
