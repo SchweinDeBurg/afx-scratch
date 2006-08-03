@@ -207,15 +207,13 @@ BOOL CMacrosList::OnEraseBkgnd(CDC* /*pDC*/)
 
 void CMacrosList::OnPaint(void)
 {
-	{
-		CPaintDC dcPaint(this);
-		CMemDC dcMem(&dcPaint);
-		enum { fuOptions = PRF_NONCLIENT | PRF_CLIENT };
-		SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
-	}
+	CPaintDC dcPaint(this);
+	CMemDC dcMem(&dcPaint);
+	enum { fuOptions = PRF_NONCLIENT | PRF_CLIENT };
+	SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
 	if (::IsWindow(m_headerCustom.GetSafeHwnd()))
 	{
-		m_headerCustom.RedrawWindow();
+		m_headerCustom.SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
 	}
 }
 
