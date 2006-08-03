@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2005 by Elijah Zarezky,
+// Copyright (c) 2004-2006 by Elijah Zarezky,
 // All rights reserved.
 
 // MacroValueDialog.h - interface of the CMacroValueDialog class
