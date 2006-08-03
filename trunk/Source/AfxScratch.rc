@@ -149,20 +149,22 @@ BEGIN
     PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,322,226,44,16
 END
 
-IDD_ABOUT DIALOGEX 0, 0, 168, 106
+IDD_ABOUT DIALOGEX 0, 0, 174, 134
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "Tahoma", 0, 0, 0x0
 BEGIN
     ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
-    LTEXT           "",IDC_STATIC_TITLE,32,4,132,10
-    LTEXT           "Copyright © 2004-2005 Elijah Zarezky\nAll rights reserved",
-                    IDC_STATIC,32,14,132,18
-    DEFPUSHBUTTON   "Close",IDOK,120,86,44,16
+    LTEXT           "",IDC_STATIC_TITLE,32,4,138,10
+    LTEXT           "Copyright © 2004-2006 Elijah Zarezky\nAll rights reserved",
+                    IDC_STATIC,32,6,138,18
+    DEFPUSHBUTTON   "Close",IDOK,124,112,44,16
     LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",
-                    IDC_STATIC,32,38,132,18
+                    IDC_STATIC,32,38,138,18
     LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",
-                    IDC_STATIC,32,58,132,16
+                    IDC_STATIC,32,58,138,16
+    LTEXT           "Portions of ResizableLib\nCopyright © 2000-2004 by Paolo Messina",
+                    IDC_STATIC,32,76,138,16
 END
 
 IDD_MACRO_VALUE DIALOG  0, 0, 186, 66
@@ -197,9 +199,9 @@ BEGIN
     IDD_ABOUT, DIALOG
     BEGIN
         LEFTMARGIN, 7
-        RIGHTMARGIN, 161
+        RIGHTMARGIN, 167
         TOPMARGIN, 7
-        BOTTOMMARGIN, 99
+        BOTTOMMARGIN, 127
     END
 
     IDD_MACRO_VALUE, DIALOG

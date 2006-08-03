@@ -24,14 +24,14 @@ END_MESSAGE_MAP()
 
 BOOL CCustomGroupBox::OnEraseBkgnd(CDC* /*pDC*/)
 {
-	return (FALSE);
+	return (TRUE);
 }
 
 void CCustomGroupBox::OnPaint(void)
 {
 	CPaintDC dcPaint(this);
 	CMemDC dcMem(&dcPaint);
-	enum { fuOptions = PRF_NONCLIENT | PRF_CLIENT };
+	enum { fuOptions = PRF_CLIENT };
 	SendMessage(WM_PRINT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
 }
 
