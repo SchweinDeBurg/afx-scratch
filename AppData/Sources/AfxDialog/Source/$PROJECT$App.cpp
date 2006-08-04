@@ -60,14 +60,12 @@ void C$PROJECT$App::AssertValid(void) const
 
 void C$PROJECT$App::Dump(CDumpContext& dumpCtx) const
 {
-	try
-	{
+	try {
 		// first invoke inherited dumper...
 		CWinApp::Dump(dumpCtx);
 		// ...and then dump own unique members
 	}
-	catch (CFileException* pXcpt)
-	{
+	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}

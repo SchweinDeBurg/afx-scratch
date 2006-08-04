@@ -26,8 +26,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* /*envp*/[])
 	BOOL fMemTrack;
 
 	// try to initialize MFC
-	if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), SW_HIDE))
-	{
+	if (!AfxWinInit(::GetModuleHandle(NULL), NULL, ::GetCommandLine(), SW_HIDE)) {
 		return (-1);
 	}
 
@@ -57,11 +56,9 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* /*envp*/[])
 	LogFile_WriteEntry(LL_MINIMAL, IDS_EXE_STARTED, argv[0]);
 
 	// parse command-line arguments
-	if (argc > 1)
-	{
+	if (argc > 1) {
 		SC_HANDLE schManager = ::OpenSCManager(NULL, NULL, SC_MANAGER_ALL_ACCESS);
-		if (::lstrcmpi(argv[1], _T("/Register")) == 0)
-		{
+		if (::lstrcmpi(argv[1], _T("/Register")) == 0) {
 			// insert service into the SCM database
 			SC_HANDLE schService = ::CreateService(schManager, g_szServiceName, g_szServiceName,
 				SERVICE_ALL_ACCESS, SERVICE_WIN32_OWN_PROCESS, SERVICE_DEMAND_START,
@@ -69,8 +66,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* /*envp*/[])
 			::CloseServiceHandle(schService);
 			LogFile_WriteEntry(LL_MINIMAL, IDS_SERVICE_REGISTERED, g_szServiceName);
 		}
-		else if (::lstrcmpi(argv[1], _T("/UnRegister")) == 0)
-		{
+		else if (::lstrcmpi(argv[1], _T("/UnRegister")) == 0) {
 			// remove service from the SCM database
 			SC_HANDLE schService = ::OpenService(schManager, g_szServiceName, SERVICE_ALL_ACCESS);
 			::DeleteService(schService);
@@ -98,8 +94,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* /*envp*/[])
 	// get the final memory state...
 	memStop.Checkpoint();
 	// ...and then check the leaks
-	if (memDiff.Difference(memStart, memStop))
-	{
+	if (memDiff.Difference(memStart, memStop)) {
 		_CrtMemDumpStatistics(&memDiff.m_memState);
 		_CrtDumpMemoryLeaks();
 	}

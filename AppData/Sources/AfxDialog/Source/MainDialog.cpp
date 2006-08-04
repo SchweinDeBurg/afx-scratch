@@ -67,16 +67,14 @@ void CMainDialog::AssertValid(void) const
 
 void CMainDialog::Dump(CDumpContext& dumpCtx) const
 {
-	try
-	{
+	try {
 		// first invoke inherited dumper...
 		CDialog::Dump(dumpCtx);
 		// ...and then dump own unique members
 		dumpCtx << "m_hIcon = " << m_hIcon;
 		dumpCtx << "\nm_hSmIcon = " << m_hSmIcon;
 	}
-	catch (CFileException* pXcpt)
-	{
+	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}

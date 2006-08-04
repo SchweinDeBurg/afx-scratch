@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project Name="AfxGeneric70" Description="Generic SDI application (VC++ 7.0)">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
+		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
+		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.vcproj" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\MainFrame.cpp" Type="text"/>
+		<File Name="\Source\MainFrame.h" Type="text"/>
+		<File Name="\Source\$PROJECT$App.cpp" Type="text"/>
+		<File Name="\Source\$PROJECT$App.h" Type="text"/>
+		<File Name="\Source\$PROJECT$.manifest" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
+	</Files>
+</Project>
