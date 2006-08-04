@@ -22,8 +22,6 @@ const WORD g_wVerMinor = $VERMINOR$;
 // linker options
 #if defined(_MSC_VER) && (_MSC_VER < 1300)
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
-#pragma comment(linker, "/opt:ref")
-#pragma comment(linker, "/opt:nowin98")
 #endif	// _MSC_VER
 
 // end of file
