@@ -14,7 +14,7 @@ echo.
 echo Creating installer...
 echo.
 if not exist .\Setup mkdir .\Setup
-cd ..\Source
+cd .\Source
 if exist ..\Setup\*.exe del ..\Setup\*.exe
 iscc.exe Setup.iss
 echo.

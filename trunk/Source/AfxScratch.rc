@@ -69,7 +69,7 @@ END
 //
 
 VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,2807,53
+ FILEVERSION 1,0,3345,64
  PRODUCTVERSION 1,0,0,0
  FILEFLAGSMASK 0x3fL
 #ifdef _DEBUG
@@ -88,7 +88,7 @@ BEGIN
             VALUE "Comments", "none"
             VALUE "CompanyName", "Spb Software House"
             VALUE "FileDescription", "AfxScratch executable module"
-            VALUE "FileVersion", "1.0.2807"
+            VALUE "FileVersion", "1.0.3345"
             VALUE "InternalName", "AfxScratch"
             VALUE "LegalCopyright", "Copyright © 2004-2005 Elijah Zarezky"
             VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation"
