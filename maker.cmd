@@ -14,11 +14,11 @@ echo.
 echo Creating installer...
 echo.
 if not exist .\Setup mkdir .\Setup
-cd .\Source
+chdir .\Source
 if exist ..\Setup\*.exe del ..\Setup\*.exe
 iscc.exe Setup.iss
 echo.
 echo Creating full installer...
 echo.
 iscc.exe SetupFull.iss
-cd ..
+chdir ..
