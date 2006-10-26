@@ -1,9 +1,9 @@
 Microsoft Visual Studio Solution File, Format Version 7.00
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AfxScratch", "AfxScratch70.vcproj", "{93F352DB-6470-42FA-AC4C-2A3E621C38A8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AfxGadgets", "..\Repository\AfxGadgets\AfxGadgets.vcproj", "{C1ED1032-6C88-4591-B881-9B61592B7805}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AfxGadgets", "..\Repository\AfxGadgets\AfxGadgets70.vcproj", "{C1ED1032-6C88-4591-B881-9B61592B7805}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeProject", "..\Repository\CodeProject\CodeProject.vcproj", "{9A5B0E8A-CCDD-42BB-BAF1-C64F9E62B4DA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeProject", "..\Repository\CodeProject\CodeProject70.vcproj", "{9A5B0E8A-CCDD-42BB-BAF1-C64F9E62B4DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
