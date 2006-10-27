@@ -55,7 +55,8 @@ BOOL C$CONTROL$Ctrl::C$CONTROL$CtrlFactory::UpdateRegistry(BOOL fRegister)
 {
 	BOOL fSuccess;
 
-	if (fRegister) {
+	if (fRegister)
+	{
 		fSuccess = AfxOleRegisterControlClass(AfxGetInstanceHandle(), m_clsid, m_lpszProgID,
 			IDS_CONTROL_TYPENAME, IDB_PALETTE_BUTTON, afxRegApartmentThreading, g_fdwOleMisc,
 			LIBID_Ax$CONTROL$, g_wVerMajor, g_wVerMinor);

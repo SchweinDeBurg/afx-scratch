@@ -68,7 +68,8 @@ void WINAPI ServiceHandler(DWORD fdwControl)
 	ss.dwCheckPoint = 0;
 	ss.dwWaitHint = 0;
 	::SetServiceStatus(g_hServiceStatus, &ss);
-	if (g_dwServiceState == SERVICE_STOPPED) {
+	if (g_dwServiceState == SERVICE_STOPPED)
+	{
 		LogFile_WriteEntry(LL_MINIMAL, IDS_SERVICE_STOPPED, g_szServiceName);
 	}
 }
