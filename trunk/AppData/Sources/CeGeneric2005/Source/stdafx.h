@@ -23,14 +23,13 @@
 
 #define WINVER _WIN32_WCE
 
-#pragma warning(push)
-
-// nonstandard extension used: nameless struct/union
-#pragma warning(disable: 4201)
+#define NOMINMAX
 
 // PSDK headers
+#pragma warning(push, 3)
 #include <windows.h>
 #include <aygshell.h>
+#pragma warning(pop)
 
 // CRT headers
 #include <altcecrt.h>
@@ -39,8 +38,9 @@
 
 // DRA headers
 #include <DeviceResolutionAware.h>
-
-#pragma warning(pop)
+#pragma message("*** Note that <DeviceResolutionAware.h> header just included is buggy!")
+#pragma message("*** Use <atldra.h> from myWTL project instead.")
+#pragma message("*** Visit http://zarezky.spb.ru/projects/my_wtl.html for more info.")
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)

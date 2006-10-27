@@ -14,8 +14,7 @@
 #pragma once
 #endif	// _MSC_VER
 
-class CMainFrame:
-public WTL::CFrameWindowImpl<CMainFrame>,
+class CMainFrame: public WTL::CFrameWindowImpl<CMainFrame>,
 public WTL::CMessageFilter,
 public WTL::CAppWindow<CMainFrame>
 {
