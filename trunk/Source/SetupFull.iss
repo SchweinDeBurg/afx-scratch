@@ -36,22 +36,25 @@ VersionInfoVersion=1.0.3345
 MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
+LicenseFile=ApacheLicense.rtf
 
 [LangOptions]
 DialogFontName=Tahoma
 DialogFontSize=8
 
 [Files]
-Source: "..\70_ReleaseA\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\71_ReleaseA\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
-Source: "..\Redist\mfc70.dll"; DestDir: "{app}"
-Source: "..\Redist\msvcr70.dll"; DestDir: "{app}"
-Source: "..\Redist\msvcp70.dll"; DestDir: "{app}"
+Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\Redist\mfc71.dll"; DestDir: "{app}"
+Source: "..\Redist\msvcr71.dll"; DestDir: "{app}"
+Source: "..\Redist\msvcp71.dll"; DestDir: "{app}"
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
 Name: "{group}\AfxScratch Documentation"; Filename: "{app}\AfxScratch.chm"
+Name: "{group}\AfxScratch License"; Filename: "{app}\ApacheLicense.rtf"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
 Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon

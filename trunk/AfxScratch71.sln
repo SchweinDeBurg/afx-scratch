@@ -1,0 +1,55 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AfxScratch", "AfxScratch71.vcproj", "{F3411BBB-E606-4138-8241-DB47C5BADF4B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{55F49127-D37F-4C01-861A-55ACC3A71242} = {55F49127-D37F-4C01-861A-55ACC3A71242}
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B} = {6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AfxGadgets", "..\Repository\AfxGadgets\AfxGadgets71.vcproj", "{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CodeProject", "..\Repository\CodeProject\CodeProject71.vcproj", "{55F49127-D37F-4C01-861A-55ACC3A71242}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		MBCS_Debug = MBCS_Debug
+		MBCS_Release = MBCS_Release
+		Unicode_Debug = Unicode_Debug
+		Unicode_Release = Unicode_Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.MBCS_Debug.ActiveCfg = MBCS_Debug|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.MBCS_Debug.Build.0 = MBCS_Debug|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.MBCS_Release.ActiveCfg = MBCS_Release|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.MBCS_Release.Build.0 = MBCS_Release|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.Unicode_Debug.ActiveCfg = Unicode_Debug|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.Unicode_Debug.Build.0 = Unicode_Debug|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.Unicode_Release.ActiveCfg = Unicode_Release|Win32
+		{F3411BBB-E606-4138-8241-DB47C5BADF4B}.Unicode_Release.Build.0 = Unicode_Release|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.MBCS_Debug.ActiveCfg = MBCS_Debug|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.MBCS_Debug.Build.0 = MBCS_Debug|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.MBCS_Release.ActiveCfg = MBCS_Release|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.MBCS_Release.Build.0 = MBCS_Release|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.Unicode_Debug.ActiveCfg = Unicode_Debug|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.Unicode_Debug.Build.0 = Unicode_Debug|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.Unicode_Release.ActiveCfg = Unicode_Release|Win32
+		{6B7749EE-74DF-496C-9EBE-0E6C73CAA50B}.Unicode_Release.Build.0 = Unicode_Release|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.MBCS_Debug.ActiveCfg = MBCS_Debug|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.MBCS_Debug.Build.0 = MBCS_Debug|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.MBCS_Release.ActiveCfg = MBCS_Release|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.MBCS_Release.Build.0 = MBCS_Release|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.Unicode_Debug.ActiveCfg = Unicode_Debug|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.Unicode_Debug.Build.0 = Unicode_Debug|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.Unicode_Release.ActiveCfg = Unicode_Release|Win32
+		{55F49127-D37F-4C01-861A-55ACC3A71242}.Unicode_Release.Build.0 = Unicode_Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
