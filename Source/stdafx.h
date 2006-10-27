@@ -30,6 +30,8 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
+#define _WIN32_WINNT 0x0500	// use Windows 2000 features
+
 // MFC headers
 #include <afxwin.h>			// MFC core and standard components
 #include <afxcmn.h>			// MFC common control classes
