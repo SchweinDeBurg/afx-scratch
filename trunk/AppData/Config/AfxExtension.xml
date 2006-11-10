@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project Name="AfxExtension" Description="Generic MFC extension DLL">
+<Project
+	Name="Win32 MFC 6.0 extension"
+	Description="MFC extension DLL with using VC++/MFC 6.0 (MBCS build)">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

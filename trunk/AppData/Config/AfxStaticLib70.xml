@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project Name="AfxStaticLib70" Description="Static library for MFC projects (VC++ 7.0)">
+<Project
+	Name="Win32 MFC 7.0 library"
+	Description="Static library for VC++/MFC 7.0 executables (MBCS and Unicode builds)">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
