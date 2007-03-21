@@ -1,0 +1,305 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+
+<!-- page header -->
+
+<HEAD>
+
+<META NAME="autor" CONTENT="Elijah Zarezky">
+<META NAME="description" CONTENT="AfxScratch project">
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=Windows-1251">
+<META HTTP-EQUIV="Content-Language" CONTENT="ru">
+<META HTTP-EQUIV="Content-Script-Type" CONTENT="text/javascript">
+<META HTTP-EQUIV="Content-Style-Type" CONTENT="text/css">
+
+<LINK REL="StyleSheet" TYPE="text/css" HREF="./styles.css">
+
+<STYLE TYPE="text/css">
+IMG.afxScratchShot {
+	margin-left: 0pt;
+	margin-top: 2pt;
+	margin-right: 8pt;
+}
+SPAN.tagName {
+	font-weight: bold;
+	color: #990000;
+}
+SPAN.attrName {
+	font-weight: bold;
+	color: #990099;
+}
+SPAN.attrValue {
+	font-weight: bold;
+	color: #009999;
+}
+</STYLE>
+
+<TITLE>AfxScratch</TITLE>
+
+</HEAD>
+
+<!-- page body -->
+
+<BODY>
+
+<TABLE WIDTH=100% BORDER=1 CELLSPACING=0 CLASS="pageCaption">
+<TR><TD HEIGHT=37 CLASS="pageCaption">AfxScratch</TD></TR>
+</TABLE>
+
+<P CLASS="pageText">
+<IMG SRC="./images/main_window.gif" WIDTH=281 HEIGHT=213 ALIGN="left" BORDER=0
+CLASS="afxScratchShot"><STRONG>AfxScratch</STRONG> представляет собой приложение,
+предназначенное для генерации проектов в формате Microsoft Visual C++ 6.0/7.0 на
+основании заранее подготовленных шаблонов.<BR>
+Порядок использования приложения состоит в следующем. В первую очередь, необходимо
+выделить в списке <SPAN CLASS="winText">Projects</SPAN> шаблон, на основе которого будет
+формироваться проект. Список <SPAN CLASS="winText">Macros</SPAN> при этом будет
+отображать все макросы, использующиеся в данном шаблоне. Для назначения или изменения
+значения макроса нужно выделить соответствующую ему строку и нажать на кнопку
+<SPAN CLASS="winText">Change value&#8230;</SPAN> (можно также выполнить двойной щелчок
+левой кнопкой мышки по требуемой строке). И наконец, в поле
+<SPAN CLASS="winText">Location</SPAN> можно указать, где именно следует создать папку со
+сгенерированным проектом (ее имя определяется значением макроса
+<STRONG>$PROJECT$</STRONG>, а при его отсутствии &mdash; именем исходного шаблона). Ввод
+значения в это поле осуществляется с помощью кнопки
+<IMG SRC="./images/browse_button.gif" WIDTH=12 HEIGHT=11 BORDER=0>, расположенной справа
+от него. После этого остается только нажать на кнопку
+<SPAN CLASS="winText">Generate</SPAN> для создания проекта; статусная панель слева от
+нее будет отображать процесс записи файлов.<BR>
+Кнопка <SPAN CLASS="winText">Save as default</SPAN> позволяет сохранить текущие значения
+макросов в качестве значений по умолчанию для выделенного шаблона; нажатие на кнопку
+<SPAN CLASS="winText">Restore defaults</SPAN> присваивает всем макросам значения по
+умолчанию в соответствии с определениями в конфигурационном скрипте шаблона.
+<BR CLEAR="left"></P>
+
+<P CLASS="pageText">
+<STRONG>Системные требования:</STRONG>
+</P>
+
+<UL STYLE="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
+<LI>Windows Me/2000/XP</LI>
+<LI>некоторое количество свободной памяти</LI>
+</UL>
+
+<P CLASS="pageText"><A NAME="version_history">
+<STRONG>История версий:</STRONG>
+</A></P>
+
+<UL STYLE="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
+<LI><STRONG>1.0.2800</STRONG> (16.07.2005)<BR>
+Добавлена поддержка &#8222;визуальных стилей&#8220; Windows XP. К шаблонам проектов,
+предназначенным для создания GUI-приложений, добавлены ресурсы типа
+&#8222;манифест&#8220;. Добавлен шаблон &#8222;WinGeneric70&#8220;, позволяющий
+генерировать проект минимального Win32 GUI-приложения для Visual C++ 7.0 (.NET 2002).
+Во всех шаблонах проектов исправлен адрес веб-страницы &#8222;генератора&#8220;.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2461</STRONG> (29.12.2004)<BR>
+Добавлена документация пользователя в формате HTML Help.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2313</STRONG> (09.08.2004)<BR>
+Исправлено несколько мелких ошибок. Немного улучшены шаблоны проектов.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2297</STRONG> (25.07.2004)<BR>
+Исправлено несколько ошибок в шаблонах проектов. Исполняемый файл приложения
+откомпилирован с оптимизацией по размеру.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2222</STRONG> (14.05.2004)<BR>
+Немного улучшена работа списков проектов и макросов.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2183</STRONG> (07.04.2004)<BR>
+Реализована типизация макросов, что позволило сделать генерацию для них значений по
+умолчанию более &#8222;интеллектуальной&#8220; и улучшить проверку корректности ввода
+пользователя. Немного дополнены шаблоны проектов. Добавлено несколько &#8222;особых&#8220;
+макросов.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2171</STRONG> (27.03.2004)<BR>
+Реализована возможность назначения нестандартных иконок для списка шаблонов проектов.
+Добавлено несколько новых шаблонов.</LI>
+<LI STYLE="margin-top: 4pt;"><STRONG>1.0.2164</STRONG> (20.03.2004)<BR>
+Начальная версия приложения.</LI>
+</UL>
+
+<P CLASS="pageText">
+<STRONG>Планы на будущее:</STRONG>
+</P>
+
+<UL STYLE="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
+<LI>больше шаблонов, хороших и разных;</LI>
+<LI>сохранение размеров колонок в списках проектов и макросов.</LI>
+</UL>
+
+<H1 CLASS="subTopic">Техническая информация</H1>
+
+<P CLASS="pageText">
+Каждый шаблон проекта состоит из произвольного числа исходных файлов, находящихся в
+отдельной папке, и конфигурационного скрипта в формате XML. Текстовые файлы, входящие
+в шаблон, могут содержать макросы, которые при формировании проекта будут заменены на
+указанные значения; макросы также могут использоваться в имени любого
+&#8222;шаблонного&#8220; файла. Если файл описан в конфигурационном скрипте как двоичный,
+то никакого поиска макросов в его содержимом не производится и он просто копируется в
+заданную папку. Таким образом, если какой-либо текстовый файл шаблона не содержит ни
+одного макроса, то он может быть описан как двоичный, что позволит несколько ускорить
+процесс формирования проекта. Заметим, что обратное действие (то есть пометка
+действительно двоичного файла как текстового) может привести к сбою в работе приложения.
+</P>
+
+<P CLASS="pageText">
+<IMG SRC="./images/data_tree.gif" WIDTH=96 HEIGHT=65 ALIGN="right" BORDER=0
+STYLE="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов должны
+находиться в папке <SPAN CLASS="winText">Elijah Zarezky\AfxScratch</SPAN>, расположенной
+внутри application data folder for all users и имеющей структуру, показанную на рисунке
+справа. Папка <SPAN CLASS="winText">Config</SPAN> предназначена для хранения
+конфигурационных скриптов; при запуске приложение перебирает все находящиеся в ней файлы
+с расширением xml, формируя на их основании список доступных шаблонов. Сами же
+&#8222;шаблонные&#8220; файлы должны быть расположены в папке
+<SPAN CLASS="winText">Sources</SPAN>; еще раз подчеркнем, что внутри нее каждому проекту
+должна соответствовать отдельная папка.
+<BR CLEAR="right"></P>
+
+<H1 CLASS="subTopic">Структура конфигурационного скрипта</H1>
+
+<P CLASS="pageText">
+Рассмотрим структуру XML-файла, описывающего шаблон.
+</P>
+
+<UL STYLE="text-align: justify; margin-right: 2pt;">
+
+<LI>Корневым является тег <SPAN CLASS="tagName">Project</SPAN>; атрибут
+<SPAN CLASS="attrName">Name</SPAN> этого тега задает имя шаблона, отображаемое в колонке
+<SPAN CLASS="winText">Name</SPAN> списка <SPAN CLASS="winText">Projects</SPAN> главного
+окна приложения, и одновременно &mdash; имя папки, в которой находятся файлы шаблона.
+Максимально допустимая длина имени шаблона составляет 31 символ. Атрибут
+<SPAN CLASS="attrName">Description</SPAN> задает описание шаблона (длиной не более 255
+символов), которое будет отображаться в одноименной колонке списка проектов.
+Необязательный атрибут <SPAN CLASS="attrName">Icon</SPAN> позволяет задать имя файла
+иконки, которая будет отображаться в списке <SPAN CLASS="winText">Projects</SPAN> слева
+от имени проекта; значение этого атрибута не должно содержать пути к файлу, а сам файл
+должен находиться в одной папке с конфигурационным скриптом.</LI>
+
+<LI STYLE="margin-top: 6pt;">Дочерний по отношению к <SPAN CLASS="tagName">Project</SPAN>
+тег <SPAN CLASS="tagName">Macros</SPAN> не имеет атрибутов, но является родительским для
+одного или нескольких тегов <SPAN CLASS="tagName">Macro</SPAN>, каждый из которых
+определяет макрос, использующийся в исходных текстах шаблона.</LI>
+
+<LI STYLE="margin-top: 6pt;">Каждый тег <SPAN CLASS="tagName">Macro</SPAN> имеет
+атрибуты <SPAN CLASS="attrName">Name</SPAN> и <SPAN CLASS="attrName">Description</SPAN>,
+задающие соответственно имя макроса (длиной не более 15 символов) и его описание,
+максимальная длина которого составляет 255 символов. Этот тег может иметь также атрибут
+<SPAN CLASS="attrName">Default</SPAN>, задающий для макроса значение по умолчанию
+(длиной не более 63 символов); при отсутствии данного атрибута начальным значением
+макроса, не считая особых случаев, будет пустая строка. Начиная с версии 1.0.2183,
+поддерживается необязательный атрибут <SPAN CLASS="attrName">Type</SPAN>, определяющий
+тип макроса, который может иметь значения <SPAN CLASS="attrValue">string</SPAN>
+(строка), <SPAN CLASS="attrValue">number</SPAN> (целое число) или
+<SPAN CLASS="attrValue">uuid</SPAN> (универсальный уникальный идентификатор). Если тип
+макроса отличается от <SPAN CLASS="attrValue">number</SPAN> и
+<SPAN CLASS="attrValue">uuid</SPAN> или вообще не указан &mdash; он считается строковым.
+При отсутствии явно указанных значений по умолчанию для строкового макроса таковым
+становится пустая строка, для числового &mdash; 0, а для макросов типа
+<SPAN CLASS="attrValue">uuid</SPAN> генерируется новый уникальный идентификатор.</LI>
+
+<LI STYLE="margin-top: 6pt;">Тег <SPAN CLASS="tagName">Files</SPAN>, являющийся, как и
+<SPAN CLASS="tagName">Macros</SPAN>, дочерним по отношению к
+<SPAN CLASS="tagName">Project</SPAN>, тоже не имеет собственных атрибутов; он выступает
+в качестве родительского для одного или нескольких тегов
+<SPAN CLASS="tagName">File</SPAN>, каждый из которых описывает исходный файл шаблона.</LI>
+
+<LI STYLE="margin-top: 6pt;">Обязательным для тега <SPAN CLASS="tagName">File</SPAN>
+является атрибут <SPAN CLASS="attrName">Name</SPAN>, задающий имя исходного файла
+относительно папки, в которой находятся файлы шаблона. Атрибут
+<SPAN CLASS="attrName">Type</SPAN> определяет, будет ли для данного файла производиться
+поиск макросов и их замена на указанные пользователем значения: если этот атрибут имеет
+значение <SPAN CLASS="attrValue">binary</SPAN>, то файл считается двоичным и копируется
+в целевую папку без изменений; в противном случае (атрибут
+<SPAN CLASS="attrName">Type</SPAN> отсутствует или имеет значение, отличное от
+<SPAN CLASS="attrValue">binary</SPAN>), файл считается текстовым и в нем выполняется
+поиск макросов, которые определены в данном шаблоне, и их замена на указанные
+пользователем значения.</LI>
+
+</UL>
+
+<P CLASS="pageText">
+В качестве примера ниже приведен конфигурационный скрипт шаблона
+<SPAN CLASS="winText">AfxConsole</SPAN> предназначенного для генерации проектов
+консольных приложений, использующих MFC.
+</P>
+
+<PRE CLASS="codeSample">&lt;?xml version="1.0" encoding="Windows-1251"?&gt;
+&lt;Project Name="AfxConsole" Description="Generic console application"&gt;
+   &lt;Macros&gt;
+      &lt;Macro Name="$PROJECT$" Description="Name of the project"/&gt;
+      &lt;Macro Name="$AUTHOR$" Description="Author of the project"/&gt;
+      &lt;Macro Name="$COMPANY$" Description="Company name"/&gt;
+   &lt;/Macros&gt;
+   &lt;Files&gt;
+      &lt;File Name="\$PROJECT$.dsp" Type="text"/&gt;
+      &lt;File Name="\Source\stdafx.cpp" Type="text"/&gt;
+      &lt;File Name="\Source\stdafx.h" Type="text"/&gt;
+      &lt;File Name="\Source\EntryPoint.cpp" Type="text"/&gt;
+      &lt;File Name="\Source\$PROJECT$.rc" Type="text"/&gt;
+      &lt;File Name="\Source\Resource.h" Type="text"/&gt;
+      &lt;File Name="\Source\BinRes\AppIcon.ico" Type="binary"/&gt;
+   &lt;/Files&gt;
+&lt;/Project&gt;
+</PRE>
+
+<H1 CLASS="subTopic">Особые макросы</H1>
+
+<P CLASS="pageText">
+Перечисленные ниже макросы будут иметь при генерации проекта указанные значения,
+даже если сделать их доступными для изменения, поместив соответствующие имена в
+конфигурационный скрипт шаблона.
+</P>
+
+<DL STYLE="text-align: justify; margin-right: 2pt;">
+<DT><STRONG>$GENERATOR$</STRONG></DT>
+<DD STYLE="margin-bottom: 6pt;">Строка, содержащая название и номер версии
+приложения.</DD>
+<DT><STRONG>$DAY$</STRONG>, <STRONG>$MONTH$</STRONG>, <STRONG>$YEAR$</STRONG></DT>
+<DD STYLE="margin-bottom: 6pt;">Строковое представление текущих дня, месяца и года
+соответственно.</DD>
+<DT><STRONG>$HOUR$</STRONG>, <STRONG>$MINUTE$</STRONG>, <STRONG>$SECOND$</STRONG></DT>
+<DD STYLE="margin-bottom: 6pt;">Строковое представление текущих часа, минуты и секунды
+соответственно.</DD>
+<DT><STRONG>$DATE$</STRONG></DT>
+<DD STYLE="margin-bottom: 6pt;">Строковое представление текущей даты в формате
+<I>dd.MM.yyyy</I>.</DD>
+<DT><STRONG>$TIME$</STRONG></DT>
+<DD>Строковое представление текущего времени в формате <I>HH:mm:ss</I>.</DD>
+</DL>
+
+<P CLASS="pageText">
+Если в конфигурационном скрипте отсутствует макрос с именем <STRONG>$PROJECT$</STRONG>
+или на момент генерации проекта для него не указано значение, то вместо него
+используется имя шаблона.
+</P>
+
+<P CLASS="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <STRONG>$AUTHOR$</STRONG>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+имя текущего пользователя операционной системы.
+</P>
+
+<P CLASS="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <STRONG>$COMPANY$</STRONG>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+название организации, на которую зарегистрирована данная копия операционной системы.
+</P>
+
+<P CLASS="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <STRONG>$VERMAJOR$</STRONG>
+и для него не указано значение по умолчанию, то в качестве такого значения используется 1.
+</P>
+
+<P CLASS="pageText" STYLE="margin-bottom: 14pt;">
+Если в конфигурационном скрипте присутствует макрос с именем <STRONG>$VERBUILD$</STRONG>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+число, генерируемое на основании текущей системной даты.
+</P>
+
+<HR WIDTH=100% SIZE=1 NOSHADE>
+
+<P CLASS="copyrightNotice">
+Авторские&nbsp;права&nbsp;&copy;&nbsp;2004&mdash;2005&nbsp;И.Зарецкий
+</P>
+
+</BODY>
+
+</HTML>
+
+<!-- end of page -->
