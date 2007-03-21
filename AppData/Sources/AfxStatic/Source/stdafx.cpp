@@ -1,4 +1,4 @@
-// $PROJECT$ application.
+// $PROJECT$ library.
 // Copyright (c) $YEAR$ by $AUTHOR$,
 // All rights reserved.
 
@@ -12,8 +12,5 @@
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// _DEBUG
-
-// linker options
-#pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
 
 // end of file

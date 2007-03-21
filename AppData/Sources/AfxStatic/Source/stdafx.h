@@ -1,4 +1,4 @@
-// $PROJECT$ application.
+// $PROJECT$ library.
 // Copyright (c) $YEAR$ by $AUTHOR$,
 // All rights reserved.
 

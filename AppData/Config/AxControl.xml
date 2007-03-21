@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project
-	Name="Win32 MFC 6.0 ActiveX"
-	Description="ActiveX control with using VC++/MFC 6.0 (MBCS build)">
+<Project Name="AxControl" Description="Generic ActiveX control">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$COMPANY$" Description="Company name"/>
 		<Macro Name="$CONTROL$" Description="Name of the control"/>
 		<Macro Name="$VENDOR$" Description="Vendor name (single word)"/>
-		<Macro Name="$DISPIID$" Description="ID of the control's primary dispatch interface" Type="uuid"/>
-		<Macro Name="$EVTIID$" Description="ID of the control's event interface" Type="uuid"/>
-		<Macro Name="$CLSID$" Description="Control's coclass GUID" Type="uuid"/>
-		<Macro Name="$LIBID$" Description="Control's type library GUID" Type="uuid"/>
-		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
-		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
-		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
+		<Macro Name="$DISPIID$" Description="ID of the control's primary dispatch interface"/>
+		<Macro Name="$EVTIID$" Description="ID of the control's event interface"/>
+		<Macro Name="$CLSID$" Description="Control's coclass GUID"/>
+		<Macro Name="$LIBID$" Description="Control's type library GUID"/>
 	</Macros>
 	<Files>
 		<File Name="\$PROJECT$.dsp" Type="text"/>

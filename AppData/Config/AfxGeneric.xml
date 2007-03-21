@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project
-	Name="Win32 MFC 6.0 SDI"
-	Description="SDI application with using VC++/MFC 6.0 (MBCS build)">
+<Project Name="AfxGeneric" Description="Generic SDI application">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$COMPANY$" Description="Company name"/>
-		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
-		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
-		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
 	</Macros>
 	<Files>
 		<File Name="\$PROJECT$.dsp" Type="text"/>
@@ -18,7 +13,6 @@
 		<File Name="\Source\MainFrame.h" Type="text"/>
 		<File Name="\Source\$PROJECT$App.cpp" Type="text"/>
 		<File Name="\Source\$PROJECT$App.h" Type="text"/>
-		<File Name="\Source\$PROJECT$.manifest" Type="text"/>
 		<File Name="\Source\$PROJECT$.rc" Type="text"/>
 		<File Name="\Source\Resource.h" Type="text"/>
 		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
