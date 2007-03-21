@@ -16,14 +16,9 @@ static char THIS_FILE[] = __FILE__;
 #endif	// _DEBUG
 
 // linker options
-
-#if defined(_MSC_VER) && (_MSC_VER < 1300)
-#pragma comment(linker, "/opt:ref")
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
-#endif	// _MSC_VER
 
 // entry-point symbol for the Unicode builds
-
 #if defined(UNICODE) || defined(_UNICODE)
 #pragma comment(linker, "/entry:wWinMainCRTStartup")
 #endif	// UNICODE

@@ -1,4 +1,4 @@
-// $PROJECT$ dynamic-link library.
+// $PROJECT$ library.
 // Copyright (c) $YEAR$ by $AUTHOR$,
 // All rights reserved.
 
@@ -21,29 +21,8 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
-#define WINVER _WIN32_WCE
-
-#define NOMINMAX
-
-// CRT headers
-#include <altcecrt.h>
-#include <tchar.h>
-#include <typeinfo>
-
-// PSDK headers
-#pragma warning(push, 3)
-#include <windows.h>
-#pragma warning(pop)
-
-// instance handle of this DLL
-extern HINSTANCE g_hInstance;
-
-// force ISO/IEC 14882 conformance in for loop scope
-#if (_MSC_VER < 1300)
-#define for if (false); else for
-#else
-#pragma conform(forScope, on)
-#endif	// _MSC_VER
+// MFC headers
+#include <afxwin.h>			// MFC core and standard components
 
 #endif	// __stdafx_h
 

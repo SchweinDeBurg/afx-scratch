@@ -1,18 +1,6 @@
 // AfxScratch application.
-// Copyright (c) 2004-2006 by Elijah Zarezky,
+// Copyright (c) 2004-2005 by Elijah Zarezky,
 // All rights reserved.
-
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 // MainDialog.h - interface of the CMainDialog class
 
@@ -23,7 +11,7 @@
 #pragma once
 #endif	// _MSC_VER
 
-class CMainDialog: public ETSLayoutDialog, public CResizableLayout
+class CMainDialog: public CDialog
 {
 	DECLARE_DYNAMIC(CMainDialog)
 	DECLARE_MESSAGE_MAP()
@@ -36,7 +24,6 @@ public:
 // overridables
 public:
 	virtual BOOL OnInitDialog(void);
-	virtual CWnd* GetResizableWnd(void) const;
 protected:
 	virtual void DoDataExchange(CDataExchange* pDX);
 	virtual void OnOK(void);
@@ -47,7 +34,6 @@ protected:
 	afx_msg void OnClose(void);
 	afx_msg void OnDestroy(void);
 	afx_msg HBRUSH OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor);
-	afx_msg BOOL OnEraseBkgnd(CDC* pDC);
 	afx_msg void OnSysCommand(UINT uID, LPARAM lParam);
 	afx_msg void OnItemChangedListProjects(NMHDR* pHdr, LRESULT* pnResult);
 	afx_msg void OnDblClkListMacros(NMHDR* pHdr, LRESULT* pnResult);
@@ -63,11 +49,8 @@ public:
 	CString m_strAppData;
 	HICON m_hIcon;
 	HICON m_hSmIcon;
-	CCustomGroupBox m_groupProjects;
 	CProjectsList m_listProjects;
-	CCustomGroupBox m_groupMacros;
 	CMacrosList m_listMacros;
-	CCustomGroupBox m_groupLocation;
 	CString m_strLocation;
 	CStatic m_staticStatus;
 	CImageList m_imageList;

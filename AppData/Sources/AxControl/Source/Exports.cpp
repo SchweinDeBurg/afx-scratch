@@ -21,13 +21,11 @@ STDAPI DllRegisterServer(void)
 {
 	AFX_MANAGE_STATE(_afxModuleAddrThis);
 
-	if (!AfxOleRegisterTypeLib(AfxGetInstanceHandle(), LIBID_Ax$CONTROL$))
-	{
+	if (!AfxOleRegisterTypeLib(AfxGetInstanceHandle(), LIBID_Ax$CONTROL$)) {
 		// unable to register type library
 		return (SELFREG_E_TYPELIB);
 	}
-	else if (!COleObjectFactory::UpdateRegistryAll(TRUE))
-	{
+	else if (!COleObjectFactory::UpdateRegistryAll(TRUE)) {
 		// unable to register coclass
 		return (SELFREG_E_CLASS);
 	}
@@ -40,13 +38,11 @@ STDAPI DllUnregisterServer(void)
 {
 	AFX_MANAGE_STATE(_afxModuleAddrThis);
 
-	if (!AfxOleUnregisterTypeLib(LIBID_Ax$CONTROL$, g_wVerMajor, g_wVerMinor))
-	{
+	if (!AfxOleUnregisterTypeLib(LIBID_Ax$CONTROL$, g_wVerMajor, g_wVerMinor)) {
 		// unable to unregister type library
 		return (SELFREG_E_TYPELIB);
 	}
-	else if (!COleObjectFactory::UpdateRegistryAll(FALSE))
-	{
+	else if (!COleObjectFactory::UpdateRegistryAll(FALSE)) {
 		// unable to unregister coclass
 		return (SELFREG_E_CLASS);
 	}

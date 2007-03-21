@@ -91,7 +91,7 @@ BEGIN
             VALUE "FileDescription", "$PROJECT$ executable module\0"
             VALUE "FileVersion", "$VERMAJOR$.$VERMINOR$.$VERBUILD$\0"
             VALUE "InternalName", "$PROJECT$\0"
-            VALUE "LegalCopyright", "Copyright © $YEAR$ by $AUTHOR$. All rights reserved.\0"
+            VALUE "LegalCopyright", "Copyright © $YEAR$ by $AUTHOR$\0"
             VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation\0"
             VALUE "OriginalFilename", "$PROJECT$.exe\0"
             VALUE "PrivateBuild", "\0"
