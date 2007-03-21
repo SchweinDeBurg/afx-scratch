@@ -1,0 +1,277 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "Resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "Resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "// English (U.S.) resources\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "\r\n"
+    "#if defined(_WIN32)\r\n"
+    "LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif\r\n"
+    "\r\n"
+    "#if !defined(RT_MANIFEST)\r\n"
+    "#define RT_MANIFEST 24\r\n"
+    "#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1\r\n"
+    "#endif\r\n"
+    "CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST ""AfxScratch.manifest""\r\n"
+    "\r\n"
+    "#endif    // English (U.S.) resources\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,2807,53
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "none"
+            VALUE "CompanyName", "Spb Software House"
+            VALUE "FileDescription", "AfxScratch executable module"
+            VALUE "FileVersion", "1.0.2807"
+            VALUE "InternalName", "AfxScratch"
+            VALUE "LegalCopyright", "Copyright © 2004-2005 Elijah Zarezky"
+            VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation"
+            VALUE "OriginalFilename", "AfxScratch.exe"
+            VALUE "ProductName", "PowerGadgets"
+            VALUE "ProductVersion", "1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APP_ICON            ICON                    "BinRes\\AppIcon.ico"
+IDI_PROJECT_ICON        ICON                    "BinRes\\ProjectIcon.ico"
+IDI_MACRO_ICON          ICON                    "BinRes\\MacroIcon.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_MAIN DIALOGEX 0, 0, 370, 246
+STYLE DS_SETFONT | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU | 
+    WS_THICKFRAME
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "AfxScratch"
+FONT 8, "Tahoma", 0, 0, 0x1
+BEGIN
+    GROUPBOX        "Projects",IDC_GROUP_PROJECTS,4,4,362,74,WS_GROUP
+    CONTROL         "List1",IDC_LIST_PROJECTS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_GROUP | 
+                    WS_TABSTOP,10,16,350,56,WS_EX_CLIENTEDGE
+    GROUPBOX        "Macros",IDC_GROUP_MACROS,4,84,362,94,WS_GROUP
+    CONTROL         "List2",IDC_LIST_MACROS,"SysListView32",LVS_REPORT | 
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | WS_GROUP | 
+                    WS_TABSTOP,10,96,350,56,WS_EX_CLIENTEDGE
+    PUSHBUTTON      "Save as default",IDC_BUTTON_SAVE,10,156,64,16,WS_GROUP
+    PUSHBUTTON      "Restore defaults",IDC_BUTTON_RESTORE,86,156,64,16
+    PUSHBUTTON      "Change value...",IDC_BUTTON_VALUE,296,156,64,16,
+                    WS_GROUP
+    GROUPBOX        "Location",IDC_GROUP_LOCATION,4,184,362,30,WS_GROUP
+    EDITTEXT        IDC_EDIT_LOCATION,10,196,332,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | WS_GROUP
+    PUSHBUTTON      "...",IDC_BUTTON_BROWSE,346,196,14,12,WS_GROUP
+    CTEXT           "",IDC_STATIC_STATUS,6,226,248,16,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    PUSHBUTTON      "Generate",IDC_BUTTON_GENERATE,266,226,44,16,WS_GROUP
+    PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,322,226,44,16
+END
+
+IDD_ABOUT DIALOGEX 0, 0, 168, 106
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About"
+FONT 8, "Tahoma", 0, 0, 0x0
+BEGIN
+    ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
+    LTEXT           "",IDC_STATIC_TITLE,32,4,132,10
+    LTEXT           "Copyright © 2004-2005 Elijah Zarezky\nAll rights reserved",
+                    IDC_STATIC,32,14,132,18
+    DEFPUSHBUTTON   "Close",IDOK,120,86,44,16
+    LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",
+                    IDC_STATIC,32,38,132,18
+    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",
+                    IDC_STATIC,32,58,132,16
+END
+
+IDD_MACRO_VALUE DIALOG  0, 0, 186, 66
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Change value of %s"
+FONT 8, "Tahoma"
+BEGIN
+    LTEXT           "Type the desired value:",IDC_STATIC,4,6,178,10,
+                    SS_CENTERIMAGE
+    EDITTEXT        IDC_EDIT_VALUE,4,18,178,12,ES_AUTOHSCROLL | WS_GROUP
+    DEFPUSHBUTTON   "OK",IDOK,86,46,44,16,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,138,46,44,16
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_MAIN, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 363
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 239
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 161
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 99
+    END
+
+    IDD_MACRO_VALUE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 179
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 59
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_REGISTRY_KEY        "Elijah Zarezky"
+    IDS_ABOUT               "&About..."
+    IDS_FILE_VERSION        "\\StringFileInfo\\040904b0\\FileVersion"
+    IDS_TITLE_FORMAT        "AfxScratch – Version %s"
+    IDS_PROJECT_NAME        "Name"
+    IDS_PROJECT_DESCRIPTION "Description"
+    IDS_MACRO_NAME          "Name"
+    IDS_MACRO_DESCRIPTION   "Description"
+    IDS_MACRO_VALUE         "Value"
+    IDS_WRITING_FORMAT      "Writing %s"
+    IDS_PARSING_FORMAT      "Parsing %s"
+    IDS_CREATING_FORMAT     "Creating %s"
+    IDS_GENERATED_FORMAT    "Project %s successfully generated"
+    IDS_LOCATION_PROMPT     "Choose a location for storing the folder which will contain the generated project:"
+    IDS_MACRO_TYPE          "Type"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TYPE_STRING         "string"
+    IDS_TYPE_NUMBER         "number"
+    IDS_TYPE_UUID           "UUID"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+
+#if defined(_WIN32)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif
+
+#if !defined(RT_MANIFEST)
+#define RT_MANIFEST 24
+#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
+#endif
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "AfxScratch.manifest"
+
+#endif    // English (U.S.) resources
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
