@@ -1,48 +1,16 @@
 // AfxScratch application.
-// Copyright (c) 2004-2006 by Elijah Zarezky,
+// Copyright (c) 2004 by Elijah Zarezky,
 // All rights reserved.
-
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 // ProjectsList.cpp - implementation of the CProjectsList class
 
 #include "stdafx.h"
-#include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
 #include "Resource.h"
 #include "AuxTypes.h"
 #include "MacrosList.h"
-#include "CustomGroupBox.h"
-#include "ResizableLayout.h"
 #include "MainDialog.h"
 #include "AfxScratchApp.h"
-
-#if (_MFC_VER < 0x0700)
-#include <../src/afximpl.h>
-#else
-#include <../src/mfc/afximpl.h>
-#endif	// _MFC_VER
-
-#if defined(__INTEL_COMPILER)
-// remark #171: invalid type conversion
-#pragma warning(disable: 171)
-// remark #279: controlling expression is constant
-#pragma warning(disable: 279)
-// remark #383: value copied to temporary, reference to temporary used
-#pragma warning(disable: 383)
-// remark #981: operands are evaluated in unspecified order
-#pragma warning(disable: 981)
-#endif	// __INTEL_COMPILER
 
 #if defined(_DEBUG)
 #undef THIS_FILE
@@ -55,8 +23,6 @@ IMPLEMENT_DYNAMIC(CProjectsList, CSortingListCtrl)
 
 // message map
 BEGIN_MESSAGE_MAP(CProjectsList, CSortingListCtrl)
-	ON_WM_ERASEBKGND()
-	ON_WM_PAINT()
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
 
@@ -90,7 +56,8 @@ void CProjectsList::AutosizeColumns(void)
 	SetColumnWidth(I_NAME, LVSCW_AUTOSIZE);
 	int cxName = GetColumnWidth(I_NAME);
 	GetClientRect(rectClient);
-	int cxDescription = std::max(20, rectClient.Width() - cxName);
+	int cxVScroll = ::GetSystemMetrics(SM_CXVSCROLL);
+	int cxDescription = std::max(20, rectClient.Width() - cxName - cxVScroll);
 	SetColumnWidth(I_DESCRIPTION, cxDescription);
 }
 
@@ -116,14 +83,11 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 	// walk through the configuration files
 	CString strFileMask = CString(pszAppData) + _T("\\Config\\*.xml");
 	BOOL fStop = !finder.FindFile(strFileMask);
-	while (!fStop)
-	{
+	while (!fStop) {
 		fStop = !finder.FindNextFile();
-		if (!finder.IsDots() && !finder.IsDirectory())
-		{
+		if (!finder.IsDots() && !finder.IsDirectory()) {
 			CString strFilePath = finder.GetFilePath();
-			if (pParser->ParseFile(strFilePath))
-			{
+			if (pParser->ParseFile(strFilePath)) {
 				PROJECT_DATA* pData = new PROJECT_DATA;
 				memset(pData, 0, sizeof(*pData));
 				::lstrcpy(pData->szConfigFile, strFilePath);
@@ -134,14 +98,12 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 				::lstrcpy(pData->szName, branchProject.GetAttribute(_T("Name")));
 				::lstrcpy(pData->szDescription, branchProject.GetAttribute(_T("Description")));
 				CString strIcon(branchProject.GetAttribute(_T("Icon")));
-				if (!strIcon.IsEmpty())
-				{
+				if (!strIcon.IsEmpty()) {
 					CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
 					ASSERT_VALID(pApp);
 					CString strIconPath = CString(pszAppData) + _T("\\Config\\") + strIcon;
 					HICON hCustomIcon = pApp->LoadSmIconFromFile(strIconPath);
-					if (hCustomIcon != NULL)
-					{
+					if (hCustomIcon != NULL) {
 						// use specified custom icon
 						CImageList* pImageList = GetImageList(LVSIL_SMALL);
 						ASSERT_VALID(pImageList);
@@ -164,20 +126,14 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 				SetItemText(lvi.iItem, I_DESCRIPTION, LPSTR_TEXTCALLBACK);
 			}
 		}
-
 		// pump waiting messages (if any)
-		while (::PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE))
-		{
-#if (_MFC_VER < 0x0700)
-			AfxGetThread()->PumpMessage();
-#else
-			AfxPumpMessage();
-#endif	// _MFC_VER
+		while (::PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {
+			::TranslateMessage(&msg);
+			::DispatchMessage(&msg);
 		}
 	}
 
-	if (GetItemCount() > 0)
-	{
+	if (GetItemCount() > 0) {
 		SortItems(I_NAME, SORT_ASCENDING);
 		AutosizeColumns();
 		SetItemState(0, LVIS_FOCUSED | LVIS_SELECTED, 0xFFFFFFFF);
@@ -189,8 +145,7 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 
 void CProjectsList::ResetContent(void)
 {
-	while (GetItemCount() > 0)
-	{
+	while (GetItemCount() > 0) {
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(GetItemData(0));
 		ASSERT(pData != NULL);
 		DeleteItem(0);
@@ -217,28 +172,10 @@ int CProjectsList::CompareItems(int iItemLhs, int iItemRhs)
 	}
 }
 
-BOOL CProjectsList::OnEraseBkgnd(CDC* /*pDC*/)
-{
-	return (TRUE);
-}
-
-void CProjectsList::OnPaint(void)
-{
-	CPaintDC dcPaint(this);
-	CMemDC dcMem(&dcPaint);
-	enum { fuOptions = PRF_NONCLIENT | PRF_CLIENT };
-	SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
-	if (::IsWindow(m_headerCustom.GetSafeHwnd()))
-	{
-		m_headerCustom.SendMessage(WM_PRINTCLIENT, reinterpret_cast<WPARAM>(dcMem.GetSafeHdc()), fuOptions);
-	}
-}
-
 void CProjectsList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 {
 	LVITEM& lvi = reinterpret_cast<NMLVDISPINFO*>(pHdr)->item;
-	if ((lvi.mask & LVIF_TEXT) != 0)
-	{
+	if ((lvi.mask & LVIF_TEXT) != 0) {
 		ASSERT(I_NAME <= lvi.iSubItem && lvi.iSubItem <= I_DESCRIPTION);
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(GetItemData(lvi.iItem));
 		ASSERT(pData != NULL);
@@ -260,21 +197,17 @@ void CProjectsList::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CSortingListCtrl::AssertValid();
-
 	// ...and then verify our own state as well
 }
 
 void CProjectsList::Dump(CDumpContext& dumpCtx) const
 {
-	try
-	{
+	try {
 		// first invoke inherited dumper...
 		CSortingListCtrl::Dump(dumpCtx);
-
 		// ...and then dump own unique members
 	}
-	catch (CFileException* pXcpt)
-	{
+	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}
