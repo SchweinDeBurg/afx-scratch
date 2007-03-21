@@ -1,32 +1,20 @@
 @echo off
-
 echo.
-echo Building executable...
+echo Compiling executable...
 echo.
-devenv.com AfxScratch71.sln /rebuild MBCS_Release /project AfxScratch /nologo
-
+msdev.com AfxScratch.dsw /MAKE "AfxScratch - Win32 Release" /REBUILD
+echo.
+echo.
 echo Compiling documentation...
 echo.
-chdir .\HTML
+cd .\HTML
 if exist AfxScratch.chm del AfxScratch.chm
 hhc.exe AfxScratch.hhp
-chdir ..\
-
-if not exist .\Setup mkdir .\Setup
-if exist .\Setup\*.exe del .\Setup\*.exe
-
 echo.
 echo.
 echo Creating installer...
 echo.
-chdir .\Source
+cd ..\Source
+if exist ..\Setup\*.exe del ..\Setup\*.exe
 iscc.exe Setup.iss
-chdir ..\
-
-echo.
-echo.
-echo Creating full installer...
-echo.
-chdir .\Source
-iscc.exe SetupFull.iss
-chdir ..\
+cd ..
