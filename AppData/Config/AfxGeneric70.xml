@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project
-	Name="Win32 MFC 7.0 SDI"
-	Description="SDI application with using VC++/MFC 7.0 (MBCS and Unicode builds)">
+<Project Name="AfxGeneric70" Description="Generic SDI application (VC++ 7.0)">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
