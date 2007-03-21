@@ -10,7 +10,6 @@
 #include "stdafx.h"
 
 #if defined(_MSC_VER) && (_MSC_VER < 1300)
-#pragma comment(linker, "/opt:ref")
 #pragma comment(linker, "/ignore:4089")		// all references to DLL discarded by /opt:ref
 #endif	// _MSC_VER
 

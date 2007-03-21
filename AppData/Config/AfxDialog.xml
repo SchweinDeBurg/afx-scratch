@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="Windows-1251"?>
-<Project
-	Name="Win32 MFC 6.0 dialog"
-	Description="Dialog based application with using VC++/MFC 6.0 (MBCS build)">
+<Project Name="AfxDialog" Description="Dialog based application">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

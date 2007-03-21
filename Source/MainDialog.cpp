@@ -1,28 +1,13 @@
 // AfxScratch application.
-// Copyright (c) 2004-2006 by Elijah Zarezky,
+// Copyright (c) 2004-2005 by Elijah Zarezky,
 // All rights reserved.
-
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-// http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
 // MainDialog.cpp - implementation of the CMainDialog class
 
 #include "stdafx.h"
 #include "AuxTypes.h"
-#include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
 #include "MacrosList.h"
-#include "CustomGroupBox.h"
-#include "ResizableLayout.h"
 #include "MainDialog.h"
 #include "Resource.h"
 #include "AfxScratchApp.h"
@@ -52,7 +37,6 @@ BEGIN_MESSAGE_MAP(CMainDialog, ETSLayoutDialog)
 	ON_WM_CLOSE()
 	ON_WM_DESTROY()
 	ON_WM_CTLCOLOR()
-	ON_WM_ERASEBKGND()
 	ON_WM_SYSCOMMAND()
 	ON_NOTIFY(LVN_ITEMCHANGED, IDC_LIST_PROJECTS, OnItemChangedListProjects)
 	ON_NOTIFY(NM_DBLCLK, IDC_LIST_MACROS, OnDblClkListMacros)
@@ -79,8 +63,7 @@ m_iMacroIcon(-1)
 
 	// obtain the application data folder
 	m_strAppData = pApp->GetProfileString(_T("Settings"), _T("AppData"));
-	if (m_strAppData.IsEmpty())
-	{
+	if (m_strAppData.IsEmpty()) {
 		// use default - within application data for all users
 		::SHGetSpecialFolderPath(NULL, m_strAppData.GetBuffer(_MAX_PATH), CSIDL_COMMON_APPDATA, TRUE);
 		m_strAppData.ReleaseBuffer();
@@ -97,8 +80,7 @@ m_iMacroIcon(-1)
 
 	// obtain the generated projects location
 	m_strLocation = pApp->GetProfileString(_T("Settings"), _T("Location"));
-	if (m_strLocation.IsEmpty())
-	{
+	if (m_strLocation.IsEmpty()) {
 		// use default - common repository for documents
 		::SHGetSpecialFolderPath(NULL, m_strLocation.GetBuffer(_MAX_PATH), CSIDL_PERSONAL, TRUE);
 		m_strLocation.ReleaseBuffer();
@@ -170,34 +152,15 @@ BOOL CMainDialog::OnInitDialog(void)
 		<< item(IDC_BUTTON_EXIT, NORESIZE));
 	UpdateLayout();
 
-	// initialize clipping support
-	AddAnchor(IDC_GROUP_PROJECTS, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_LIST_PROJECTS, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_GROUP_MACROS, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_LIST_MACROS, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_BUTTON_SAVE, TOP_LEFT);
-	AddAnchor(IDC_BUTTON_RESTORE, TOP_LEFT);
-	AddAnchor(IDC_BUTTON_VALUE, TOP_RIGHT);
-	AddAnchor(IDC_GROUP_LOCATION, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_EDIT_LOCATION, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_BUTTON_BROWSE, TOP_RIGHT);
-	AddAnchor(IDC_STATIC_STATUS, TOP_LEFT, BOTTOM_RIGHT);
-	AddAnchor(IDC_BUTTON_GENERATE, TOP_RIGHT);
-	AddAnchor(IDC_BUTTON_EXIT, TOP_RIGHT);
-
 	// prepare projects list control
 	m_listProjects.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_listProjects.InsertColumns();
 	m_listProjects.SetImageList(&m_imageList, LVSIL_SMALL);
-	HWND hProjestsListHeader = reinterpret_cast<HWND>(m_listProjects.SendMessage(LVM_GETHEADER, 0, 0));
-	m_listProjects.m_headerCustom.SubclassWindow(hProjestsListHeader);
 
 	// prepare macros list control
 	m_listMacros.SetExtendedStyle(LVS_EX_GRIDLINES | LVS_EX_FULLROWSELECT);
 	m_listMacros.InsertColumns();
 	m_listMacros.SetImageList(&m_imageList, LVSIL_SMALL);
-	HWND hMacrosListHeader = reinterpret_cast<HWND>(m_listMacros.SendMessage(LVM_GETHEADER, 0, 0));
-	m_listMacros.m_headerCustom.SubclassWindow(hMacrosListHeader);
 
 	// initialize projects list
 	m_listProjects.InitContent(m_strAppData);
@@ -211,11 +174,6 @@ BOOL CMainDialog::OnInitDialog(void)
 
 	// initialized
 	return (TRUE);
-}
-
-CWnd* CMainDialog::GetResizableWnd(void) const
-{
-	return (CWnd::FromHandle(m_hWnd));
 }
 
 void CMainDialog::DoDataExchange(CDataExchange* pDX)
@@ -260,7 +218,6 @@ void CMainDialog::OnDestroy(void)
 {
 	m_listMacros.ResetContent();
 	m_listProjects.ResetContent();
-	RemoveAllAnchors();
 	ETSLayoutDialog::OnDestroy();
 }
 
@@ -271,8 +228,7 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 	switch (pWnd->GetDlgCtrlID())
 	{
 	case IDC_EDIT_LOCATION:
-		if (uCtlColor == CTLCOLOR_STATIC)
-		{
+		if (uCtlColor == CTLCOLOR_STATIC) {
 			pDC->SetBkColor(::GetSysColor(COLOR_WINDOW));
 			pDC->SetTextColor(::GetSysColor(COLOR_WINDOWTEXT));
 			hbr = ::GetSysColorBrush(COLOR_WINDOW);
@@ -284,18 +240,9 @@ HBRUSH CMainDialog::OnCtlColor(CDC* pDC, CWnd* pWnd, UINT uCtlColor)
 	return (hbr);
 }
 
-BOOL CMainDialog::OnEraseBkgnd(CDC* pDC)
-{
-	ClipChildren(pDC, FALSE);
-	BOOL fErased = CDialog::OnEraseBkgnd(pDC);
-	ClipChildren(pDC, TRUE);
-	return (fErased);
-}
-
 void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)
 {
-	if ((uID & 0xFFF0) == IDM_SC_ABOUT)
-	{
+	if ((uID & 0xFFF0) == IDM_SC_ABOUT) {
 		CAboutDialog dlgAbout;
 		dlgAbout.DoModal();
 	}
@@ -307,10 +254,8 @@ void CMainDialog::OnSysCommand(UINT uID, LPARAM lParam)
 void CMainDialog::OnItemChangedListProjects(NMHDR* pHdr, LRESULT* /*pnResult*/)
 {
 	NMLISTVIEW* pNMLV = reinterpret_cast<NMLISTVIEW*>(pHdr);
-	if ((pNMLV->uNewState & LVIS_SELECTED) != 0)
-	{
+	if ((pNMLV->uNewState & LVIS_SELECTED) != 0) {
 		m_listMacros.ResetContent();
-
 		// populate macros list
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(pNMLV->iItem));
 		ASSERT(pData != NULL);
@@ -326,14 +271,12 @@ void CMainDialog::OnDblClkListMacros(NMHDR* /*pHdr*/, LRESULT* /*pnResult*/)
 void CMainDialog::OnButtonValue(void)
 {
 	POSITION pos = m_listMacros.GetFirstSelectedItemPosition();
-	if (pos != NULL)
-	{
+	if (pos != NULL) {
 		int iItem = m_listMacros.GetNextSelectedItem(pos);
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(iItem));
 		ASSERT(pData != NULL);
 		CMacroValueDialog dlgMacroValue(pData);
-		if (dlgMacroValue.DoModal() == IDOK)
-		{
+		if (dlgMacroValue.DoModal() == IDOK) {
 			::lstrcpy(pData->szValue, dlgMacroValue.m_strValue);
 			m_listMacros.AutosizeColumns();
 			m_listMacros.RedrawItems(iItem, iItem);
@@ -348,31 +291,26 @@ void CMainDialog::OnButtonValue(void)
 void CMainDialog::OnButtonSave(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL)
-	{
+	if (pos != NULL) {
 		int iItem = m_listProjects.GetNextSelectedItem(pos);
 		PROJECT_DATA* pPrjData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem));
 		ASSERT(pPrjData != NULL);
 		CPugXmlParser* pParser = new CPugXmlParser();
-		if (pParser->ParseFile(pPrjData->szConfigFile))
-		{
+		if (pParser->ParseFile(pPrjData->szConfigFile)) {
 			CPugXmlBranch branchRoot = pParser->GetRoot();
 			ASSERT(!branchRoot.IsNull());
 			CPugXmlBranch branchMacros = branchRoot.FindByPath(_T("./Project/Macros"));
 			ASSERT(!branchMacros.IsNull());
 			int nNumMacros = m_listMacros.GetItemCount();
-			for (int i = 0; i < nNumMacros; ++i)
-			{
+			for (int i = 0; i < nNumMacros; ++i) {
 				MACRO_DATA* pMacData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
 				ASSERT(pMacData != NULL);
 				CPugXmlBranch branchMacro = branchMacros.FindFirstElemAttr(_T("Macro"), _T("Name"),
 					pMacData->szName);
 				ASSERT(!branchMacro.IsNull());
-				if (::lstrlen(pMacData->szValue) > 0)
-				{
+				if (::lstrlen(pMacData->szValue) > 0) {
 					// change or add default macro value
-					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue))
-					{
+					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue)) {
 						branchMacro.AddAttribute(_T("Default"), pMacData->szValue);
 					}
 				}
@@ -382,13 +320,11 @@ void CMainDialog::OnButtonSave(void)
 				}
 			}
 			// serialize modified XML tree to the stream
-			try
-			{
+			try {
 				std::ofstream ofsXML(_T2A(pPrjData->szConfigFile), std::ios::trunc);
 				branchRoot.Serialize(ofsXML);
 			}
-			catch (const std::exception& xcpt)
-			{
+			catch (const std::exception& xcpt) {
 				AfxMessageBox(_A2T(xcpt.what()), MB_ICONSTOP | MB_OK);
 			}
 		}
@@ -399,8 +335,7 @@ void CMainDialog::OnButtonSave(void)
 void CMainDialog::OnButtonRestore(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL)
-	{
+	if (pos != NULL) {
 		m_listMacros.ResetContent();
 		int iItem = m_listProjects.GetNextSelectedItem(pos);
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem));
@@ -415,8 +350,7 @@ void CMainDialog::OnButtonBrowse(void)
 
 	strPrompt.LoadString(IDS_LOCATION_PROMPT);
 	CFolderDialog dlgFolder(strPrompt, m_strLocation, this);
-	if (dlgFolder.DoModal() == IDOK)
-	{
+	if (dlgFolder.DoModal() == IDOK) {
 		m_strLocation = dlgFolder.GetFolderPath();
 		SetDlgItemText(IDC_EDIT_LOCATION, m_strLocation);
 		CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
@@ -428,11 +362,9 @@ void CMainDialog::OnButtonBrowse(void)
 void CMainDialog::OnButtonGenerate(void)
 {
 	POSITION pos = m_listProjects.GetFirstSelectedItemPosition();
-	if (pos != NULL)
-	{
+	if (pos != NULL) {
 		// retrieve and validate dialog data
-		if (UpdateData())
-		{
+		if (UpdateData()) {
 			int iItem = m_listProjects.GetNextSelectedItem(pos);
 			GenerateProject(reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem)));
 		}
@@ -479,8 +411,7 @@ void CMainDialog::CreateMacrosDict(void)
 	m_mapMacrosDict.RemoveAll();
 
 	int nNumMacros = m_listMacros.GetItemCount();
-	for (int i = 0; i < nNumMacros; ++i)
-	{
+	for (int i = 0; i < nNumMacros; ++i) {
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
 		m_mapMacrosDict.SetAt(pData->szName, pData->szValue);
 	}
@@ -509,11 +440,9 @@ void CMainDialog::SubstituteMacros(CString& strText)
 	CString strName;
 	CString strValue;
 
-	if (!strText.IsEmpty())
-	{
+	if (!strText.IsEmpty()) {
 		POSITION pos = m_mapMacrosDict.GetStartPosition();
-		while (pos != NULL)
-		{
+		while (pos != NULL) {
 			m_mapMacrosDict.GetNextAssoc(pos, strName, strValue);
 			strText.Replace(strName, strValue);
 		}
@@ -539,21 +468,17 @@ void CMainDialog::GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& b
 	SetStatusTextPath(strFormat, strDestName);
 
 	::SHCreateDirectoryEx(NULL, strDestName.Left(strDestName.ReverseFind(_T('\\'))), NULL);
-	if (CString(branchFile.GetAttribute(_T("Type"))) == _T("text"))
-	{
+	if (CString(branchFile.GetAttribute(_T("Type"))) == _T("text")) {
 		// text file - perform macro substitution
-		try
-		{
+		try {
 			CStdioFile fileDest(strDestName, CFile::modeCreate | CFile::modeWrite | CFile::typeText);
 			CStdioFile fileSrc(strSrcName, CFile::modeRead | CFile::typeText);
-			while (fileSrc.ReadString(strLine))
-			{
+			while (fileSrc.ReadString(strLine)) {
 				SubstituteMacros(strLine);
 				fileDest.WriteString(strLine + _T('\n'));
 			}
 		}
-		catch (CFileException* pXcpt)
-		{
+		catch (CFileException* pXcpt) {
 			pXcpt->ReportError();
 			pXcpt->Delete();
 			RestoreWaitCursor();
@@ -579,38 +504,31 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 	// create the XML parser
 	CPugXmlParser* pParser = new CPugXmlParser();
 
-	if (pParser->ParseFile(pData->szConfigFile))
-	{
+	if (pParser->ParseFile(pData->szConfigFile)) {
 		// prepare the macros "dictionary"
 		CreateMacrosDict();
-		if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty())
-		{
+		if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty()) {
 			strProjectName = pData->szName;
 			m_mapMacrosDict.SetAt(_T("$PROJECT$"), strProjectName);
 		}
-
 		// create the project folder
 		CString strProjectFolder = m_strLocation + _T('\\') + strProjectName;
 		strFormat.LoadString(IDS_CREATING_FORMAT);
 		SetStatusTextPath(strFormat, strProjectFolder);
 		::SHCreateDirectoryEx(NULL, strProjectFolder, NULL);
-
 		// obtain the source folder
 		CString strSrcFolder = m_strAppData + _T("\\Sources\\") + CString(pData->szName);
-
 		// parse source files
 		CPugXmlBranch branchRoot = pParser->GetRoot();
 		ASSERT(!branchRoot.IsNull());
 		CPugXmlBranch branchFiles = branchRoot.FindByPath(_T("./Project/Files"));
 		ASSERT(!branchFiles.IsNull());
 		int nNumFiles = branchFiles.GetChildrenCount();
-		for (int i = 0; i < nNumFiles; ++i)
-		{
+		for (int i = 0; i < nNumFiles; ++i) {
 			CPugXmlBranch branchFile = branchFiles.GetChildAt(i);
 			ASSERT(!branchFile.IsNull());
 			GenerateFile(strProjectFolder, strSrcFolder, branchFile);
 		}
-
 		// finished
 		strFormat.LoadString(IDS_GENERATED_FORMAT);
 		SetStatusTextPath(strFormat, strProjectFolder);
@@ -628,7 +546,6 @@ void CMainDialog::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	ETSLayoutDialog::AssertValid();
-
 	// ...and then verify our own state as well
 	ASSERT_VALID(&m_listProjects);
 	ASSERT_VALID(&m_listMacros);
@@ -637,11 +554,9 @@ void CMainDialog::AssertValid(void) const
 
 void CMainDialog::Dump(CDumpContext& dumpCtx) const
 {
-	try
-	{
+	try {
 		// first invoke inherited dumper...
 		ETSLayoutDialog::Dump(dumpCtx);
-
 		// ...and then dump own unique members
 		dumpCtx << "m_strAppData = " << m_strAppData;
 		dumpCtx << "\nm_hIcon = " << m_hIcon;
@@ -653,8 +568,7 @@ void CMainDialog::Dump(CDumpContext& dumpCtx) const
 		dumpCtx << "\nm_iProjectIcon = " << m_iProjectIcon;
 		dumpCtx << "\nm_iMacroIcon = " << m_iMacroIcon;
 	}
-	catch (CFileException* pXcpt)
-	{
+	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}

@@ -35,8 +35,7 @@ CAx$CONTROL$App::~CAx$CONTROL$App(void)
 BOOL CAx$CONTROL$App::InitInstance(void)
 {
 	BOOL fSuccess = COleControlModule::InitInstance();
-	if (fSuccess)
-	{
+	if (fSuccess) {
 	}
 	return (fSuccess);
 }
