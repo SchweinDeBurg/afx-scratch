@@ -1,4 +1,4 @@
-// Ax$CONTROL$ ActiveX control.
+// $PROJECT$ library.
 // Copyright (c) $YEAR$ by $AUTHOR$,
 // All rights reserved.
 
@@ -19,24 +19,6 @@
 
 // MFC headers
 #include <afxwin.h>			// MFC core and standard components
-#include <afxctl.h>			// MFC support for ActiveX controls
-
-#pragma hdrstop
-
-#undef IMPLEMENT_OLECREATE_EX
-
-#define IMPLEMENT_OLECREATE_EX(class_name, external_name) \
-	const AFX_DATADEF GUID class_name::guid = __uuidof(class_name); \
-	const TCHAR _szProgID_##class_name[] = _T(external_name); \
-	AFX_DATADEF class_name::class_name##Factory class_name::factory( \
-		class_name::guid, RUNTIME_CLASS(class_name), FALSE, \
-		_szProgID_##class_name); \
-	HRESULT class_name::GetClassID(LPCLSID pclsid) \
-		{ *pclsid = guid; return (NOERROR); }
-
-// shared globals
-extern const WORD g_wVerMajor;
-extern const WORD g_wVerMinor;
 
 #endif	// __stdafx_h
 
