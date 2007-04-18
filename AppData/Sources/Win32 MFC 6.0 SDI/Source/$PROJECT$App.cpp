@@ -36,12 +36,9 @@ C$PROJECT$App::~C$PROJECT$App(void)
 BOOL C$PROJECT$App::InitInstance(void)
 {
 	CMainFrame* pMainFrame = new CMainFrame();
-
-	if (pMainFrame != NULL)
-	{
+	if (pMainFrame != NULL) {
 		// try to create and show main window
-		if (pMainFrame->Create(NULL, AfxGetAppName()))
-		{
+		if (pMainFrame->Create(NULL, AfxGetAppName())) {
 			ASSERT(::IsWindow(pMainFrame->GetSafeHwnd()));
 			pMainFrame->SetIcon(LoadIcon(IDI_APP_ICON), TRUE);
 			pMainFrame->SetIcon(LoadSmIcon(MAKEINTRESOURCE(IDI_APP_ICON)), FALSE);
@@ -52,7 +49,6 @@ BOOL C$PROJECT$App::InitInstance(void)
 			return (TRUE);
 		}
 	}
-
 	// failed to create main window
 	return (FALSE);
 }
@@ -72,21 +68,17 @@ void C$PROJECT$App::AssertValid(void) const
 {
 	// first perform inherited validity check...
 	CWinApp::AssertValid();
-
 	// ...and then verify our own state as well
 }
 
 void C$PROJECT$App::Dump(CDumpContext& dumpCtx) const
 {
-	try
-	{
+	try {
 		// first invoke inherited dumper...
 		CWinApp::Dump(dumpCtx);
-
 		// ...and then dump own unique members
 	}
-	catch (CFileException* pXcpt)
-	{
+	catch (CFileException* pXcpt) {
 		pXcpt->ReportError();
 		pXcpt->Delete();
 	}

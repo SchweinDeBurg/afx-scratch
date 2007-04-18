@@ -3,7 +3,7 @@
 	Name="Win32 MFC 7.0 library"
 	Description="Static library for VC++/MFC 7.0 executables (MBCS and Unicode builds)">
 	<Macros>
-		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
 		<Macro Name="$FIRSTFILE$" Description="Name of the first file"/>

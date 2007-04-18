@@ -23,8 +23,6 @@
 
 #define WINVER _WIN32_WCE
 
-#define NOMINMAX
-
 // The threading model for device project is Free by default. However, Windows CE does
 // not fully support COM marshalling and associated definitions, if the DCOM option is
 // not chosen when you are building your CE OS image. Therefore, on certain CE platforms,
@@ -70,9 +68,6 @@ using ::CRect;
 
 // DRA headers
 #include <DeviceResolutionAware.h>
-#pragma message("*** Note that <DeviceResolutionAware.h> header just included is buggy!")
-#pragma message("*** Use <atldra.h> from myWTL project instead.")
-#pragma message("*** Visit http://zarezky.spb.ru/projects/my_wtl.html for more info.")
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
