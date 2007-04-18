@@ -77,10 +77,10 @@ public:
 // implementation helpers
 private:
 	void SetStatusTextPath(LPCTSTR pszFormat, LPCTSTR pszPath);
-	void CreateMacrosDict(void);
+	BOOL CreateMacrosDict(void);
 	void SubstituteMacros(CString& strText);
 	void GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& branchFile);
-	void GenerateProject(PROJECT_DATA* pData);
+	BOOL GenerateProject(PROJECT_DATA* pData);
 
 // diagnostic services
 #if defined(_DEBUG)

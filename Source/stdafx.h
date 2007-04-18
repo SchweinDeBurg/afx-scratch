@@ -76,6 +76,7 @@
 #include "../../Repository/AfxGadgets/Source/StringConv.h"
 #include "../../Repository/AfxGadgets/Source/Win32Error.h"
 #include "../../Repository/AfxGadgets/Source/SortingListCtrl.h"
+#include "../../Repository/AfxGadgets/Source/PugXMLplus.h"
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
 #include "../../Repository/CodeProject/Source/ETSLayout.h"
 #include "../../Repository/CodeProject/Source/memdc.h"

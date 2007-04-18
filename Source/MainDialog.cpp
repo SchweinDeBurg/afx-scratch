@@ -469,7 +469,7 @@ void CMainDialog::SetStatusTextPath(LPCTSTR pszFormat, LPCTSTR pszPath)
 	m_staticStatus.SetWindowText(strText);
 }
 
-void CMainDialog::CreateMacrosDict(void)
+BOOL CMainDialog::CreateMacrosDict(void)
 {
 	CString strAppVer;
 	CString strGenerator;
@@ -482,7 +482,20 @@ void CMainDialog::CreateMacrosDict(void)
 	for (int i = 0; i < nNumMacros; ++i)
 	{
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
-		m_mapMacrosDict.SetAt(pData->szName, pData->szValue);
+		if (!pData->fOptional && ::lstrlen(pData->szValue) == 0)
+		{
+			// required value missed
+			CString strErrMsg;
+			strErrMsg.Format(IDS_MISSED_VALUE_FORMAT, pData->szName);
+			AfxMessageBox(strErrMsg, MB_ICONSTOP | MB_OK);
+			m_listMacros.SetFocus();
+			m_listMacros.SetItemState(i, LVIS_FOCUSED | LVIS_SELECTED, UINT(-1));
+			m_listMacros.EnsureVisible(i, FALSE);
+			return (FALSE);
+		}
+		else {
+			m_mapMacrosDict.SetAt(pData->szName, pData->szValue);
+		}
 	}
 
 	CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
@@ -491,6 +504,7 @@ void CMainDialog::CreateMacrosDict(void)
 	strGenerator.Format(_T("%s v%s"), AfxGetAppName(), static_cast<LPCTSTR>(strAppVer));
 	m_mapMacrosDict.SetAt(_T("$GENERATOR$"), strGenerator);
 
+	// predefined date/time macros
 	::GetLocalTime(&stNow);
 	m_mapMacrosDict.SetAt(_T("$DAY$"), _itot(stNow.wDay, szTemp, 10));
 	m_mapMacrosDict.SetAt(_T("$MONTH$"), _itot(stNow.wMonth, szTemp, 10));
@@ -502,6 +516,9 @@ void CMainDialog::CreateMacrosDict(void)
 	m_mapMacrosDict.SetAt(_T("$DATE$"), szTemp);
 	::GetTimeFormat(0, 0, &stNow, _T("HH:mm:ss"), szTemp, 32);
 	m_mapMacrosDict.SetAt(_T("$TIME$"), szTemp);
+
+	// successfully created
+	return (TRUE);
 }
 
 void CMainDialog::SubstituteMacros(CString& strText)
@@ -565,10 +582,12 @@ void CMainDialog::GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& b
 	}
 }
 
-void CMainDialog::GenerateProject(PROJECT_DATA* pData)
+BOOL CMainDialog::GenerateProject(PROJECT_DATA* pData)
 {
 	CString strFormat;
 	CString strProjectName;
+
+	BOOL fSuccess = FALSE;
 
 	ASSERT(pData != NULL);
 
@@ -582,44 +601,50 @@ void CMainDialog::GenerateProject(PROJECT_DATA* pData)
 	if (pParser->ParseFile(pData->szConfigFile))
 	{
 		// prepare the macros "dictionary"
-		CreateMacrosDict();
-		if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty())
+		if (CreateMacrosDict())
 		{
-			strProjectName = pData->szName;
-			m_mapMacrosDict.SetAt(_T("$PROJECT$"), strProjectName);
+			if (!m_mapMacrosDict.Lookup(_T("$PROJECT$"), strProjectName) || strProjectName.IsEmpty())
+			{
+				strProjectName = pData->szName;
+				m_mapMacrosDict.SetAt(_T("$PROJECT$"), strProjectName);
+			}
+
+			// create the project folder
+			CString strProjectFolder = m_strLocation + _T('\\') + strProjectName;
+			strFormat.LoadString(IDS_CREATING_FORMAT);
+			SetStatusTextPath(strFormat, strProjectFolder);
+			::SHCreateDirectoryEx(NULL, strProjectFolder, NULL);
+
+			// obtain the source folder
+			CString strSrcFolder = m_strAppData + _T("\\Sources\\") + CString(pData->szName);
+
+			// parse source files
+			CPugXmlBranch branchRoot = pParser->GetRoot();
+			ASSERT(!branchRoot.IsNull());
+			CPugXmlBranch branchFiles = branchRoot.FindByPath(_T("./Project/Files"));
+			ASSERT(!branchFiles.IsNull());
+			int nNumFiles = branchFiles.GetChildrenCount();
+			for (int i = 0; i < nNumFiles; ++i)
+			{
+				CPugXmlBranch branchFile = branchFiles.GetChildAt(i);
+				ASSERT(!branchFile.IsNull());
+				GenerateFile(strProjectFolder, strSrcFolder, branchFile);
+			}
+
+			// finished
+			strFormat.LoadString(IDS_GENERATED_FORMAT);
+			SetStatusTextPath(strFormat, strProjectFolder);
+
+			fSuccess = TRUE;
 		}
-
-		// create the project folder
-		CString strProjectFolder = m_strLocation + _T('\\') + strProjectName;
-		strFormat.LoadString(IDS_CREATING_FORMAT);
-		SetStatusTextPath(strFormat, strProjectFolder);
-		::SHCreateDirectoryEx(NULL, strProjectFolder, NULL);
-
-		// obtain the source folder
-		CString strSrcFolder = m_strAppData + _T("\\Sources\\") + CString(pData->szName);
-
-		// parse source files
-		CPugXmlBranch branchRoot = pParser->GetRoot();
-		ASSERT(!branchRoot.IsNull());
-		CPugXmlBranch branchFiles = branchRoot.FindByPath(_T("./Project/Files"));
-		ASSERT(!branchFiles.IsNull());
-		int nNumFiles = branchFiles.GetChildrenCount();
-		for (int i = 0; i < nNumFiles; ++i)
-		{
-			CPugXmlBranch branchFile = branchFiles.GetChildAt(i);
-			ASSERT(!branchFile.IsNull());
-			GenerateFile(strProjectFolder, strSrcFolder, branchFile);
-		}
-
-		// finished
-		strFormat.LoadString(IDS_GENERATED_FORMAT);
-		SetStatusTextPath(strFormat, strProjectFolder);
 	}
 
 	EndWaitCursor();
 
 	// destroy the XML parser
 	delete pParser;
+
+	return (fSuccess);
 }
 
 #if defined(_DEBUG)

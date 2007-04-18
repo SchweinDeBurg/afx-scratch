@@ -26,7 +26,8 @@
 // projects list item data
 struct PROJECT_DATA
 {
-	enum {
+	enum
+	{
 		// field lengths
 		MAX_NAME = 31,
 		MAX_DESCRIPTION = 255
@@ -39,7 +40,8 @@ struct PROJECT_DATA
 // macros list item data
 struct MACRO_DATA
 {
-	enum {
+	enum
+	{
 		// field lengths
 		MAX_NAME = 15,
 		MAX_DESCRIPTION = 255,
@@ -57,6 +59,7 @@ struct MACRO_DATA
 	} eTypeID;
 	TCHAR szType[MAX_TYPE + 1];
 	TCHAR szValue[MAX_VALUE + 1];
+	BOOL fOptional;
 };
 
 #endif	// __AuxTypes_h

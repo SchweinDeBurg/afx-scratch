@@ -158,6 +158,7 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 				// default value wasn't specified or invalid - try to suggest
 				SuggestMacroValue(pData);
 			}
+			pData->fOptional = GetAttribute_BOOL(branchMacro, _T("Optional"), FALSE);
 			lvi.lParam = reinterpret_cast<LPARAM>(pData);
 			VERIFY(InsertItem(&lvi) == lvi.iItem);
 			for (int j = I_DESCRIPTION; j < NUM_COLUMNS; ++j)
