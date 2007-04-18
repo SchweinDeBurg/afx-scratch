@@ -3,7 +3,7 @@
 	Name="WinNT MFC 6.0 service"
 	Description="Windows NT service with using VC++/MFC 6.0 (MBCS and Unicode builds)">
 	<Macros>
-		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$SERVICE$" Description="System name of the service"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$COMPANY$" Description="Company name"/>

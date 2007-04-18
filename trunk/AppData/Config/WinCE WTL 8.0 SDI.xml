@@ -3,7 +3,7 @@
 	Name="WinCE WTL 8.0 SDI"
 	Description="SDI application for Windows CE with using VC++ 2005 and ATL/WTL 8.0">
 	<Macros>
-		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$COMPANY$" Description="Company name"/>
 		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>

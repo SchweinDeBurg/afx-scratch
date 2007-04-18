@@ -3,7 +3,7 @@
 	Name="Win32 MFC 6.0 library"
 	Description="Static library for VC++/MFC 6.0 executables (MBCS build)">
 	<Macros>
-		<Macro Name="$PROJECT$" Description="Name of the project"/>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$FIRSTFILE$" Description="Name of the first file"/>
 		<Macro Name="$CONTENTS$" Description="Contents of the first file"/>

@@ -23,8 +23,6 @@
 
 #define WINVER _WIN32_WCE
 
-#define NOMINMAX
-
 // CRT headers
 #include <altcecrt.h>
 #include <tchar.h>
