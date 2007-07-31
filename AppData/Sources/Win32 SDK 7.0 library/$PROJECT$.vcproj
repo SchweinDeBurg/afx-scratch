@@ -11,7 +11,7 @@
 	</Platforms>
 	<Configurations>
 		<Configuration
-			Name="MBCS_Debug|Win32"
+			Name="MBCS Debug|Win32"
 			OutputDirectory="DebugA"
 			IntermediateDirectory="DebugA"
 			ConfigurationType="4"
@@ -56,7 +56,7 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="MBCS_Release|Win32"
+			Name="MBCS Release|Win32"
 			OutputDirectory="ReleaseA"
 			IntermediateDirectory="ReleaseA"
 			ConfigurationType="4"
@@ -99,7 +99,7 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Unicode_Debug|Win32"
+			Name="Unicode Debug|Win32"
 			OutputDirectory="DebugW"
 			IntermediateDirectory="DebugW"
 			ConfigurationType="4"
@@ -144,7 +144,7 @@
 				Name="VCWebServiceProxyGeneratorTool"/>
 		</Configuration>
 		<Configuration
-			Name="Unicode_Release|Win32"
+			Name="Unicode Release|Win32"
 			OutputDirectory="ReleaseW"
 			IntermediateDirectory="ReleaseW"
 			ConfigurationType="4"
@@ -194,25 +194,25 @@
 			<File
 				RelativePath="Source\stdafx.cpp">
 				<FileConfiguration
-					Name="MBCS_Debug|Win32">
+					Name="MBCS Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="MBCS_Release|Win32">
+					Name="MBCS Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Unicode_Debug|Win32">
+					Name="Unicode Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Unicode_Release|Win32">
+					Name="Unicode Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="1"/>
@@ -221,25 +221,25 @@
 			<File
 				RelativePath="Source\$FIRSTFILE$.cpp">
 				<FileConfiguration
-					Name="MBCS_Debug|Win32">
+					Name="MBCS Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="3"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="MBCS_Release|Win32">
+					Name="MBCS Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="3"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Unicode_Debug|Win32">
+					Name="Unicode Debug|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="3"/>
 				</FileConfiguration>
 				<FileConfiguration
-					Name="Unicode_Release|Win32">
+					Name="Unicode Release|Win32">
 					<Tool
 						Name="VCCLCompilerTool"
 						UsePrecompiledHeader="3"/>
