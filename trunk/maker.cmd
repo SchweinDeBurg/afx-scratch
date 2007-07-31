@@ -3,7 +3,7 @@
 echo.
 echo Building executable...
 echo.
-devenv.com AfxScratch71.sln /rebuild MBCS_Release /project AfxScratch /nologo
+devenv.com AfxScratch71.sln /rebuild "MBCS Release" /project AfxScratch /nologo
 
 echo Compiling documentation...
 echo.
