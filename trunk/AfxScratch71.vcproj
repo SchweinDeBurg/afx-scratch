@@ -39,7 +39,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/ignore:4089"
+				AdditionalOptions="/OPT:NOWIN98 /IGNORE:4089"
 				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
@@ -102,7 +102,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/ignore:4089"
+				AdditionalOptions="/OPT:NOWIN98 /IGNORE:4089"
 				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
@@ -167,7 +167,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/ignore:4089"
+				AdditionalOptions="/OPT:NOWIN98 /IGNORE:4089"
 				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
@@ -230,7 +230,7 @@
 				Name="VCCustomBuildTool"/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalOptions="/ignore:4089"
+				AdditionalOptions="/OPT:NOWIN98 /IGNORE:4089"
 				OutputFile="$(OutDir)/AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
