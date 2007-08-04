@@ -26,7 +26,7 @@ extern "C" BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, void* /*pvReser
 	switch (fdwReason)
 	{
 	case DLL_PROCESS_ATTACH:
-		TRACE0("$PROJECT$.DLL Initializing!\n");
+		TRACE0("$PROJECT$.dll Initializing!\n");
 		// perform one-time initialization
 		VERIFY(AfxInitExtensionModule(g_afxModule, hInst));
 		// insert this DLL into the resource chain
@@ -34,7 +34,7 @@ extern "C" BOOL WINAPI DllMain(HINSTANCE hInst, DWORD fdwReason, void* /*pvReser
 		// successfully attached
 		return (TRUE);
 	case DLL_PROCESS_DETACH:
-		TRACE0("$PROJECT$.DLL Terminating!\n");
+		TRACE0("$PROJECT$.dll Terminating!\n");
 		// perform per-process termination
 		AfxTermExtensionModule(g_afxModule);
 		// successfully detached
