@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 6.0 extension"
-	Description="MFC extension DLL with using VC++/MFC 6.0 (MBCS build)">
+	Name="Win32 MFC 7.1 extension"
+	Description="MFC extension DLL with using VC++/MFC 7.1 (MBCS and Unicode builds)">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
@@ -15,11 +15,12 @@
 		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
 	</Macros>
 	<Files>
-		<File Name="\$PROJECT$.dsp" Type="text"/>
+		<File Name="\$PROJECT$.vcproj" Type="text"/>
 		<File Name="\Source\stdafx.cpp" Type="text"/>
 		<File Name="\Source\stdafx.h" Type="text"/>
 		<File Name="\Source\EntryPoint.cpp" Type="text"/>
 		<File Name="\Source\$PROJECT$.rc" Type="text"/>
 		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\$PROJECT$.def" Type="text"/>
 	</Files>
 </Project>
