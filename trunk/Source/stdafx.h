@@ -21,7 +21,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -30,35 +33,48 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
-#define _WIN32_WINNT 0x0500	// use Windows 2000 features
+//////////////////////////////////////////////////////////////////////////////////////////////
+// use Windows 2000 features
+#define _WIN32_WINNT 0x0500
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // MFC headers
-#include <afxwin.h>			// MFC core and standard components
-#include <afxcmn.h>			// MFC common control classes
-#include <afxtempl.h>		// MFC collection template classes
-#include <afxdlgs.h>			// MFC standard dialogs
-#include <afxext.h>			// MFC extensions and customizable classes
 
+#include <afxwin.h>        // MFC core and standard components
+#include <afxcmn.h>        // MFC common control classes
+#include <afxtempl.h>      // MFC collection template classes
+#include <afxdlgs.h>       // MFC standard dialogs
+#include <afxext.h>        // MFC extensions and customizable classes
+#include <afxdisp.h>       // MFC IDispatch & ClassFactory support
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // ATL headers
-#include <atlbase.h>
 
+#include <atlbase.h>       // basic ATL classes
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // PSDK headers
+
 #include <shlobj.h>
 #include <lmcons.h>
 #include <shlwapi.h>			// light-weight utility APIs
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // remove stupid macros in order to use STL templates
+
 #if defined(min)
 #undef min
-#endif	// min
+#endif   // min
 #if defined(max)
 #undef max
-#endif	// max
+#endif   // max
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // STL headers
+
 #pragma warning(push, 3)
 #include <iostream>
-#pragma warning(disable: 4706)	// assignment within conditional expression
+#pragma warning(disable: 4706)   // assignment within conditional expression
 #include <fstream>
 #pragma warning(default: 4706)
 #pragma warning(pop)
@@ -66,12 +82,14 @@
 // for compatibility with Dinkumware STL
 #if !defined(_IOSTREAM_)
 #define _IOSTREAM_
-#endif	// _IOSTREAM_
+#endif   // _IOSTREAM_
 #if !defined(_FSTREAM_)
 #define _FSTREAM_
-#endif	// _FSTREAM_
+#endif   // _FSTREAM_
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // additional headers
+
 #include "../../Repository/CodeProject/Source/PugXML.h"
 #include "../../Repository/AfxGadgets/Source/StringConv.h"
 #include "../../Repository/AfxGadgets/Source/Win32Error.h"
@@ -81,13 +99,16 @@
 #include "../../Repository/CodeProject/Source/ETSLayout.h"
 #include "../../Repository/CodeProject/Source/memdc.h"
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
+
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file

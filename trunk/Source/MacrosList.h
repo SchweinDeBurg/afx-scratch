@@ -21,7 +21,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CMacrosList: public CSortingListCtrl
 {
@@ -52,13 +52,14 @@ protected:
 
 // attributes
 public:
-	enum {
+	enum
+	{
 		// column indices
 		I_NAME,
 		I_DESCRIPTION,
 		I_TYPE,
 		I_VALUE,
-		NUM_COLUMNS		// should be the LAST enumerator!
+		NUM_COLUMNS   // should be the LAST enumerator!
 	};
 	CCustomHeaderCtrl m_headerCustom;
 
@@ -82,6 +83,6 @@ public:
 #endif
 };
 
-#endif	// __MacrosList_h
+#endif   // __MacrosList_h
 
 // end of file

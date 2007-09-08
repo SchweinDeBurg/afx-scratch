@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
 	Name="Windows NT service"
-	Description="Windows NT service targeting VC++/MFC 6.0 (MBCS and Unicode builds)">
+	Description="Windows NT service targeting VC++/MFC 6.0 (MBCS and Unicode builds)"
 	DevEnv="VS 6.0"
 	Framework="MFC 6.0"
 	SrcRoot="\VS 6.0 WinNT MFC 6.0 service">

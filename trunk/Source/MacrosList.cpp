@@ -16,15 +16,29 @@
 
 // MacrosList.cpp - implementation of the CMacrosList class
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// PCH includes
+
 #include "stdafx.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// resource includes
+
+#include "Resource.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// other includes
+
 #include "AuxTypes.h"
 #include "CustomHeaderCtrl.h"
 #include "MacrosList.h"
-#include "Resource.h"
 #include "ProjectsList.h"
 #include "CustomGroupBox.h"
 #include "ResizableLayout.h"
 #include "MainDialog.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted ICL warnings
 
 #if defined(__INTEL_COMPILER)
 // remark #171: invalid type conversion
@@ -37,21 +51,31 @@
 #pragma warning(disable: 981)
 #endif	// __INTEL_COMPILER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// debugging support
+
 #if defined(_DEBUG)
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// _DEBUG
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // object model
+
 IMPLEMENT_DYNAMIC(CMacrosList, CSortingListCtrl)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // message map
+
 BEGIN_MESSAGE_MAP(CMacrosList, CSortingListCtrl)
 	ON_WM_ERASEBKGND()
 	ON_WM_PAINT()
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// construction/destruction
 
 CMacrosList::CMacrosList(void)
 {
@@ -65,6 +89,9 @@ CMacrosList::CMacrosList(void)
 CMacrosList::~CMacrosList(void)
 {
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// operations
 
 void CMacrosList::InsertColumns(void)
 {
@@ -131,8 +158,8 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 			ASSERT(!branchMacro.IsNull());
 			MACRO_DATA* pData = new MACRO_DATA;
 			memset(pData, 0, sizeof(*pData));
-			::lstrcpy(pData->szName, branchMacro.GetAttribute(_T("Name")));
-			::lstrcpy(pData->szDescription, branchMacro.GetAttribute(_T("Description")));
+			_tcscpy(pData->szName, branchMacro.GetAttribute(_T("Name")));
+			_tcscpy(pData->szDescription, branchMacro.GetAttribute(_T("Description")));
 			CString strMacroType(branchMacro.GetAttribute(_T("Type")));
 			if (strMacroType == _T("number"))
 			{
@@ -152,7 +179,7 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 				idsType = IDS_TYPE_STRING;
 			}
 			::LoadString(AfxGetResourceHandle(), idsType, pData->szType, MACRO_DATA::MAX_TYPE);
-			::lstrcpy(pData->szValue, branchMacro.GetAttribute(_T("Default")));
+			_tcscpy(pData->szValue, branchMacro.GetAttribute(_T("Default")));
 			if (!IsMacroValueExists(pData))
 			{
 				// default value wasn't specified or invalid - try to suggest
@@ -190,6 +217,9 @@ void CMacrosList::ResetContent(void)
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// overridables
+
 int CMacrosList::CompareItems(int iItemLhs, int iItemRhs)
 {
 	MACRO_DATA* pDataLhs = reinterpret_cast<MACRO_DATA*>(GetItemData(iItemLhs));
@@ -200,18 +230,21 @@ int CMacrosList::CompareItems(int iItemLhs, int iItemRhs)
 	switch (m_iSortColumn)
 	{
 	case I_NAME:
-		return (::lstrcmp(pDataLhs->szName, pDataRhs->szName) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szName, pDataRhs->szName) * m_nSortOrder);
 	case I_DESCRIPTION:
-		return (::lstrcmp(pDataLhs->szDescription, pDataRhs->szDescription) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szDescription, pDataRhs->szDescription) * m_nSortOrder);
 	case I_TYPE:
-		return (::lstrcmp(pDataLhs->szType, pDataRhs->szType) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szType, pDataRhs->szType) * m_nSortOrder);
 	case I_VALUE:
-		return (::lstrcmp(pDataLhs->szValue, pDataRhs->szValue) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szValue, pDataRhs->szValue) * m_nSortOrder);
 	default:
 		// shouldn't be reached
 		return (0);
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// message map functions
 
 BOOL CMacrosList::OnEraseBkgnd(CDC* /*pDC*/)
 {
@@ -243,31 +276,34 @@ void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 		switch (lvi.iSubItem)
 		{
 		case I_NAME:
-			::lstrcpyn(lvi.pszText, pData->szName, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szName, lvi.cchTextMax);
 			break;
 		case I_DESCRIPTION:
-			::lstrcpyn(lvi.pszText, pData->szDescription, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szDescription, lvi.cchTextMax);
 			break;
 		case I_TYPE:
-			::lstrcpyn(lvi.pszText, pData->szType, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szType, lvi.cchTextMax);
 			break;
 		case I_VALUE:
-			::lstrcpyn(lvi.pszText, pData->szValue, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szValue, lvi.cchTextMax);
 			break;
 		}
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// implementation helpers
+
 BOOL CMacrosList::IsMacroValueExists(MACRO_DATA* pData)
 {
 	TCHAR* pchrStop;
-	unsigned char szTemp[MACRO_DATA::MAX_VALUE + 1];
+	unsigned char szTemp[MACRO_DATA::MAX_VALUE];
 	UUID uuid;
 
 	// precondition
 	ASSERT_POINTER(pData, MACRO_DATA);
 
-	if (::lstrlen(pData->szValue) > 0)
+	if (_tcslen(pData->szValue) > 0)
 	{
 		// validate specified value
 		switch (pData->eTypeID)
@@ -317,7 +353,7 @@ void CMacrosList::SuggestMacroValue(MACRO_DATA* pData)
 	else if (pData->eTypeID == MACRO_DATA::NUMBER)
 	{
 		// no suggestion found for the numeric value - use simple zero
-		::lstrcpy(pData->szValue, _T("0"));
+		_tcscpy(pData->szValue, _T("0"));
 	}
 }
 
@@ -331,7 +367,7 @@ void CMacrosList::Suggest_AUTHOR(LPTSTR pszDest)
 	DWORD cchNameLength = UNLEN + 1;
 	if (::GetUserName(szUserName, &cchNameLength))
 	{
-		::lstrcpy(pszDest, szUserName);
+		_tcscpy(pszDest, szUserName);
 	}
 }
 
@@ -353,7 +389,7 @@ void CMacrosList::Suggest_COMPANY(LPTSTR pszDest)
 #else
 		ULONG cchMaxLen = 256;
 		regKey.QueryStringValue(_T("RegisteredOrganization"), pszDest, &cchMaxLen);
-#endif	// _MFC_VER
+#endif   // _MFC_VER
 		regKey.Close();
 	}
 }
@@ -363,7 +399,7 @@ void CMacrosList::Suggest_VERMAJOR(LPTSTR pszDest)
 	// precondition
 	ASSERT(AfxIsValidString(pszDest));
 
-	::lstrcpy(pszDest, _T("1"));
+	_tcscpy(pszDest, _T("1"));
 }
 
 void CMacrosList::Suggest_VERBUILD(LPTSTR pszDest)
@@ -398,10 +434,13 @@ void CMacrosList::Suggest_UUID(LPTSTR pszDest)
 
 	::CoCreateGuid(&uuid);
 	::UuidToString(&uuid, &pszTemp);
-	::lstrcpy(pszDest, _A2T(reinterpret_cast<char*>(pszTemp)));
+	_tcscpy(pszDest, _A2T(reinterpret_cast<char*>(pszTemp)));
 	::CharUpper(pszDest);
 	::RpcStringFree(&pszTemp);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// diagnostic services
 
 #if defined(_DEBUG)
 
@@ -430,6 +469,6 @@ void CMacrosList::Dump(CDumpContext& dumpCtx) const
 	}
 }
 
-#endif	// _DEBUG
+#endif   // _DEBUG
 
 // end of file

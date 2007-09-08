@@ -245,6 +245,8 @@ BEGIN
     IDS_TYPE_NUMBER         "number"
     IDS_TYPE_UUID           "UUID"
     IDS_MISSED_VALUE_FORMAT "Missed required value for the ""%s"" macro!"
+    IDS_PROJECT_DEVENV      "IDE"
+    IDS_PROJECT_FRAMEWORK   "Framework"
 END
 
 #endif    // English (U.S.) resources

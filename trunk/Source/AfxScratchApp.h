@@ -21,7 +21,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CAfxScratchApp: public CWinApp
 {
@@ -51,6 +51,6 @@ public:
 #endif
 };
 
-#endif	// __AfxScratchApp_h
+#endif   // __AfxScratchApp_h
 
 // end of file

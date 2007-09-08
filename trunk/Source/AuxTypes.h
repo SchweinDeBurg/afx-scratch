@@ -21,35 +21,45 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // projects list item data
+
 struct PROJECT_DATA
 {
 	enum
 	{
 		// field lengths
-		MAX_NAME = 31,
-		MAX_DESCRIPTION = 255
+		MAX_DEVENV = 16,
+		MAX_FRAMEWORK = 32,
+		MAX_NAME = 32,
+		MAX_SRCROOT = _MAX_DIR,
+		MAX_DESCRIPTION = 256
 	};
 	TCHAR szConfigFile[_MAX_PATH];
-	TCHAR szName[MAX_NAME + 1];
-	TCHAR szDescription[MAX_DESCRIPTION + 1];
+	TCHAR szDevEnv[MAX_DEVENV];
+	TCHAR szFramework[MAX_FRAMEWORK];
+	TCHAR szName[MAX_NAME];
+	TCHAR szSrcRoot[MAX_SRCROOT];
+	TCHAR szDescription[MAX_DESCRIPTION];
 };
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // macros list item data
+
 struct MACRO_DATA
 {
 	enum
 	{
 		// field lengths
-		MAX_NAME = 15,
-		MAX_DESCRIPTION = 255,
-		MAX_TYPE = 7,
-		MAX_VALUE = 63
+		MAX_NAME = 16,
+		MAX_DESCRIPTION = 256,
+		MAX_TYPE = 8,
+		MAX_VALUE = 64
 	};
-	TCHAR szName[MAX_NAME + 1];
-	TCHAR szDescription[MAX_DESCRIPTION + 1];
+	TCHAR szName[MAX_NAME];
+	TCHAR szDescription[MAX_DESCRIPTION];
 	enum TYPE
 	{
 		// type of macro
@@ -57,11 +67,11 @@ struct MACRO_DATA
 		NUMBER,
 		UUID
 	} eTypeID;
-	TCHAR szType[MAX_TYPE + 1];
-	TCHAR szValue[MAX_VALUE + 1];
+	TCHAR szType[MAX_TYPE];
+	TCHAR szValue[MAX_VALUE];
 	BOOL fOptional;
 };
 
-#endif	// __AuxTypes_h
+#endif   // __AuxTypes_h
 
 // end of file
