@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 7.0 dialog"
-	Description="Dialog based application with using VC++/MFC 7.0 (MBCS and Unicode builds)">
+	Name="Dialog-based application"
+	Description="Dialog-based application targeting VC++/MFC 7.0 (MBCS and Unicode builds)"
+	DevEnv="VS 2002"
+	Framework="MFC 7.0"
+	SrcRoot="\VS 2002 Win32 MFC 7.0 dialog">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

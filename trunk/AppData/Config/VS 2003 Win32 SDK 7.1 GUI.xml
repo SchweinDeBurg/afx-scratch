@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 SDK 7.1 GUI"
-	Description="GUI application with using VC++ 7.1 and CRT/PSDK (MBCS and Unicode builds)">
+	Name="GUI application"
+	Description="Win32 GUI application targeting VC++ 7.1 and CRT/PSDK (MBCS and Unicode builds)"
+	DevEnv="VS 2003"
+	Framework="SDK 7.1"
+	SrcRoot="\VS 2003 Win32 SDK 7.1 GUI">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

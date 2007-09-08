@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 7.1 extension"
-	Description="MFC extension DLL with using VC++/MFC 7.1 (MBCS and Unicode builds)">
+	Name="Extension DLL"
+	Description="MFC extension DLL targeting VC++/MFC 7.1 (MBCS and Unicode builds)"
+	DevEnv="VS 2003"
+	Framework="MFC 7.1"
+	SrcRoot="\VS 2003 Win32 MFC 7.1 extension">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

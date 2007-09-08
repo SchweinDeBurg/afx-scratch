@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 6.0 ActiveX"
-	Description="ActiveX control with using VC++/MFC 6.0 (MBCS build)">
+	Name="ActiveX control"
+	Description="ActiveX control targeting VC++/MFC 6.0 (MBCS build)"
+	DevEnv="VS 6.0"
+	Framework="MFC 6.0"
+	SrcRoot="\VS 6.0 Win32 MFC 6.0 ActiveX">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
@@ -14,7 +17,7 @@
 		<Macro Name="$LIBID$" Description="Control's type library GUID" Type="uuid"/>
 		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
 		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
-		<Macro Name="$VERBUILD$" Description="Build number" Type="number" Required="yes"/>
+		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
 	</Macros>
 	<Files>
 		<File Name="\$PROJECT$.dsp" Type="text"/>
