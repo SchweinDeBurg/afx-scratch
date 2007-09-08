@@ -16,10 +16,21 @@
 
 // ProjectsList.cpp - implementation of the CProjectsList class
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// PCH includes
+
 #include "stdafx.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// resource includes
+
+#include "Resource.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// other includes
+
 #include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
-#include "Resource.h"
 #include "AuxTypes.h"
 #include "MacrosList.h"
 #include "CustomGroupBox.h"
@@ -31,7 +42,10 @@
 #include <../src/afximpl.h>
 #else
 #include <../src/mfc/afximpl.h>
-#endif	// _MFC_VER
+#endif   // _MFC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted ICL warnings
 
 #if defined(__INTEL_COMPILER)
 // remark #171: invalid type conversion
@@ -44,21 +58,31 @@
 #pragma warning(disable: 981)
 #endif	// __INTEL_COMPILER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// debugging support
+
 #if defined(_DEBUG)
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// _DEBUG
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // object model
+
 IMPLEMENT_DYNAMIC(CProjectsList, CSortingListCtrl)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // message map
+
 BEGIN_MESSAGE_MAP(CProjectsList, CSortingListCtrl)
 	ON_WM_ERASEBKGND()
 	ON_WM_PAINT()
 	ON_NOTIFY_REFLECT(LVN_GETDISPINFO, OnGetDispInfo)
 END_MESSAGE_MAP()
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// construction/destruction
 
 CProjectsList::CProjectsList(void)
 {
@@ -68,29 +92,40 @@ CProjectsList::~CProjectsList(void)
 {
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// operations
+
 void CProjectsList::InsertColumns(void)
 {
 	CRect rectClient;
-	CString strHeading;
 
 	GetClientRect(rectClient);
 	int cxVScroll = ::GetSystemMetrics(SM_CXVSCROLL);
 	int cxColumn = ((rectClient.Width() - cxVScroll) / NUM_COLUMNS);
 
-	strHeading.LoadString(IDS_PROJECT_NAME);
-	InsertColumn(I_NAME, strHeading, LVCFMT_LEFT, cxColumn);
-	strHeading.LoadString(IDS_PROJECT_DESCRIPTION);
-	InsertColumn(I_DESCRIPTION, strHeading, LVCFMT_LEFT, cxColumn);
+	CString strDevEnv(MAKEINTRESOURCE(IDS_PROJECT_DEVENV));
+	InsertColumn(I_DEVENV, strDevEnv, LVCFMT_LEFT, cxColumn);
+	CString strFramework(MAKEINTRESOURCE(IDS_PROJECT_FRAMEWORK));
+	InsertColumn(I_FRAMEWORK, strFramework, LVCFMT_LEFT, cxColumn);
+	CString strName(MAKEINTRESOURCE(IDS_PROJECT_NAME));
+	InsertColumn(I_NAME, strName, LVCFMT_LEFT, cxColumn);
+	CString strDescription(MAKEINTRESOURCE(IDS_PROJECT_DESCRIPTION));
+	InsertColumn(I_DESCRIPTION, strDescription, LVCFMT_LEFT, cxColumn);
 }
 
 void CProjectsList::AutosizeColumns(void)
 {
 	CRect rectClient;
 
-	SetColumnWidth(I_NAME, LVSCW_AUTOSIZE);
-	int cxName = GetColumnWidth(I_NAME);
+	int cxColumns = 0;
+	for (int i = I_DEVENV; i <= I_NAME; ++i)
+	{
+		SetColumnWidth(i, LVSCW_AUTOSIZE);
+		cxColumns += GetColumnWidth(i);
+	}
+
 	GetClientRect(rectClient);
-	int cxDescription = std::max(20, rectClient.Width() - cxName);
+	int cxDescription = std::max(20, rectClient.Width() - cxColumns);
 	SetColumnWidth(I_DESCRIPTION, cxDescription);
 }
 
@@ -126,13 +161,15 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 			{
 				PROJECT_DATA* pData = new PROJECT_DATA;
 				memset(pData, 0, sizeof(*pData));
-				::lstrcpy(pData->szConfigFile, strFilePath);
+				_tcscpy(pData->szConfigFile, strFilePath);
 				CPugXmlBranch branchRoot = pParser->GetRoot();
 				ASSERT(!branchRoot.IsNull());
 				CPugXmlBranch branchProject = branchRoot.FindByPath(_T("./Project"));
 				ASSERT(!branchProject.IsNull());
-				::lstrcpy(pData->szName, branchProject.GetAttribute(_T("Name")));
-				::lstrcpy(pData->szDescription, branchProject.GetAttribute(_T("Description")));
+				_tcscpy(pData->szDevEnv, branchProject.GetAttribute(_T("DevEnv")));
+				_tcscpy(pData->szFramework, branchProject.GetAttribute(_T("Framework")));
+				_tcscpy(pData->szName, branchProject.GetAttribute(_T("Name")));
+				_tcscpy(pData->szDescription, branchProject.GetAttribute(_T("Description")));
 				CString strIcon(branchProject.GetAttribute(_T("Icon")));
 				if (!strIcon.IsEmpty())
 				{
@@ -159,6 +196,7 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 					// use default icon
 					lvi.iImage = pMainDlg->m_iProjectIcon;
 				}
+				_tcscpy(pData->szSrcRoot, branchProject.GetAttribute(_T("SrcRoot")));
 				lvi.lParam = reinterpret_cast<LPARAM>(pData);
 				VERIFY(InsertItem(&lvi) == lvi.iItem);
 				SetItemText(lvi.iItem, I_DESCRIPTION, LPSTR_TEXTCALLBACK);
@@ -172,13 +210,13 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 			AfxGetThread()->PumpMessage();
 #else
 			AfxPumpMessage();
-#endif	// _MFC_VER
+#endif   // _MFC_VER
 		}
 	}
 
 	if (GetItemCount() > 0)
 	{
-		SortItems(I_NAME, SORT_ASCENDING);
+		SortItems(I_DEVENV, SORT_ASCENDING);
 		AutosizeColumns();
 		SetItemState(0, LVIS_FOCUSED | LVIS_SELECTED, 0xFFFFFFFF);
 	}
@@ -198,6 +236,9 @@ void CProjectsList::ResetContent(void)
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// overridables
+
 int CProjectsList::CompareItems(int iItemLhs, int iItemRhs)
 {
 	PROJECT_DATA* pDataLhs = reinterpret_cast<PROJECT_DATA*>(GetItemData(iItemLhs));
@@ -207,15 +248,22 @@ int CProjectsList::CompareItems(int iItemLhs, int iItemRhs)
 
 	switch (m_iSortColumn)
 	{
+	case I_DEVENV:
+		return (_tcscmp(pDataLhs->szDevEnv, pDataRhs->szDevEnv) * m_nSortOrder);
+	case I_FRAMEWORK:
+		return (_tcscmp(pDataLhs->szFramework, pDataRhs->szFramework) * m_nSortOrder);
 	case I_NAME:
-		return (::lstrcmp(pDataLhs->szName, pDataRhs->szName) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szName, pDataRhs->szName) * m_nSortOrder);
 	case I_DESCRIPTION:
-		return (::lstrcmp(pDataLhs->szDescription, pDataRhs->szDescription) * m_nSortOrder);
+		return (_tcscmp(pDataLhs->szDescription, pDataRhs->szDescription) * m_nSortOrder);
 	default:
 		// shouldn't be reached
 		return (0);
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// message map functions
 
 BOOL CProjectsList::OnEraseBkgnd(CDC* /*pDC*/)
 {
@@ -239,20 +287,29 @@ void CProjectsList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 	LVITEM& lvi = reinterpret_cast<NMLVDISPINFO*>(pHdr)->item;
 	if ((lvi.mask & LVIF_TEXT) != 0)
 	{
-		ASSERT(I_NAME <= lvi.iSubItem && lvi.iSubItem <= I_DESCRIPTION);
+		ASSERT(I_DEVENV <= lvi.iSubItem && lvi.iSubItem <= I_DESCRIPTION);
 		PROJECT_DATA* pData = reinterpret_cast<PROJECT_DATA*>(GetItemData(lvi.iItem));
 		ASSERT(pData != NULL);
 		switch (lvi.iSubItem)
 		{
+		case I_DEVENV:
+			_tcsncpy(lvi.pszText, pData->szDevEnv, lvi.cchTextMax);
+			break;
+		case I_FRAMEWORK:
+			_tcsncpy(lvi.pszText, pData->szFramework, lvi.cchTextMax);
+			break;
 		case I_NAME:
-			::lstrcpyn(lvi.pszText, pData->szName, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szName, lvi.cchTextMax);
 			break;
 		case I_DESCRIPTION:
-			::lstrcpyn(lvi.pszText, pData->szDescription, lvi.cchTextMax);
+			_tcsncpy(lvi.pszText, pData->szDescription, lvi.cchTextMax);
 			break;
 		}
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// diagnostic services
 
 #if defined(_DEBUG)
 
@@ -280,6 +337,6 @@ void CProjectsList::Dump(CDumpContext& dumpCtx) const
 	}
 }
 
-#endif	// _DEBUG
+#endif   // _DEBUG
 
 // end of file

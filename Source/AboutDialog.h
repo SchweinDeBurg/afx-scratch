@@ -21,7 +21,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CAboutDialog: public CDialog
 {
@@ -45,6 +45,6 @@ public:
 #endif
 };
 
-#endif	// __AboutDialog_h
+#endif   // __AboutDialog_h
 
 // end of file

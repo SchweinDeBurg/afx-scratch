@@ -23,6 +23,8 @@
 #define IDS_TYPE_NUMBER                 17
 #define IDS_TYPE_UUID                   18
 #define IDS_MISSED_VALUE_FORMAT         19
+#define IDS_PROJECT_DEVENV              20
+#define IDS_PROJECT_FRAMEWORK           21
 #define IDD_MAIN                        101
 #define IDD_ABOUT                       102
 #define IDI_PROJECT_ICON                103

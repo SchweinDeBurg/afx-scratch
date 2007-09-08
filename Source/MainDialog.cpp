@@ -16,7 +16,19 @@
 
 // MainDialog.cpp - implementation of the CMainDialog class
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// PCH includes
+
 #include "stdafx.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// resource includes
+
+#include "Resource.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// other includes
+
 #include "AuxTypes.h"
 #include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
@@ -24,10 +36,12 @@
 #include "CustomGroupBox.h"
 #include "ResizableLayout.h"
 #include "MainDialog.h"
-#include "Resource.h"
 #include "AfxScratchApp.h"
 #include "AboutDialog.h"
 #include "MacroValueDialog.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted ICL warnings
 
 #if defined(__INTEL_COMPILER)
 // remark #171: invalid type conversion
@@ -38,16 +52,23 @@
 #pragma warning(disable: 981)
 #endif	// __INTEL_COMPILER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// debugging support
+
 #if defined(_DEBUG)
 #undef THIS_FILE
 static char THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW
 #endif	// _DEBUG
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // object model
+
 IMPLEMENT_DYNAMIC(CMainDialog, ETSLayoutDialog)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // message map
+
 BEGIN_MESSAGE_MAP(CMainDialog, ETSLayoutDialog)
 	ON_WM_CLOSE()
 	ON_WM_DESTROY()
@@ -63,6 +84,9 @@ BEGIN_MESSAGE_MAP(CMainDialog, ETSLayoutDialog)
 	ON_BN_CLICKED(IDC_BUTTON_GENERATE, OnButtonGenerate)
 	ON_BN_CLICKED(IDC_BUTTON_EXIT, OnButtonExit)
 END_MESSAGE_MAP()
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// construction/destruction
 
 CMainDialog::CMainDialog(CWnd* pParentWnd):
 ETSLayoutDialog(IDD_MAIN, pParentWnd, _T("MainDialog"), false),
@@ -123,6 +147,9 @@ CMainDialog::~CMainDialog(void)
 	::DestroyIcon(m_hSmIcon);
 	::DestroyIcon(m_hIcon);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// overridables
 
 BOOL CMainDialog::OnInitDialog(void)
 {
@@ -229,6 +256,9 @@ void CMainDialog::DoDataExchange(CDataExchange* pDX)
 	DDX_Control(pDX, IDC_STATIC_STATUS, m_staticStatus);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// message map functions
+
 void CMainDialog::OnOK(void)
 {
 	switch (GetFocus()->GetDlgCtrlID())
@@ -334,7 +364,7 @@ void CMainDialog::OnButtonValue(void)
 		CMacroValueDialog dlgMacroValue(pData);
 		if (dlgMacroValue.DoModal() == IDOK)
 		{
-			::lstrcpy(pData->szValue, dlgMacroValue.m_strValue);
+			_tcscpy(pData->szValue, dlgMacroValue.m_strValue);
 			m_listMacros.AutosizeColumns();
 			m_listMacros.RedrawItems(iItem, iItem);
 		}
@@ -368,7 +398,7 @@ void CMainDialog::OnButtonSave(void)
 				CPugXmlBranch branchMacro = branchMacros.FindFirstElemAttr(_T("Macro"), _T("Name"),
 					pMacData->szName);
 				ASSERT(!branchMacro.IsNull());
-				if (::lstrlen(pMacData->szValue) > 0)
+				if (_tcslen(pMacData->szValue) > 0)
 				{
 					// change or add default macro value
 					if (!branchMacro.SetAttributeValue(_T("Default"), pMacData->szValue))
@@ -414,7 +444,7 @@ void CMainDialog::OnButtonBrowse(void)
 	CString strPrompt;
 
 	strPrompt.LoadString(IDS_LOCATION_PROMPT);
-	CFolderDialog dlgFolder(strPrompt, m_strLocation, this);
+	CFolderDialog dlgFolder(strPrompt, m_strLocation, this, BIF_NEWDIALOGSTYLE);
 	if (dlgFolder.DoModal() == IDOK)
 	{
 		m_strLocation = dlgFolder.GetFolderPath();
@@ -447,6 +477,9 @@ void CMainDialog::OnButtonExit(void)
 	EndDialog(IDCANCEL);
 }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// implementation helpers
+
 void CMainDialog::SetStatusTextPath(LPCTSTR pszFormat, LPCTSTR pszPath)
 {
 	CRect rectStatus;
@@ -459,7 +492,7 @@ void CMainDialog::SetStatusTextPath(LPCTSTR pszFormat, LPCTSTR pszPath)
 	CFont* pFont = m_staticStatus.GetFont();
 	CFont* pPrevFont = dcStatus.SelectObject(pFont);
 	m_staticStatus.GetClientRect(rectStatus);
-	CSize sizeFormat = dcStatus.GetTextExtent(pszFormat, ::lstrlen(pszFormat));
+	CSize sizeFormat = dcStatus.GetTextExtent(pszFormat, _tcslen(pszFormat));
 	int cxPath = rectStatus.Width() - sizeFormat.cx;
 	CString strTruncPath(pszPath);
 	::PathCompactPath(dcStatus.GetSafeHdc(), strTruncPath.GetBuffer(_MAX_PATH), cxPath);
@@ -482,7 +515,7 @@ BOOL CMainDialog::CreateMacrosDict(void)
 	for (int i = 0; i < nNumMacros; ++i)
 	{
 		MACRO_DATA* pData = reinterpret_cast<MACRO_DATA*>(m_listMacros.GetItemData(i));
-		if (!pData->fOptional && ::lstrlen(pData->szValue) == 0)
+		if (!pData->fOptional && _tcslen(pData->szValue) == 0)
 		{
 			// required value missed
 			CString strErrMsg;
@@ -616,7 +649,9 @@ BOOL CMainDialog::GenerateProject(PROJECT_DATA* pData)
 			::SHCreateDirectoryEx(NULL, strProjectFolder, NULL);
 
 			// obtain the source folder
-			CString strSrcFolder = m_strAppData + _T("\\Sources\\") + CString(pData->szName);
+			CString strSrcFolder(m_strAppData);
+			strSrcFolder += _T("\\Sources");
+			strSrcFolder += pData->szSrcRoot;
 
 			// parse source files
 			CPugXmlBranch branchRoot = pParser->GetRoot();
@@ -646,6 +681,9 @@ BOOL CMainDialog::GenerateProject(PROJECT_DATA* pData)
 
 	return (fSuccess);
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// diagnostic services
 
 #if defined(_DEBUG)
 
@@ -685,6 +723,6 @@ void CMainDialog::Dump(CDumpContext& dumpCtx) const
 	}
 }
 
-#endif	// _DEBUG
+#endif   // _DEBUG
 
 // end of file

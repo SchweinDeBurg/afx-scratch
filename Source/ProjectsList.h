@@ -21,7 +21,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CProjectsList: public CSortingListCtrl
 {
@@ -52,11 +52,14 @@ protected:
 
 // attributes
 public:
-	enum {
+	enum
+	{
 		// column indices
+		I_DEVENV,
+		I_FRAMEWORK,
 		I_NAME,
 		I_DESCRIPTION,
-		NUM_COLUMNS		// should be the LAST enumerator!
+		NUM_COLUMNS   // should be the LAST enumerator!
 	};
 	CCustomHeaderCtrl m_headerCustom;
 
@@ -68,6 +71,6 @@ public:
 #endif
 };
 
-#endif	// __ProjectsList_h
+#endif   // __ProjectsList_h
 
 // end of file
