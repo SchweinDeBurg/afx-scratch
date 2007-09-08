@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project
+	Name="Win32 SDK 7.1 library"
+	Description="Static library with using CRT/PSDK for VC++ 7.1 executables (MBCS and Unicode builds)">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
+		<Macro Name="$FIRSTFILE$" Description="Name of the first file"/>
+		<Macro Name="$CONTENTS$" Description="Contents of the first file"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.vcproj" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\$FIRSTFILE$.cpp" Type="text"/>
+		<File Name="\Source\$FIRSTFILE$.h" Type="text"/>
+	</Files>
+</Project>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project
+	Name="WinCE SDK 8.0 library"
+	Description="Static library for Windows CE with using VC++ 2005 and Pocket PC 2003 SDK">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.vcproj" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+	</Files>
+</Project>
