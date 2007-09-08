@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="WinNT MFC 6.0 service"
-	Description="Windows NT service with using VC++/MFC 6.0 (MBCS and Unicode builds)">
+	Name="Windows NT service"
+	Description="Windows NT service targeting VC++/MFC 6.0 (MBCS and Unicode builds)">
+	DevEnv="VS 6.0"
+	Framework="MFC 6.0"
+	SrcRoot="\VS 6.0 WinNT MFC 6.0 service">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$SERVICE$" Description="System name of the service"/>

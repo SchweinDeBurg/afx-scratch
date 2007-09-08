@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 6.0 SDI"
-	Description="SDI application with using VC++/MFC 6.0 (MBCS build)">
+	Name="SDI application"
+	Description="SDI application targeting VC++/MFC 6.0 (MBCS build)"
+	DevEnv="VS 6.0"
+	Framework="MFC 6.0"
+	SrcRoot="\VS 6.0 Win32 MFC 6.0 SDI">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>

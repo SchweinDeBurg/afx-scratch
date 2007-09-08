@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Win32 MFC 6.0 library"
-	Description="Static library for VC++/MFC 6.0 executables (MBCS build)">
+	Name="Static library"
+	Description="Static library for VC++/MFC 6.0 executables (MBCS build)"
+	DevEnv="VS 6.0"
+	Framework="MFC 6.0"
+	SrcRoot="\VS 6.0 Win32 MFC 6.0 library">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
