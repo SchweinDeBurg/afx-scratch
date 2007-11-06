@@ -16,14 +16,18 @@ REM WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 REM See the License for the specific language governing permissions and
 REM limitations under the License.
 
-REM makeall.cmd - NT command script to build debug and release configurations
+REM chver.cmd - NT command script to change version numbers
 
-echo.
-echo Building executable - "Win32 MBCS Debug"...
-echo.
-devenv.com AfxScratch71.sln /rebuild "MBCS Debug" /project AfxScratch /nologo
+copy /Y .\Source\AfxScratch.manifest.munge .\Source\AfxScratch.manifest
+.\Tools\munge.exe .\Source\MungeScript.txt -k -t -L .\Source\AfxScratch.manifest
 
-echo Building executable - "Win32 MBCS Release"...
-echo.
-devenv.com AfxScratch71.sln /rebuild "MBCS Release" /project AfxScratch /nologo
-echo.
+copy /Y .\Source\VersionInfo.rc.munge .\Source\VersionInfo.rc
+.\Tools\munge.exe .\Source\MungeScript.txt -k -t -L .\Source\VersionInfo.rc
+
+copy /Y .\Source\Setup.iss.munge .\Source\Setup.iss
+.\Tools\munge.exe .\Source\MungeScript.txt -k -t -L .\Source\Setup.iss
+
+copy /Y .\Source\SetupFull.iss.munge .\Source\SetupFull.iss
+.\Tools\munge.exe .\Source\MungeScript.txt -k -t -L .\Source\SetupFull.iss
+
+REM end of file
