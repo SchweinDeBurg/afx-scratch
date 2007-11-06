@@ -50,6 +50,8 @@ BEGIN
     "#pragma code_page(1252)\r\n"
     "#endif\r\n"
     "\r\n"
+    "#include ""VersionInfo.rc""\r\n"
+    "\r\n"
     "#if !defined(RT_MANIFEST)\r\n"
     "#define RT_MANIFEST 24\r\n"
     "#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1\r\n"
@@ -61,47 +63,6 @@ BEGIN
 END
 
 #endif    // APSTUDIO_INVOKED
-
-
-/////////////////////////////////////////////////////////////////////////////
-//
-// Version
-//
-
-VS_VERSION_INFO VERSIONINFO
- FILEVERSION 1,0,3839,94
- PRODUCTVERSION 1,0,0,0
- FILEFLAGSMASK 0x3fL
-#ifdef _DEBUG
- FILEFLAGS 0x1L
-#else
- FILEFLAGS 0x0L
-#endif
- FILEOS 0x40004L
- FILETYPE 0x1L
- FILESUBTYPE 0x0L
-BEGIN
-    BLOCK "StringFileInfo"
-    BEGIN
-        BLOCK "040904b0"
-        BEGIN
-            VALUE "Comments", "none"
-            VALUE "CompanyName", "Spb Software House"
-            VALUE "FileDescription", "AfxScratch executable module"
-            VALUE "FileVersion", "1.0.3839"
-            VALUE "InternalName", "AfxScratch"
-            VALUE "LegalCopyright", "Copyright © 2004-2007 Elijah Zarezky"
-            VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation"
-            VALUE "OriginalFilename", "AfxScratch.exe"
-            VALUE "ProductName", "PowerGadgets"
-            VALUE "ProductVersion", "1.0.0"
-        END
-    END
-    BLOCK "VarFileInfo"
-    BEGIN
-        VALUE "Translation", 0x409, 1200
-    END
-END
 
 
 /////////////////////////////////////////////////////////////////////////////
@@ -268,6 +229,8 @@ END
 LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 #pragma code_page(1252)
 #endif
+
+#include "VersionInfo.rc"
 
 #if !defined(RT_MANIFEST)
 #define RT_MANIFEST 24
