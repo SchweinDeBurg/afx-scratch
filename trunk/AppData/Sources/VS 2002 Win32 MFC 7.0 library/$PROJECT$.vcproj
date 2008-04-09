@@ -200,7 +200,7 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
 			<File
-				RelativePath="Source\stdafx.cpp">
+				RelativePath=".\Source\stdafx.cpp">
 				<FileConfiguration
 					Name="MBCS Debug|Win32">
 					<Tool
@@ -227,7 +227,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Source\$FIRSTFILE$.cpp">
+				RelativePath=".\Source\$FIRSTFILE$.cpp">
 				<FileConfiguration
 					Name="MBCS Debug|Win32">
 					<Tool
@@ -258,10 +258,10 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc">
 			<File
-				RelativePath="Source\stdafx.h">
+				RelativePath=".\Source\stdafx.h">
 			</File>
 			<File
-				RelativePath="Source\$FIRSTFILE$.h">
+				RelativePath=".\Source\$FIRSTFILE$.h">
 			</File>
 		</Filter>
 		<Filter

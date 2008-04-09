@@ -248,7 +248,7 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
 			<File
-				RelativePath="Source\EntryPoint.cpp">
+				RelativePath=".\Source\EntryPoint.cpp">
 				<FileConfiguration
 					Name="MBCS Debug|Win32">
 					<Tool
@@ -275,7 +275,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Source\stdafx.cpp">
+				RelativePath=".\Source\stdafx.cpp">
 				<FileConfiguration
 					Name="MBCS Debug|Win32">
 					<Tool
@@ -306,20 +306,20 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc">
 			<File
-				RelativePath="Source\Resource.h">
+				RelativePath=".\Source\Resource.h">
 			</File>
 			<File
-				RelativePath="Source\stdafx.h">
+				RelativePath=".\Source\stdafx.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe">
 			<File
-				RelativePath="Source\BinRes\AppIcon.ico">
+				RelativePath=".\Source\BinRes\AppIcon.ico">
 			</File>
 			<File
-				RelativePath="Source\$PROJECT$.rc">
+				RelativePath=".\Source\$PROJECT$.rc">
 			</File>
 		</Filter>
 	</Files>
