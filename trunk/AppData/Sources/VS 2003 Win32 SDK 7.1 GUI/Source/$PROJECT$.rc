@@ -9,6 +9,10 @@
 //
 #include "WinResrc.h"
 
+#if !defined(IDC_STATIC)
+#define IDC_STATIC -1
+#endif   // IDC_STATIC
+
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -35,6 +39,10 @@ END
 2 TEXTINCLUDE 
 BEGIN
     "#include ""WinResrc.h""\r\n"
+    "\r\n"
+    "#if !defined(IDC_STATIC)\r\n"
+    "#define IDC_STATIC -1\r\n"
+    "#endif   // IDC_STATIC\r\n"
     "\0"
 END
 
@@ -112,6 +120,7 @@ END
 // Icon with lowest ID value placed first to ensure application icon
 // remains consistent on all systems.
 IDI_APP_ICON            ICON                    "BinRes\\AppIcon.ico"
+
 #endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 
