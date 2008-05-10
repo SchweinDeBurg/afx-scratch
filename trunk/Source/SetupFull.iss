@@ -43,11 +43,12 @@ DialogFontName=Tahoma
 DialogFontSize=8
 
 [Files]
-Source: "..\Output\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\Output.2003\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Redist\mfc71.dll"; DestDir: "{app}"
+Source: "..\Redist\mfc71enu.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\Redist\msvcr71.dll"; DestDir: "{app}"
 Source: "..\Redist\msvcp71.dll"; DestDir: "{app}"
 
