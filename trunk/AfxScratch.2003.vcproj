@@ -30,7 +30,7 @@
 				EnableFunctionLevelLinking="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="3"
 				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="FALSE"
@@ -94,7 +94,7 @@
 				EnableFunctionLevelLinking="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="3"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="0"/>
@@ -158,7 +158,7 @@
 				EnableFunctionLevelLinking="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="3"
 				BrowseInformation="1"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="FALSE"
@@ -222,7 +222,7 @@
 				EnableFunctionLevelLinking="TRUE"
 				ForceConformanceInForLoopScope="TRUE"
 				RuntimeTypeInfo="TRUE"
-				UsePrecompiledHeader="0"
+				UsePrecompiledHeader="3"
 				WarningLevel="4"
 				Detect64BitPortabilityProblems="FALSE"
 				DebugInformationFormat="0"/>
@@ -274,304 +274,40 @@
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm">
 			<File
-				RelativePath="Source\AboutDialog.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\AboutDialog.cpp">
 			</File>
 			<File
-				RelativePath="Source\AfxScratchApp.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\AfxScratchApp.cpp">
 			</File>
 			<File
-				RelativePath="Source\CustomGroupBox.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\CustomGroupBox.cpp">
 			</File>
 			<File
-				RelativePath="Source\CustomHeaderCtrl.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\CustomHeaderCtrl.cpp">
 			</File>
 			<File
-				RelativePath="Source\MacrosList.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\MacrosList.cpp">
 			</File>
 			<File
-				RelativePath="Source\MacroValueDialog.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\MacroValueDialog.cpp">
 			</File>
 			<File
-				RelativePath="Source\MainDialog.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\MainDialog.cpp">
 			</File>
 			<File
-				RelativePath="Source\ProjectsList.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\ProjectsList.cpp">
 			</File>
 			<File
-				RelativePath="Source\ResizableLayout.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\ResizableLayout.cpp">
 			</File>
 			<File
-				RelativePath="Source\ResizableMsgSupport.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\ResizableMsgSupport.cpp">
 			</File>
 			<File
-				RelativePath="Source\ResizableVersion.cpp">
-				<FileConfiguration
-					Name="MBCS Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32">
-					<Tool
-						Name="VCCLCompilerTool"
-						UsePrecompiledHeader="3"/>
-				</FileConfiguration>
+				RelativePath=".\Source\ResizableVersion.cpp">
 			</File>
 			<File
-				RelativePath="Source\stdafx.cpp">
+				RelativePath=".\Source\stdafx.cpp">
 				<FileConfiguration
 					Name="MBCS Debug|Win32">
 					<Tool
@@ -602,53 +338,53 @@
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc">
 			<File
-				RelativePath="Source\AboutDialog.h">
+				RelativePath=".\Source\AboutDialog.h">
 			</File>
 			<File
-				RelativePath="Source\AfxScratchApp.h">
+				RelativePath=".\Source\AfxScratchApp.h">
 			</File>
 			<File
-				RelativePath="Source\AuxTypes.h">
+				RelativePath=".\Source\AuxTypes.h">
 			</File>
 			<File
-				RelativePath="Source\CustomGroupBox.h">
+				RelativePath=".\Source\CustomGroupBox.h">
 			</File>
 			<File
-				RelativePath="Source\CustomHeaderCtrl.h">
+				RelativePath=".\Source\CustomHeaderCtrl.h">
 			</File>
 			<File
-				RelativePath="Source\MacrosList.h">
+				RelativePath=".\Source\MacrosList.h">
 			</File>
 			<File
-				RelativePath="Source\MacroValueDialog.h">
+				RelativePath=".\Source\MacroValueDialog.h">
 			</File>
 			<File
-				RelativePath="Source\MainDialog.h">
+				RelativePath=".\Source\MainDialog.h">
 			</File>
 			<File
-				RelativePath="Source\ProjectsList.h">
+				RelativePath=".\Source\ProjectsList.h">
 			</File>
 			<File
-				RelativePath="Source\ResizableLayout.h">
+				RelativePath=".\Source\ResizableLayout.h">
 			</File>
 			<File
-				RelativePath="Source\ResizableMsgSupport.h">
+				RelativePath=".\Source\ResizableMsgSupport.h">
 			</File>
 			<File
-				RelativePath="Source\ResizableVersion.h">
+				RelativePath=".\Source\ResizableVersion.h">
 			</File>
 			<File
-				RelativePath="Source\Resource.h">
+				RelativePath=".\Source\Resource.h">
 			</File>
 			<File
-				RelativePath="Source\stdafx.h">
+				RelativePath=".\Source\stdafx.h">
 			</File>
 		</Filter>
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;manifest">
 			<File
-				RelativePath="Source\AfxScratch.manifest">
+				RelativePath=".\Source\AfxScratch.manifest">
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
 					ExcludedFromBuild="TRUE">
@@ -675,16 +411,16 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Source\AfxScratch.rc">
+				RelativePath=".\Source\AfxScratch.rc">
 			</File>
 			<File
-				RelativePath="Source\BinRes\AppIcon.ico">
+				RelativePath=".\Source\BinRes\AppIcon.ico">
 			</File>
 			<File
-				RelativePath="Source\BinRes\MacroIcon.ico">
+				RelativePath=".\Source\BinRes\MacroIcon.ico">
 			</File>
 			<File
-				RelativePath="Source\BinRes\ProjectIcon.ico">
+				RelativePath=".\Source\BinRes\ProjectIcon.ico">
 			</File>
 		</Filter>
 		<Filter
@@ -745,7 +481,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Source\Setup.iss">
+				RelativePath=".\Source\Setup.iss">
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
 					ExcludedFromBuild="TRUE">
@@ -772,7 +508,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="Source\SetupFull.iss">
+				RelativePath=".\Source\SetupFull.iss">
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
 					ExcludedFromBuild="TRUE">
@@ -803,7 +539,7 @@
 			Name="License Files"
 			Filter="rtf">
 			<File
-				RelativePath="Source\ApacheLicense.rtf">
+				RelativePath=".\Source\ApacheLicense.rtf">
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
 					ExcludedFromBuild="TRUE">
