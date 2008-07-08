@@ -44,7 +44,6 @@
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 #endif   // _MSC_VER
 
-// MFC headers
 #include <afxwin.h>        // MFC core and standard components
 
 //////////////////////////////////////////////////////////////////////////////////////////////
