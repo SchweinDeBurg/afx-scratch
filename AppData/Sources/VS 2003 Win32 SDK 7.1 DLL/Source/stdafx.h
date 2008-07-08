@@ -12,7 +12,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -21,25 +24,39 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
-// Use Windows 2000 and IE 6.0 features
-#define WINVER 0x0500
-#define _WIN32_WINDOWS 0x0410
-#define _WIN32_IE 0x0600
-#define _WIN32_WINNT 0x0500
+// C4996: function or variable may be unsafe
+#if (_MSC_VER > 1310)
+#define _CRT_SECURE_NO_WARNINGS
+#endif   // _MSC_VER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// use WinXP/IE6 features
+
+#define WINVER 0x0501
+#define _WIN32_WINDOWS 0x0500
+#define _WIN32_IE 0x0600
+#define _WIN32_WINNT 0x0501
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // PSDK headers
+
 #include <windows.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // CRT headers
+
 #include <tchar.h>
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file
