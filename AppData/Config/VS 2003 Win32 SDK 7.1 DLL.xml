@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
 	Name="Dynamic-link library"
-	Description="DLL targeting VC++/MFC 7.1 (MBCS and Unicode builds)"
+	Description="DLL targeting VC++ 7.1 and CRT/PSDK (MBCS and Unicode builds)"
 	DevEnv="VS 2003"
 	Framework="SDK 7.1"
 	SrcRoot="\VS 2003 Win32 SDK 7.1 DLL">
@@ -16,6 +16,7 @@
 		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
 		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
 		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
 	</Macros>
 	<Files>
 		<File Name="\$PROJECT$.vcproj" Type="text"/>

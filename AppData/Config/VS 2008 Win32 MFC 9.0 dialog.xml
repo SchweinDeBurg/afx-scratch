@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Extension DLL"
-	Description="MFC extension DLL targeting VC++/MFC 7.1 (MBCS and Unicode builds)"
-	DevEnv="VS 2003"
-	Framework="MFC 7.1"
-	SrcRoot="\VS 2003 Win32 MFC 7.1 extension">
+	Name="Dialog-based application"
+	Description="Dialog-based application targeting VC++/MFC 9.0 (MBCS and Unicode builds)"
+	DevEnv="VS 2008"
+	Framework="MFC 9.0"
+	SrcRoot="\VS 2008 Win32 MFC 9.0 dialog">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
 		<Macro Name="$COMPANY$" Description="Company name"/>
-		<Macro Name="$RESBASE$" Description="First symbol value for a resource ID (1 to 28671)" Type="number" Default="501"/>
-		<Macro Name="$CMDBASE$" Description="First symbol value for a command ID (32768 to 57343)" Type="number" Default="40501"/>
-		<Macro Name="$CTRLBASE$" Description="First symbol value for a control ID (8 to 57343)" Type="number" Default="5001"/>
-		<Macro Name="$SYMBASE$" Description="First symbol value for a manually created ID" Type="number" Default="501"/>
 		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
 		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
 		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
@@ -22,9 +18,13 @@
 		<File Name="\$PROJECT$.vcproj" Type="text"/>
 		<File Name="\Source\stdafx.cpp" Type="text"/>
 		<File Name="\Source\stdafx.h" Type="text"/>
-		<File Name="\Source\EntryPoint.cpp" Type="text"/>
+		<File Name="\Source\MainDialog.cpp" Type="text"/>
+		<File Name="\Source\MainDialog.h" Type="text"/>
+		<File Name="\Source\$PROJECT$App.cpp" Type="text"/>
+		<File Name="\Source\$PROJECT$App.h" Type="text"/>
+		<File Name="\Source\Manifest.xml" Type="text"/>
 		<File Name="\Source\$PROJECT$.rc" Type="text"/>
 		<File Name="\Source\Resource.h" Type="text"/>
-		<File Name="\Source\$PROJECT$.def" Type="text"/>
+		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
 	</Files>
 </Project>
