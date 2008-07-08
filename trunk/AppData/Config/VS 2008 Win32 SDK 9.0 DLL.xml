@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="Extension DLL"
-	Description="MFC extension DLL targeting VC++/MFC 7.1 (MBCS and Unicode builds)"
-	DevEnv="VS 2003"
-	Framework="MFC 7.1"
-	SrcRoot="\VS 2003 Win32 MFC 7.1 extension">
+	Name="Dynamic-link library"
+	Description="DLL targeting VC++ 9.0 and CRT/PSDK (MBCS and Unicode builds)"
+	DevEnv="VS 2008"
+	Framework="SDK 9.0"
+	SrcRoot="\VS 2008 Win32 SDK 9.0 DLL">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
