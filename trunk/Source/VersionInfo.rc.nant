@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2007 by Elijah Zarezky,
+// Copyright (c) 2004-2008 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@
 #include <winver.h>
 
 VS_VERSION_INFO VERSIONINFO
-   FILEVERSION $VER_MAJOR$,$VER_MINOR$,$VER_BUILD$,$SVN_REVISION$
-   PRODUCTVERSION $VER_MAJOR$,$VER_MINOR$,0,0
+   FILEVERSION @VER_MAJOR@,@VER_MINOR@,@VER_BUILD@,@SVN_REV@
+   PRODUCTVERSION @VER_MAJOR@,@VER_MINOR@,0,0
    FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
 #if defined(_DEBUG)
    FILEFLAGS VS_FF_DEBUG
@@ -39,13 +39,13 @@ VS_VERSION_INFO VERSIONINFO
             VALUE "Comments", "none"
             VALUE "CompanyName", "Elijah Zarezky"
             VALUE "FileDescription", "AfxScratch executable module"
-            VALUE "FileVersion", "$VER_MAJOR$.$VER_MINOR$.$VER_BUILD$"
+            VALUE "FileVersion", "@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@"
             VALUE "InternalName", "UpdateIt"
-            VALUE "LegalCopyright", "Copyright © 2004–2007 by Elijah Zarezky"
+            VALUE "LegalCopyright", "Copyright © 2004–2008 by Elijah Zarezky"
             VALUE "LegalTrademarks", "Windows™ is a trademark of Microsoft Corporation"
             VALUE "OriginalFilename", "AfxScratch.exe"
             VALUE "ProductName", "Power Gadgets"
-            VALUE "ProductVersion", "$VER_MAJOR$.$VER_MINOR$.0"
+            VALUE "ProductVersion", "@VER_MAJOR@.@VER_MINOR@.0"
          END
       END
       BLOCK "VarFileInfo"

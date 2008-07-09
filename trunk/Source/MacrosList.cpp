@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2007 by Elijah Zarezky,
+// Copyright (c) 2004-2008 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -79,11 +79,11 @@ END_MESSAGE_MAP()
 
 CMacrosList::CMacrosList(void)
 {
-	m_mapSuggest.SetAt(_T("$AUTHOR$"), Suggest_AUTHOR);
-	m_mapSuggest.SetAt(_T("$COMPANY$"), Suggest_COMPANY);
-	m_mapSuggest.SetAt(_T("$VERMAJOR$"), Suggest_VERMAJOR);
-	m_mapSuggest.SetAt(_T("$VERBUILD$"), Suggest_VERBUILD);
-	m_mapSuggest.SetAt(_T("$UUID$"), Suggest_UUID);
+	m_mapSuggest.SetAt(_T("$AUTHOR$"), &CMacrosList::Suggest_AUTHOR);
+	m_mapSuggest.SetAt(_T("$COMPANY$"), &CMacrosList::Suggest_COMPANY);
+	m_mapSuggest.SetAt(_T("$VERMAJOR$"), &CMacrosList::Suggest_VERMAJOR);
+	m_mapSuggest.SetAt(_T("$VERBUILD$"), &CMacrosList::Suggest_VERBUILD);
+	m_mapSuggest.SetAt(_T("$UUID$"), &CMacrosList::Suggest_UUID);
 }
 
 CMacrosList::~CMacrosList(void)
