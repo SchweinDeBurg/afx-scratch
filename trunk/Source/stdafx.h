@@ -68,7 +68,7 @@
 
 #include <shlobj.h>
 #include <lmcons.h>
-#include <shlwapi.h>			// light-weight utility APIs
+#include <shlwapi.h>       // light-weight utility APIs
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // remove stupid macros in order to use STL templates
