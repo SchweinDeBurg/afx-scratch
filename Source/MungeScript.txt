@@ -1,4 +1,0 @@
-"$VER_MAJOR$" "1"
-"$VER_MINOR$" "0"
-"$VER_BUILD$" "3839"
-"$SVN_REVISION$" "115"

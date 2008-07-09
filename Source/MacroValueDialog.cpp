@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2007 by Elijah Zarezky,
+// Copyright (c) 2004-2008 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -111,9 +111,7 @@ void CMacroValueDialog::DoDataExchange(CDataExchange* pDX)
 
 void CMacroValueDialog::OnChangeEditValue(void)
 {
-	using MACRO_DATA::MAX_VALUE;
-
-	unsigned char szTemp[MAX_VALUE];
+	unsigned char szTemp[MACRO_DATA::MAX_VALUE];
 	UUID uuid;
 	CString strNumber;
 	TCHAR* pchrStop;
@@ -126,7 +124,7 @@ void CMacroValueDialog::OnChangeEditValue(void)
 	}
 	else if (m_eTypeID == MACRO_DATA::UUID)
 	{
-		GetDlgItemText(IDC_EDIT_VALUE, reinterpret_cast<LPTSTR>(szTemp), MAX_VALUE);
+		GetDlgItemText(IDC_EDIT_VALUE, reinterpret_cast<LPTSTR>(szTemp), MACRO_DATA::MAX_VALUE);
 		GetDlgItem(IDOK)->EnableWindow(::UuidFromString(szTemp, &uuid) == RPC_S_OK);
 	}
 }
