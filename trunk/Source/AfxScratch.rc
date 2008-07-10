@@ -7,8 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
-
+#include "afxres.h"
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
 
@@ -103,11 +102,11 @@ FONT 8, "Tahoma", 0, 0, 0x0
 BEGIN
     ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
     LTEXT           "",IDC_STATIC_TITLE,32,4,138,10
-    LTEXT           "Copyright © 2004-2008 Elijah Zarezky\nAll rights reserved",IDC_STATIC,32,6,138,18
+    LTEXT           "Copyright © 2004-2008 Elijah Zarezky\nAll rights reserved",IDC_STATIC,32,16,138,18
     DEFPUSHBUTTON   "Close",IDOK,124,112,44,16
-    LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",IDC_STATIC,32,38,138,18
-    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",IDC_STATIC,32,58,138,16
-    LTEXT           "Portions of ResizableLib\nCopyright © 2000-2004 by Paolo Messina",IDC_STATIC,32,78,138,16
+    LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",IDC_STATIC,32,46,138,18
+    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",IDC_STATIC,32,66,138,16
+    LTEXT           "Portions of ResizableLib\nCopyright © 2000-2004 by Paolo Messina",IDC_STATIC,32,86,138,16
 END
 
 IDD_MACRO_VALUE DIALOG  0, 0, 186, 66
@@ -215,8 +214,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 #include "VersionInfo.rc"
 
-#endif    // English (U.S.) resources
-
+#endif    // English (U.S.) resources
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 
