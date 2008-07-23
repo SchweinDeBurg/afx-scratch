@@ -42,6 +42,12 @@ LicenseFile=ApacheLicense.rtf
 DialogFontName=Tahoma
 DialogFontSize=8
 
+[InstallDelete]
+Type: files; Name: "{app}\msvcr71.dll"
+Type: files; Name: "{app}\msvcp71.dll"
+Type: files; Name: "{app}\mfc71.dll"
+Type: filesandordirs; Name: "{app}\Sources"
+
 [Types]
 Name: "typical"; Description: "Typical Installation"
 Name: "compact"; Description: "Compact Installation"

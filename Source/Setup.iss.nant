@@ -42,6 +42,11 @@ LicenseFile=ApacheLicense.rtf
 DialogFontName=Tahoma
 DialogFontSize=8
 
+[InstallDelete]
+Type: files; Name: "{app}\msvcr71.dll"
+Type: files; Name: "{app}\msvcp71.dll"
+Type: files; Name: "{app}\mfc71.dll"
+
 [Files]
 Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
