@@ -49,7 +49,7 @@
 
 #if (_MSC_VER >= 1300)
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 #include <afxwin.h>        // MFC core and standard components
 #include <afxcmn.h>        // MFC common control classes
