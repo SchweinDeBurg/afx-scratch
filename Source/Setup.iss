@@ -15,6 +15,7 @@
 ;; limitations under the License.
 
 ;; Setup.iss - setup script for Inno Setup compiler
+;; NOTE that this file is generated automatically by NAnt.exe
 
 [Setup]
 AppName=AfxScratch
