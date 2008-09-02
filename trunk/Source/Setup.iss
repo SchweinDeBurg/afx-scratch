@@ -19,21 +19,21 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.4330
+AppVerName=AfxScratch 1.1.4386
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.4330
+AppVersion=1.1.4386
 DefaultDirName={pf}\PowerGadgets\AfxScratch
 DefaultGroupName=PowerGadgets\AfxScratch
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.4330-setup
-VersionInfoVersion=1.1.4330
+OutputBaseFilename=AfxScratch-1.1.4386-setup
+VersionInfoVersion=1.1.4386
 MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
@@ -42,6 +42,11 @@ LicenseFile=ApacheLicense.rtf
 [LangOptions]
 DialogFontName=Tahoma
 DialogFontSize=8
+
+[InstallDelete]
+Type: files; Name: "{app}\msvcr71.dll"
+Type: files; Name: "{app}\msvcp71.dll"
+Type: files; Name: "{app}\mfc71.dll"
 
 [Files]
 Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
@@ -74,8 +79,8 @@ Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDi
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
-Name: "{group}\AfxScratch Documentation"; Filename: "{app}\AfxScratch.chm"
-Name: "{group}\AfxScratch License"; Filename: "{app}\ApacheLicense.rtf"
+Name: "{group}\Documentation"; Filename: "{app}\AfxScratch.chm"
+Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
 Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon

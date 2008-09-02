@@ -19,21 +19,21 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.4330
+AppVerName=AfxScratch 1.1.4386
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.4330
+AppVersion=1.1.4386
 DefaultDirName={pf}\PowerGadgets\AfxScratch
 DefaultGroupName=PowerGadgets\AfxScratch
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.4330-setup-universal
-VersionInfoVersion=1.1.4330
+OutputBaseFilename=AfxScratch-1.1.4386-setup-universal
+VersionInfoVersion=1.1.4386
 MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
@@ -42,6 +42,12 @@ LicenseFile=ApacheLicense.rtf
 [LangOptions]
 DialogFontName=Tahoma
 DialogFontSize=8
+
+[InstallDelete]
+Type: files; Name: "{app}\msvcr71.dll"
+Type: files; Name: "{app}\msvcp71.dll"
+Type: files; Name: "{app}\mfc71.dll"
+Type: filesandordirs; Name: "{app}\Sources"
 
 [Types]
 Name: "typical"; Description: "Typical Installation"
@@ -102,9 +108,10 @@ Source: "..\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScrat
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
-Name: "{group}\AfxScratch Documentation"; Filename: "{app}\AfxScratch.chm"
-Name: "{group}\AfxScratch License"; Filename: "{app}\ApacheLicense.rtf"
+Name: "{group}\Documentation"; Filename: "{app}\AfxScratch.chm"
+Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
+Name: "{group}\Build AfxScratch"; FileName: "{app}\Sources\AfxScratch\AfxScratch.2008.sln"; Components: sources
 Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"
 Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon
 Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: quicklaunchicon
