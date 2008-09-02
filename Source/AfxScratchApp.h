@@ -42,6 +42,11 @@ public:
 // overridables
 public:
 	virtual BOOL InitInstance(void);
+	virtual int ExitInstance(void);
+
+// attributes
+public:
+	HANDLE m_hMutexAppInst;
 
 // diagnostic services
 #if defined(_DEBUG)

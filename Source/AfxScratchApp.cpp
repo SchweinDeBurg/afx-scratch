@@ -39,6 +39,11 @@
 #include "MainDialog.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+// misc defines
+
+#define SZ_MUTEX_APP_INST_NAME _T("AfxScratch.Instance.655393D6-3C2F-43E5-AEC3-29FCDC0AA439")
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // debugging support
 
 #if defined(_DEBUG)
@@ -61,7 +66,8 @@ END_MESSAGE_MAP()
 //////////////////////////////////////////////////////////////////////////////////////////////
 // construction/destruction
 
-CAfxScratchApp::CAfxScratchApp(void)
+CAfxScratchApp::CAfxScratchApp(void):
+m_hMutexAppInst(NULL)
 {
 }
 
@@ -115,6 +121,21 @@ BOOL CAfxScratchApp::InitInstance(void)
 {
 	SetRegistryKey(IDS_REGISTRY_KEY);
 
+	m_hMutexAppInst = ::CreateMutex(NULL, TRUE, SZ_MUTEX_APP_INST_NAME);
+	if (m_hMutexAppInst == NULL)
+	{
+		AfxMessageBox(IDS_APP_INIT_FAILED, MB_OK | MB_ICONSTOP);
+		return (FALSE);
+	}
+	else if (::GetLastError() == ERROR_ALREADY_EXISTS)
+	{
+		if (AfxMessageBox(IDS_OTHER_APP_INSTANCE, MB_YESNO | MB_ICONWARNING) == IDNO)
+		{
+			::CloseHandle(m_hMutexAppInst);
+			return (FALSE);
+		}
+	}
+
 	AfxOleInit();
 
 	CMainDialog dlgMain;
@@ -123,7 +144,15 @@ BOOL CAfxScratchApp::InitInstance(void)
 
 	AfxOleTerm(FALSE);
 
+	::CloseHandle(m_hMutexAppInst);
+	m_hMutexAppInst = NULL;
+
 	return (FALSE);
+}
+
+int CAfxScratchApp::ExitInstance(void)
+{
+	return (__super::ExitInstance());
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

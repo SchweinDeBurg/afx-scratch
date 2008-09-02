@@ -38,6 +38,7 @@ MinVersion=4.90.3000,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
 LicenseFile=ApacheLicense.rtf
+AppMutex=AfxScratch.Instance.655393D6-3C2F-43E5-AEC3-29FCDC0AA439
 
 [LangOptions]
 DialogFontName=Tahoma

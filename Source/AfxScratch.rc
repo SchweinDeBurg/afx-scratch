@@ -188,6 +188,8 @@ BEGIN
     IDS_MISSED_VALUE_FORMAT "Missed required value for the ""%s"" macro!"
     IDS_PROJECT_DEVENV      "IDE"
     IDS_PROJECT_FRAMEWORK   "Framework"
+    IDS_OTHER_APP_INSTANCE  "One or more instances of this application is already running.\nTheir simultaneous execution may produce conflicts.\nAre you sure you want to proceed?"
+    IDS_APP_INIT_FAILED     "Failed to initialize application.\nPlease contact to the developer."
 END
 
 #endif    // English (U.S.) resources

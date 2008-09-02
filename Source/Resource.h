@@ -25,6 +25,8 @@
 #define IDS_MISSED_VALUE_FORMAT         19
 #define IDS_PROJECT_DEVENV              20
 #define IDS_PROJECT_FRAMEWORK           21
+#define IDS_OTHER_APP_INSTANCE          22
+#define IDS_APP_INIT_FAILED             23
 #define IDD_MAIN                        101
 #define IDD_ABOUT                       102
 #define IDI_PROJECT_ICON                103
