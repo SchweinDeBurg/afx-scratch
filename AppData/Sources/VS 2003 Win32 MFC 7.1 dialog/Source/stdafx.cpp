@@ -33,10 +33,8 @@ static char THIS_FILE[] = __FILE__;
 //////////////////////////////////////////////////////////////////////////////////////////////
 // entry-point symbol for the Unicode builds
 
-#if (_MSC_VER < 1300)
 #if defined(UNICODE) || defined(_UNICODE)
 #pragma comment(linker, "/entry:wWinMainCRTStartup")
-#endif   // UNICODE
-#endif   // _MSC_VER
+#endif   // UNICODE || _UNICODE
 
 // end of file

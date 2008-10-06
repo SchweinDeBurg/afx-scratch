@@ -12,7 +12,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CAx$CONTROL$App: public COleControlModule
 {
@@ -30,6 +30,6 @@ public:
 	virtual int ExitInstance(void);
 };
 
-#endif	// __Ax$CONTROL$App_h
+#endif   // __Ax$CONTROL$App_h
 
 // end of file

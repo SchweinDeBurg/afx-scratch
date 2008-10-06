@@ -12,7 +12,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class C$PROJECT$App: public CWinApp
 {
@@ -28,18 +28,18 @@ public:
 public:
 	virtual BOOL InitInstance(void);
 
-// implementation helpers
-private:
-	HICON LoadSmIcon(LPCTSTR pszResName);
-
 // diagnostic services
 #if defined(_DEBUG)
 public:
 	virtual void AssertValid(void) const;
 	virtual void Dump(CDumpContext& dumpCtx) const;
 #endif
+
+// implementation helpers
+private:
+	HICON LoadSmIcon(LPCTSTR pszResName);
 };
 
-#endif	// __$PROJECT$App_h
+#endif   // __$PROJECT$App_h
 
 // end of file

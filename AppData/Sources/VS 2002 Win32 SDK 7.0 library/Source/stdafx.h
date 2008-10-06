@@ -12,7 +12,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -21,19 +24,26 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // PSDK headers
+
 #include <windows.h>
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // CRT headers
+
 #include <tchar.h>
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file

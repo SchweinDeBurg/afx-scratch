@@ -12,7 +12,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -21,11 +24,16 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // MFC headers
-#include <afxwin.h>			// MFC core and standard components
-#include <afxctl.h>			// MFC support for ActiveX controls
+
+#include <afxwin.h>        // MFC core and standard components
+#include <afxctl.h>        // MFC support for ActiveX controls
 
 #pragma hdrstop
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// misc defines
 
 #undef IMPLEMENT_OLECREATE_EX
 
@@ -38,17 +46,22 @@
 	HRESULT class_name::GetClassID(LPCLSID pclsid) \
 		{ *pclsid = guid; return (NOERROR); }
 
+//////////////////////////////////////////////////////////////////////////////////////////////
 // shared globals
+
 extern const WORD g_wVerMajor;
 extern const WORD g_wVerMinor;
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file

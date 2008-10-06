@@ -12,7 +12,7 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class C$PROJECT$App: public CWinApp
 {
@@ -40,6 +40,6 @@ public:
 #endif
 };
 
-#endif	// __$PROJECT$App_h
+#endif   // __$PROJECT$App_h
 
 // end of file
