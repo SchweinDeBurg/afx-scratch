@@ -12,8 +12,8 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __$FIRSTFILE$_h
+#endif   // __$FIRSTFILE$_h
 
 // end of file

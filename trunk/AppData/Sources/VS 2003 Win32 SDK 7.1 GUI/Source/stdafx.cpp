@@ -21,4 +21,11 @@
 #pragma comment(linker, "/ignore:4089")
 #endif   // _MSC_VER
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// entry-point symbol for the Unicode builds
+
+#if defined(UNICODE) || defined(_UNICODE)
+#pragma comment(linker, "/entry:wWinMainCRTStartup")
+#endif   // UNICODE || _UNICODE
+
 // end of file
