@@ -15,11 +15,11 @@
 		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
 	</Macros>
 	<Files>
-		<File Name="\$PROJECT$.vcproj" Type="text"/>
+		<File Name="\$PROJECT$.2005.vcproj" Type="text"/>
 		<File Name="\Source\stdafx.cpp" Type="text"/>
 		<File Name="\Source\stdafx.h" Type="text"/>
 		<File Name="\Source\EntryPoint.cpp" Type="text"/>
-		<File Name="\Source\$PROJECT$PPC.rc" Type="text"/>
-		<File Name="\Source\ResourcePPC.h" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
 	</Files>
 </Project>

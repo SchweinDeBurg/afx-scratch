@@ -230,7 +230,7 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
-				RelativePath=".\Source\ResourcePPC.h"
+				RelativePath=".\Source\Resource.h"
 				>
 			</File>
 			<File
@@ -244,7 +244,7 @@
 			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
-				RelativePath=".\Source\$PROJECT$PPC.rc"
+				RelativePath=".\Source\$PROJECT$.rc"
 				>
 			</File>
 		</Filter>
