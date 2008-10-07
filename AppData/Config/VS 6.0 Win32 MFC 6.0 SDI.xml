@@ -21,7 +21,7 @@
 		<File Name="\Source\MainFrame.h" Type="text"/>
 		<File Name="\Source\$PROJECT$App.cpp" Type="text"/>
 		<File Name="\Source\$PROJECT$App.h" Type="text"/>
-		<File Name="\Source\$PROJECT$.manifest" Type="text"/>
+		<File Name="\Source\Manifest.xml" Type="text"/>
 		<File Name="\Source\$PROJECT$.rc" Type="text"/>
 		<File Name="\Source\Resource.h" Type="text"/>
 		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
