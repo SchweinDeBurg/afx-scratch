@@ -12,7 +12,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -21,28 +24,37 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// PSDK headers
+
 #define WINVER _WIN32_WCE
 
-// CRT headers
-#include <altcecrt.h>
-#include <tchar.h>
-#include <typeinfo>
-
-// PSDK headers
 #pragma warning(push, 3)
 #include <windows.h>
 #pragma warning(pop)
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CRT headers
+
+#include <altcecrt.h>
+#include <tchar.h>
+#include <typeinfo>
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 // instance handle of this DLL
+
 extern HINSTANCE g_hInstance;
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file
