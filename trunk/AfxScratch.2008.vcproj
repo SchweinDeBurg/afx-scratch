@@ -21,7 +21,6 @@
 			OutputDirectory="Output.2008\x86\Debug\MBCS"
 			IntermediateDirectory="Output.2008\x86\Debug\MBCS\OBJ"
 			ConfigurationType="1"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="2"
 			CharacterSet="2"
 			>
@@ -116,7 +115,6 @@
 			OutputDirectory="Output.2008\x86\Release\MBCS"
 			IntermediateDirectory="Output.2008\x86\Release\MBCS\OBJ"
 			ConfigurationType="1"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="2"
 			CharacterSet="2"
 			>
@@ -209,7 +207,6 @@
 			OutputDirectory="Output.2008\x86\Debug\Unicode"
 			IntermediateDirectory="Output.2008\x86\Debug\Unicode\OBJ"
 			ConfigurationType="1"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="2"
 			CharacterSet="1"
 			>
@@ -304,7 +301,6 @@
 			OutputDirectory="Output.2008\x86\Release\Unicode"
 			IntermediateDirectory="Output.2008\x86\Release\Unicode\OBJ"
 			ConfigurationType="1"
-			InheritedPropertySheets="$(VCInstallDir)VCProjectDefaults\UpgradeFromVC71.vsprops"
 			UseOfMFC="2"
 			CharacterSet="1"
 			>
