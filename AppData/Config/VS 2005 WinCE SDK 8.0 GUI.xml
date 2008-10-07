@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="Windows-1251"?>
 <Project
-	Name="SDI application"
-	Description="SDI application for Windows CE targeting VC++ 2005 and Pocket PC 2003 SDK"
+	Name="GUI application"
+	Description="GUI application for Windows CE targeting VC++ 2005 and Pocket PC 2003 SDK"
 	DevEnv="VS 2005"
 	Framework="PPC 2003 SDK"
-	SrcRoot="\VS 2005 WinCE SDK 8.0 SDI">
+	SrcRoot="\VS 2005 WinCE SDK 8.0 GUI">
 	<Macros>
 		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
 		<Macro Name="$AUTHOR$" Description="Author of the project"/>
