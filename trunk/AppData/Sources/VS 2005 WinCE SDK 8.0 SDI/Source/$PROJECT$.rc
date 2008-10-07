@@ -1,6 +1,6 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include "ResourcePPC.h"
+#include "Resource.h"
 
 #define APSTUDIO_READONLY_SYMBOLS
 /////////////////////////////////////////////////////////////////////////////
@@ -35,7 +35,7 @@ LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
 
 1 TEXTINCLUDE 
 BEGIN
-    "ResourcePPC.h\0"
+    "Resource.h\0"
 END
 
 2 TEXTINCLUDE 
