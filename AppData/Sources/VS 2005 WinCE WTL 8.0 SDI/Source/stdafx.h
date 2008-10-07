@@ -12,7 +12,10 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// unwanted warnings
 
 // unreferenced inline/local function has been removed
 #pragma warning(disable: 4514)
@@ -21,34 +24,33 @@
 // identifier was truncated in the debug information
 #pragma warning(disable: 4786)
 
-#define WINVER _WIN32_WCE
-
-// The threading model for device project is Free by default. However, Windows CE does
-// not fully support COM marshalling and associated definitions, if the DCOM option is
-// not chosen when you are building your CE OS image. Therefore, on certain CE platforms,
-// the compiler may generate warnings about DCOM support and single and multithreading
-// definition. This warning is to advise you to handle threading and synchronization in
-// your own code. For example, when compiling an ATL device project, the compiler may
-// issue a warning about defining _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA. This is also
-// the case for scenarios such as creating COM objects, consuming Web services, as well
-// as ATL COM objects on the Windows Mobile platform. You can define this flag in your
-// main header file for single-threaded objects. If your code is handling multithreading,
-// you can safely ignore this warning.
+// CE COM has no single threaded apartment (everything runs in the MTA)
+// hence we declare we're not concerned about thread safety issues
 #define _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// ATL headers
 
 #define _ATL_NO_COM_SUPPORT
 #define _ATL_NO_HOSTING
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 #define _ATL_NO_AUTOMATIC_NAMESPACE
 
+#include <atlbase.h>
+#include <atlstr.h>
+#include <atltypes.h>
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// WTL headers
+
+#if defined(WIN32_PLATFORM_WFSP)
+#include <tpcshell.h>
+#endif   // WIN32_PLATFORM_WFSP
+
 #define _WTL_NO_CSTRING
 #define _WTL_NO_WTYPES
 #define _WTL_NO_AUTOMATIC_NAMESPACE
 
-// ATL/WTL headers
-#include <atlbase.h>
-#include <atlstr.h>
-#include <atltypes.h>
 #include <atlapp.h>
 extern WTL::CAppModule _Module;
 #include <atlwin.h>
@@ -58,24 +60,21 @@ extern WTL::CAppModule _Module;
 #include <atlctrls.h>
 #include <atlwince.h>
 
-namespace ATL
-{
-// introduce these types into the ATL namespace for code uniformity
-using ::CSize;
-using ::CPoint;
-using ::CRect;
-}
-
+//////////////////////////////////////////////////////////////////////////////////////////////
 // DRA headers
+
 #include <DeviceResolutionAware.h>
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// some tricks
 
 // force ISO/IEC 14882 conformance in for loop scope
 #if (_MSC_VER < 1300)
 #define for if (false); else for
 #else
 #pragma conform(forScope, on)
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
-#endif	// __stdafx_h
+#endif   // __stdafx_h
 
 // end of file

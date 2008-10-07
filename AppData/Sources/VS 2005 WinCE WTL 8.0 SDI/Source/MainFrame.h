@@ -12,16 +12,32 @@
 
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
-#endif	// _MSC_VER
+#endif   // _MSC_VER
 
 class CMainFrame:
-public WTL::CFrameWindowImpl<CMainFrame>,
-public WTL::CMessageFilter,
-public WTL::CAppWindow<CMainFrame>
+// ancestors
+	public WTL::CFrameWindowImpl<CMainFrame>,
+	public WTL::CMessageFilter,
+	public WTL::CAppWindow<CMainFrame>
 {
-// short aliases
+// internal short aliases
+private:
 	typedef WTL::CFrameWindowImpl<CMainFrame> TBaseFrame;
 	typedef WTL::CAppWindow<CMainFrame> TBaseAppWindow;
+
+// construction/destruction
+public:
+	CMainFrame(void);
+	virtual ~CMainFrame(void);
+
+// overridables
+public:
+	virtual BOOL PreTranslateMessage(MSG* pMsg);
+
+// message handlers
+protected:
+	LRESULT OnCreate(CREATESTRUCT* lpCS);
+	void OnAppExit(UINT uCode, int nID, HWND hWndCtrl);
 
 // window class definition
 public:
@@ -35,22 +51,8 @@ protected:
 		CHAIN_MSG_MAP(TBaseAppWindow)
 		CHAIN_MSG_MAP(TBaseFrame)
 	END_MSG_MAP()
-
-// construction/destruction
-public:
-	CMainFrame(void);
-	virtual ~CMainFrame(void);
-
-// message handlers
-protected:
-	LRESULT OnCreate(CREATESTRUCT* lpCS);
-	void OnAppExit(UINT uCode, int nID, HWND hWndCtrl);
-
-// overridables
-public:
-	virtual BOOL PreTranslateMessage(MSG* pMsg);
 };
 
-#endif	// __MainFrame_h
+#endif   // __MainFrame_h
 
 // end of file
