@@ -19,7 +19,7 @@
 		<File Name="\Source\stdafx.cpp" Type="text"/>
 		<File Name="\Source\stdafx.h" Type="text"/>
 		<File Name="\Source\EntryPoint.cpp" Type="text"/>
-		<File Name="\Source\$PROJECT$.manifest" Type="text"/>
+		<File Name="\Source\Manifest.xml" Type="text"/>
 		<File Name="\Source\$PROJECT$.rc" Type="text"/>
 		<File Name="\Source\Resource.h" Type="text"/>
 		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
