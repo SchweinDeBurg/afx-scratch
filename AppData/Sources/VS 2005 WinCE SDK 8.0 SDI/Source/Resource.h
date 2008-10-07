@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ generated include file.
-// Used by $PROJECT$PPC.rc
+// Used by $PROJECT$.rc
 //
 #define IDI_APP_ICON                    1
 
