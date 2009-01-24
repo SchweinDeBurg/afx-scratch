@@ -73,11 +73,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)\$PROJECT$.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$PROJECT$.pdb"
+				ProgramDatabaseFile="$(OutDir)\$PROJECT$.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -164,7 +164,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)\$PROJECT$.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="false"
@@ -257,11 +257,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)\$PROJECT$.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/$PROJECT$.pdb"
+				ProgramDatabaseFile="$(OutDir)\$PROJECT$.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -348,7 +348,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/$PROJECT$.exe"
+				OutputFile="$(OutDir)\$PROJECT$.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="false"
@@ -391,6 +391,7 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
 				RelativePath=".\Source\$PROJECT$App.cpp"
@@ -440,6 +441,7 @@
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
 				RelativePath=".\Source\$PROJECT$App.h"
@@ -461,6 +463,7 @@
 		<Filter
 			Name="Resource Files"
 			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
 			<File
 				RelativePath=".\Source\$PROJECT$.rc"
