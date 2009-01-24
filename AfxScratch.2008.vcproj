@@ -74,11 +74,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/AfxScratch.exe"
+				OutputFile="$(OutDir)\AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/AfxScratch.pdb"
+				ProgramDatabaseFile="$(OutDir)\AfxScratch.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -166,7 +166,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/AfxScratch.exe"
+				OutputFile="$(OutDir)\AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="false"
@@ -260,11 +260,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/AfxScratch.exe"
+				OutputFile="$(OutDir)\AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="true"
-				ProgramDatabaseFile="$(OutDir)/AfxScratch.pdb"
+				ProgramDatabaseFile="$(OutDir)\AfxScratch.pdb"
 				SubSystem="2"
 				OptimizeReferences="2"
 				EnableCOMDATFolding="2"
@@ -352,7 +352,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions="/IGNORE:4089"
-				OutputFile="$(OutDir)/AfxScratch.exe"
+				OutputFile="$(OutDir)\AfxScratch.exe"
 				Version="1.0"
 				LinkIncremental="1"
 				GenerateDebugInformation="false"
@@ -395,6 +395,7 @@
 		<Filter
 			Name="Source Files"
 			Filter="cpp;c;cxx;def;odl;idl;hpj;bat;asm"
+			UniqueIdentifier="{4FC737F1-C7A5-4376-A066-2A32D752A2FF}"
 			>
 			<File
 				RelativePath=".\Source\AboutDialog.cpp"
@@ -480,6 +481,7 @@
 		<Filter
 			Name="Header Files"
 			Filter="h;hpp;hxx;hm;inl;inc"
+			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}"
 			>
 			<File
 				RelativePath=".\Source\AboutDialog.h"
@@ -540,44 +542,9 @@
 		</Filter>
 		<Filter
 			Name="Resource Files"
-			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;manifest"
+			Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;xml"
+			UniqueIdentifier="{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}"
 			>
-			<File
-				RelativePath=".\Source\AfxScratch.manifest"
-				>
-				<FileConfiguration
-					Name="MBCS Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
 			<File
 				RelativePath=".\Source\AfxScratch.rc"
 				>
@@ -591,86 +558,18 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Source\Manifest.xml"
+				>
+			</File>
+			<File
 				RelativePath=".\Source\BinRes\ProjectIcon.ico"
 				>
 			</File>
 		</Filter>
 		<Filter
 			Name="Setup Files"
-			Filter="iss;cmd"
+			Filter="iss"
 			>
-			<File
-				RelativePath="makeall.cmd"
-				>
-				<FileConfiguration
-					Name="MBCS Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
-			<File
-				RelativePath="maker.cmd"
-				>
-				<FileConfiguration
-					Name="MBCS Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="MBCS Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Debug|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-				<FileConfiguration
-					Name="Unicode Release|Win32"
-					ExcludedFromBuild="true"
-					>
-					<Tool
-						Name="VCCustomBuildTool"
-					/>
-				</FileConfiguration>
-			</File>
 			<File
 				RelativePath=".\Source\Setup.iss"
 				>
@@ -708,7 +607,156 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath=".\Source\SetupFull.iss"
+				RelativePath=".\Source\SetupUniversal.iss"
+				>
+				<FileConfiguration
+					Name="MBCS Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+		</Filter>
+		<Filter
+			Name="Build Files"
+			Filter="cmd;build;txt"
+			>
+			<File
+				RelativePath=".\AfxScratch.2008.build"
+				>
+				<FileConfiguration
+					Name="MBCS Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\gbuild.cmd"
+				>
+				<FileConfiguration
+					Name="MBCS Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\NAntSettings.txt"
+				>
+				<FileConfiguration
+					Name="MBCS Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MBCS Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Debug|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Unicode Release|Win32"
+					ExcludedFromBuild="true"
+					>
+					<Tool
+						Name="VCCustomBuildTool"
+					/>
+				</FileConfiguration>
+			</File>
+			<File
+				RelativePath=".\rbuild.cmd"
 				>
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
@@ -790,7 +838,7 @@
 			Filter="html;css;hhp"
 			>
 			<File
-				RelativePath="HTML\afx_scratch.html"
+				RelativePath=".\HTML\afx_scratch.html"
 				>
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
@@ -826,7 +874,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="HTML\AfxScratch.hhp"
+				RelativePath=".\HTML\AfxScratch.hhp"
 				>
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
@@ -862,7 +910,7 @@
 				</FileConfiguration>
 			</File>
 			<File
-				RelativePath="HTML\styles.css"
+				RelativePath=".\HTML\styles.css"
 				>
 				<FileConfiguration
 					Name="MBCS Debug|Win32"
@@ -902,7 +950,7 @@
 				Filter="gif;jpg"
 				>
 				<File
-					RelativePath="HTML\images\browse_button.gif"
+					RelativePath=".\HTML\images\browse_button.gif"
 					>
 					<FileConfiguration
 						Name="MBCS Debug|Win32"
@@ -938,7 +986,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="HTML\images\data_tree.gif"
+					RelativePath=".\HTML\images\data_tree.gif"
 					>
 					<FileConfiguration
 						Name="MBCS Debug|Win32"
@@ -974,7 +1022,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="HTML\images\main_window.gif"
+					RelativePath=".\HTML\images\main_window.gif"
 					>
 					<FileConfiguration
 						Name="MBCS Debug|Win32"
@@ -1010,7 +1058,7 @@
 					</FileConfiguration>
 				</File>
 				<File
-					RelativePath="HTML\images\texture.jpg"
+					RelativePath=".\HTML\images\texture.jpg"
 					>
 					<FileConfiguration
 						Name="MBCS Debug|Win32"
