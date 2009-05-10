@@ -41,7 +41,7 @@ LicenseFile=ApacheLicense.rtf
 AppMutex=AfxScratch.Instance.655393D6-3C2F-43E5-AEC3-29FCDC0AA439
 
 [LangOptions]
-DialogFontName=Verdana
+DialogFontName=MS Shell Dlg 2
 DialogFontSize=8
 
 [InstallDelete]
