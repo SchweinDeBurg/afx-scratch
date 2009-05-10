@@ -74,20 +74,20 @@ Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elija
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 
 ;; CRT redistributables
-Source: "..\Redist\Microsoft.VC90.CRT\msvcr90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.CRT\msvcp90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
+Source: "..\Redist\Microsoft.VC90.CRT\msvcr90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.CRT\msvcp90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}"; Components: runtimes; MinVersion: 0,5.01.2600
 
 ;; MFC library redistributables
-Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
+Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}"; Components: runtimes; MinVersion: 0,5.01.2600
 
 ;; MFC library localizations
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90enu.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
+Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90enu.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDir: "{app}"; Components: runtimes; MinVersion: 0,5.01.2600
 
 ;; AfxGadgets library sources
 Source: "..\..\Repository\AfxGadgets\AfxGadgets.2008.vcproj"; DestDir: "{app}\Sources\Repository\AfxGadgets"; Components: sources; Flags: ignoreversion
