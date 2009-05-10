@@ -3,7 +3,7 @@
 <assemblyIdentity
     version="@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@.@SVN_REV@"
     processorArchitecture="X86"
-    name="Microsoft.Windows.AfxScratch"
+    name="Elijah.Zarezky.AfxScratch"
     type="win32"
 />
 <description>AfxScratch Application (part of the Power Gadgets collection)</description>
