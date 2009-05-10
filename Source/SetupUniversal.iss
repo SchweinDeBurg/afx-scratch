@@ -26,8 +26,8 @@ AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppVersion=1.1.4648
-DefaultDirName={pf}\PowerGadgets\AfxScratch
-DefaultGroupName=PowerGadgets\AfxScratch
+DefaultDirName={pf}\Elijah Zarezky\AfxScratch
+DefaultGroupName=Elijah Zarezky\AfxScratch
 AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
@@ -41,13 +41,18 @@ LicenseFile=ApacheLicense.rtf
 AppMutex=AfxScratch.Instance.655393D6-3C2F-43E5-AEC3-29FCDC0AA439
 
 [LangOptions]
-DialogFontName=Tahoma
+DialogFontName=Verdana
 DialogFontSize=8
 
 [InstallDelete]
+;; from 1.0 release
 Type: files; Name: "{app}\msvcr71.dll"
 Type: files; Name: "{app}\msvcp71.dll"
 Type: files; Name: "{app}\mfc71.dll"
+;; from 1.1 pre-release
+Type: filesandordirs; Name: "{app}\Microsoft.VC90.CRT"
+Type: filesandordirs; Name: "{app}\Microsoft.VC90.MFC"
+;; application sources
 Type: filesandordirs; Name: "{app}\Sources"
 
 [Types]
@@ -62,43 +67,41 @@ Name: "runtimes"; Description: "Application Runtimes"; Types: typical full custo
 Name: "sources"; Description: "Source Code"; Types: full custom
 
 [Files]
+;; core application files
 Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; Components: core; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Components: core; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 
-Source: "..\Redist\Microsoft.VC90.CRT\msvcr90.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
-Source: "..\Redist\Microsoft.VC90.CRT\msvcp90.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
-Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
+;; CRT redistributables
+Source: "..\Redist\Microsoft.VC90.CRT\msvcr90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.CRT\msvcp90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
-Source: "..\Redist\Microsoft.VC90.CRT\msvcr90.dll"; DestDir: "{app}\Microsoft.VC90.CRT"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.CRT\msvcp90.dll"; DestDir: "{app}\Microsoft.VC90.CRT"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}\Microsoft.VC90.CRT"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}\Microsoft.VC90.CRT"; Components: runtimes; MinVersion: 0,5.01.2600
+;; MFC library redistributables
+Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
-Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
-Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
+;; MFC library localizations
+Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90enu.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
-Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}\Microsoft.VC90.MFC"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}\Microsoft.VC90.MFC"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}\Microsoft.VC90.MFC"; Components: runtimes; MinVersion: 0,5.01.2600
-
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90enu.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}"; Components: runtimes; OnlyBelowVersion: 0,5.01.2600; Flags: ignoreversion
-
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90enu.dll"; DestDir: "{app}\Microsoft.VC90.MFC\Microsoft.VC90.MFCLOC"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}\Microsoft.VC90.MFC\Microsoft.VC90.MFCLOC"; Components: runtimes; MinVersion: 0,5.01.2600
-Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDir: "{app}\Microsoft.VC90.MFC\Microsoft.VC90.MFCLOC"; Components: runtimes; MinVersion: 0,5.01.2600
-
+;; AfxGadgets library sources
 Source: "..\..\Repository\AfxGadgets\AfxGadgets.2008.vcproj"; DestDir: "{app}\Sources\Repository\AfxGadgets"; Components: sources; Flags: ignoreversion
 Source: "..\..\Repository\AfxGadgets\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\Repository\AfxGadgets\Source"; Components: sources; Flags: ignoreversion
 
+;; CodeProject library sources
 Source: "..\..\Repository\CodeProject\CodeProject.2008.vcproj"; DestDir: "{app}\Sources\Repository\CodeProject"; Components: sources; Flags: ignoreversion
 Source: "..\..\Repository\CodeProject\Help\*"; Excludes: ".svn"; DestDir: "{app}\Sources\Repository\CodeProject\Help"; Components: sources; Flags: ignoreversion
 Source: "..\..\Repository\CodeProject\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\Repository\CodeProject\Source"; Components: sources; Flags: ignoreversion
 
+;; CRT/MFC redistributables
 Source: "..\Redist\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\Redist"; Components: sources; Flags: ignoreversion recursesubdirs
 
+;; AfxScratch application sources
 Source: "..\AfxScratch.2008.vcproj"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
 Source: "..\AfxScratch.2008.sln"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
 Source: "..\AfxScratch.2008.build"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
