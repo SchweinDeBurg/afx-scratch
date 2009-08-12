@@ -103,7 +103,7 @@ AfxScratch.2008.build - NAnt script to build release
 		<!-- manifest -->
 
 		<copy
-			file="Source\Manifest.xml.nant"
+			file="Templates\Manifest.xml"
 			tofile="Source\Manifest.xml"
 			overwrite="true">
 			<filterchain>
@@ -119,7 +119,7 @@ AfxScratch.2008.build - NAnt script to build release
 		<!-- VERSIONINFO -->
 
 		<copy
-			file="Source\VersionInfo.rc.nant"
+			file="Templates\VersionInfo.rc"
 			tofile="Source\VersionInfo.rc"
 			overwrite="true">
 			<filterchain>
@@ -139,7 +139,7 @@ AfxScratch.2008.build - NAnt script to build release
 		<!-- Inno Setup scripts -->
 
 		<copy
-			file="Source\Setup.iss.nant"
+			file="Templates\Setup.iss"
 			tofile="Source\Setup.iss"
 			overwrite="true">
 			<filterchain>
@@ -152,7 +152,7 @@ AfxScratch.2008.build - NAnt script to build release
 		</copy>
 		
 		<copy
-			file="Source\SetupUniversal.iss.nant"
+			file="Templates\SetupUniversal.iss"
 			tofile="Source\SetupUniversal.iss"
 			overwrite="true">
 			<filterchain>
