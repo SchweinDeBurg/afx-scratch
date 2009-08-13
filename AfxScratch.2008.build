@@ -296,6 +296,7 @@ AfxScratch.2008.build - NAnt script to build release
 		name="build-all"
 		description="Build entire AfxScratch project."
 		depends="build-sln,create-doc,create-distr,zip-distr">
+		<echo message="AfxScratch all built."/>
 	</target>
 
 	<!-- 'rebuild-all' target -->
@@ -304,6 +305,7 @@ AfxScratch.2008.build - NAnt script to build release
 		name="rebuild-all"
 		description="Rebuild entire AfxScratch project."
 		depends="rebuild-sln,create-doc,create-distr,zip-distr">
+		<echo message="AfxScratch all rebuilt."/>
 	</target>
 
 	<!-- 'clean-sln' target -->
