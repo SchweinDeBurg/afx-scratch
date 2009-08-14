@@ -109,6 +109,7 @@ Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScra
 Source: "..\HTML\*"; Excludes: ".svn, *.chm"; DestDir: "{app}\Sources\AfxScratch\HTML"; Components: sources; Flags: ignoreversion
 Source: "..\HTML\images\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\HTML\images"; Components: sources; Flags: ignoreversion
 Source: "..\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Source"; Components: sources; Flags: ignoreversion recursesubdirs
+Source: "..\Templates\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Templates"; Components: sources; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
