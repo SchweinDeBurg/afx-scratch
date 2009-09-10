@@ -26,6 +26,7 @@ AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppVersion=@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@
+AppCopyright=Copyright © 2004–2009 by Elijah Zarezky
 DefaultDirName={pf}\Elijah Zarezky\AfxScratch
 DefaultGroupName=Elijah Zarezky\AfxScratch
 AllowNoIcons=true
@@ -33,8 +34,10 @@ Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
 OutputBaseFilename=AfxScratch-@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@-setup
-VersionInfoVersion=@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@
-MinVersion=4.90.3000,5.0.2195
+VersionInfoVersion=@VER_MAJOR@.@VER_MINOR@.@VER_BUILD@.@SVN_REV@
+VersionInfoProductName=Power Gadgets
+VersionInfoProductVersion=@VER_MAJOR@.@VER_MINOR@
+MinVersion=0,5.0.2195
 WizardImageFile=compiler:WizModernImage-IS.bmp
 WizardSmallImageFile=compiler:WizModernSmallImage-IS.bmp
 LicenseFile=ApacheLicense.rtf
@@ -57,7 +60,7 @@ Type: filesandordirs; Name: "{app}\Microsoft.VC90.MFC"
 ;; core application files
 Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\AppData\*"; Excludes: ".svn"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
+Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion
 
 ;; CRT redistributables
