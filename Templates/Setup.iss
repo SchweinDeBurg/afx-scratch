@@ -55,10 +55,13 @@ Type: files; Name: "{app}\mfc71.dll"
 ;; from 1.1 pre-release
 Type: filesandordirs; Name: "{app}\Microsoft.VC90.CRT"
 Type: filesandordirs; Name: "{app}\Microsoft.VC90.MFC"
+;; from 1.1 non-Unicode pre-release
+Type: files; Name: "{app}\mfc90.dll"
+Type: files; Name: "{app}\mfcm90.dll"
 
 [Files]
 ;; core application files
-Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\Output.2008\x86\@BUILD_TYPE@\@CHARACTER_SET@\AfxScratch.exe"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion
@@ -70,8 +73,8 @@ Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}";
 Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
 ;; MFC library redistributables
-Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}";
-Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFC\mfc90u.dll"; DestDir: "{app}";
+Source: "..\Redist\Microsoft.VC90.MFC\mfcm90u.dll"; DestDir: "{app}";
 Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
 ;; MFC library localizations

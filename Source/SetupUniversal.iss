@@ -19,13 +19,13 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.4906
+AppVerName=AfxScratch 1.1.4908
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.4906
+AppVersion=1.1.4908
 AppCopyright=Copyright © 2004–2009 by Elijah Zarezky
 DefaultDirName={pf}\Elijah Zarezky\AfxScratch
 DefaultGroupName=Elijah Zarezky\AfxScratch
@@ -33,8 +33,8 @@ AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.4906-setup-universal
-VersionInfoVersion=1.1.4906.168
+OutputBaseFilename=AfxScratch-1.1.4908-setup-universal
+VersionInfoVersion=1.1.4908.170
 VersionInfoProductName=Power Gadgets
 VersionInfoProductVersion=1.1
 MinVersion=0,5.0.2195
@@ -55,6 +55,9 @@ Type: files; Name: "{app}\mfc71.dll"
 ;; from 1.1 pre-release
 Type: filesandordirs; Name: "{app}\Microsoft.VC90.CRT"
 Type: filesandordirs; Name: "{app}\Microsoft.VC90.MFC"
+;; from 1.1 non-Unicode pre-release
+Type: files; Name: "{app}\mfc90.dll"
+Type: files; Name: "{app}\mfcm90.dll"
 ;; application sources
 Type: filesandordirs; Name: "{app}\Sources"
 
@@ -71,7 +74,7 @@ Name: "sources"; Description: "Source Code"; Types: full custom
 
 [Files]
 ;; core application files
-Source: "..\Output.2008\x86\Release\MBCS\AfxScratch.exe"; Components: core; DestDir: "{app}"
+Source: "..\Output.2008\x86\Release\Unicode\AfxScratch.exe"; Components: core; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Components: core; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Components: core; Flags: ignoreversion
@@ -83,8 +86,8 @@ Source: "..\Redist\Microsoft.VC90.CRT\msvcm90.dll"; DestDir: "{app}"; Components
 Source: "..\Redist\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest"; DestDir: "{app}"; Components: runtimes; MinVersion: 0,5.01.2600
 
 ;; MFC library redistributables
-Source: "..\Redist\Microsoft.VC90.MFC\mfc90.dll"; DestDir: "{app}"; Components: runtimes
-Source: "..\Redist\Microsoft.VC90.MFC\mfcm90.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFC\mfc90u.dll"; DestDir: "{app}"; Components: runtimes
+Source: "..\Redist\Microsoft.VC90.MFC\mfcm90u.dll"; DestDir: "{app}"; Components: runtimes
 Source: "..\Redist\Microsoft.VC90.MFC\Microsoft.VC90.MFC.manifest"; DestDir: "{app}"; Components: runtimes; MinVersion: 0,5.01.2600
 
 ;; MFC library localizations
