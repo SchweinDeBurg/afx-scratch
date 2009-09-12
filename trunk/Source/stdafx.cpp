@@ -50,7 +50,7 @@ static char THIS_FILE[] = __FILE__;
 // entry-point symbol for the Unicode builds
 
 #if defined(UNICODE) || defined(_UNICODE)
-#pragma comment(linker, "/entry:wmainCRTStartup")
+#pragma comment(linker, "/entry:wWinMainCRTStartup")
 #endif	// UNICODE
 
 //////////////////////////////////////////////////////////////////////////////////////////////

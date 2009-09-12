@@ -80,6 +80,8 @@ __declspec(selectany) int _forceMFCManifestCUR;
 #define _ATL_CSTRING_EXPLICIT_CONSTRUCTORS
 #endif   // _MSC_VER
 
+#define RPC_USE_NATIVE_WCHAR
+
 #include <afxwin.h>        // MFC core and standard components
 #include <afxcmn.h>        // MFC common control classes
 #include <afxtempl.h>      // MFC collection template classes
@@ -138,6 +140,10 @@ __declspec(selectany) int _forceMFCManifestCUR;
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
 #include "../../Repository/CodeProject/Source/ETSLayout.h"
 #include "../../Repository/CodeProject/Source/memdc.h"
+
+#if defined(UNICODE) || defined(_UNICODE)
+#include "../../Repository/CodeProject/Source/textfile.h"
+#endif	// UNICODE
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // some tricks

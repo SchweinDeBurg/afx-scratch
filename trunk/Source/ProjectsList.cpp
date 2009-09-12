@@ -157,7 +157,16 @@ void CProjectsList::InitContent(LPCTSTR pszAppData)
 		if (!finder.IsDots() && !finder.IsDirectory())
 		{
 			CString strFilePath = finder.GetFilePath();
+#if defined(UNICODE) || defined(_UNICODE)
+			CTextFileRead fileConfig(strFilePath);
+			CString strXML;
+			fileConfig.Read(strXML);
+			ATL::CAutoVectorPtr<TCHAR> ptrBuffer(new TCHAR[strXML.GetLength() + 1]);
+			_tcscpy(ptrBuffer, strXML);
+			if (pParser->Parse(ptrBuffer))
+#else
 			if (pParser->ParseFile(strFilePath))
+#endif	// UNICODE
 			{
 				PROJECT_DATA* pData = new PROJECT_DATA;
 				memset(pData, 0, sizeof(*pData));

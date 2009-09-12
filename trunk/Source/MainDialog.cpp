@@ -384,7 +384,16 @@ void CMainDialog::OnButtonSave(void)
 		PROJECT_DATA* pPrjData = reinterpret_cast<PROJECT_DATA*>(m_listProjects.GetItemData(iItem));
 		ASSERT(pPrjData != NULL);
 		CPugXmlParser* pParser = new CPugXmlParser();
+#if defined(UNICODE) || defined(_UNICODE)
+		CTextFileRead fileConfig(pPrjData->szConfigFile);
+		CString strXML;
+		fileConfig.Read(strXML);
+		ATL::CAutoVectorPtr<TCHAR> ptrBuffer(new TCHAR[strXML.GetLength() + 1]);
+		_tcscpy(ptrBuffer, strXML);
+		if (pParser->Parse(ptrBuffer))
+#else
 		if (pParser->ParseFile(pPrjData->szConfigFile))
+#endif	// UNICODE
 		{
 			CPugXmlBranch branchRoot = pParser->GetRoot();
 			ASSERT(!branchRoot.IsNull());
@@ -594,6 +603,15 @@ void CMainDialog::GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& b
 		// text file - perform macro substitution
 		try
 		{
+#if defined(UNICODE) || defined(_UNICODE)
+			CTextFileWrite fileDest(strDestName, CTextFileBase::ASCII);
+			CTextFileRead fileSrc(strSrcName);
+			while (fileSrc.ReadLine(strLine))
+			{
+				SubstituteMacros(strLine);
+				fileDest.Write(strLine + _T("\r\n"));
+			}
+#else
 			CStdioFile fileDest(strDestName, CFile::modeCreate | CFile::modeWrite | CFile::typeText);
 			CStdioFile fileSrc(strSrcName, CFile::modeRead | CFile::typeText);
 			while (fileSrc.ReadString(strLine))
@@ -601,6 +619,7 @@ void CMainDialog::GenerateFile(LPCTSTR pszDest, LPCTSTR pszSrc, CPugXmlBranch& b
 				SubstituteMacros(strLine);
 				fileDest.WriteString(strLine + _T('\n'));
 			}
+#endif	// UNICODE
 		}
 		catch (CFileException* pXcpt)
 		{
@@ -631,7 +650,16 @@ BOOL CMainDialog::GenerateProject(PROJECT_DATA* pData)
 	// create the XML parser
 	CPugXmlParser* pParser = new CPugXmlParser();
 
+#if defined(UNICODE) || defined(_UNICODE)
+	CTextFileRead fileConfig(pData->szConfigFile);
+	CString strXML;
+	fileConfig.Read(strXML);
+	ATL::CAutoVectorPtr<TCHAR> ptrBuffer(new TCHAR[strXML.GetLength() + 1]);
+	_tcscpy(ptrBuffer, strXML);
+	if (pParser->Parse(ptrBuffer))
+#else
 	if (pParser->ParseFile(pData->szConfigFile))
+#endif	// UNICODE
 	{
 		// prepare the macros "dictionary"
 		if (CreateMacrosDict())

@@ -111,7 +111,11 @@ void CMacroValueDialog::DoDataExchange(CDataExchange* pDX)
 
 void CMacroValueDialog::OnChangeEditValue(void)
 {
+#if defined(UNICODE) || defined(_UNICODE)
+	wchar_t szTemp[MACRO_DATA::MAX_VALUE];
+#else
 	unsigned char szTemp[MACRO_DATA::MAX_VALUE];
+#endif   // UNICODE
 	UUID uuid;
 	CString strNumber;
 	TCHAR* pchrStop;
