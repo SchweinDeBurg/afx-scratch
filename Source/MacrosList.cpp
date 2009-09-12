@@ -145,7 +145,16 @@ void CMacrosList::InitContent(LPCTSTR pszConfigFile)
 	// create the XML parser
 	CPugXmlParser* pParser = new CPugXmlParser();
 
+#if defined(UNICODE) || defined(_UNICODE)
+	CTextFileRead fileConfig(pszConfigFile);
+	CString strXML;
+	fileConfig.Read(strXML);
+	ATL::CAutoVectorPtr<TCHAR> ptrBuffer(new TCHAR[strXML.GetLength() + 1]);
+	_tcscpy(ptrBuffer, strXML);
+	if (pParser->Parse(ptrBuffer))
+#else
 	if (pParser->ParseFile(pszConfigFile))
+#endif	// UNICODE
 	{
 		CPugXmlBranch branchRoot = pParser->GetRoot();
 		ASSERT(!branchRoot.IsNull());
@@ -297,7 +306,11 @@ void CMacrosList::OnGetDispInfo(NMHDR* pHdr, LRESULT* /*pnResult*/)
 BOOL CMacrosList::IsMacroValueExists(MACRO_DATA* pData)
 {
 	TCHAR* pchrStop;
+#if defined(UNICODE) || defined(_UNICODE)
+	wchar_t szTemp[MACRO_DATA::MAX_VALUE];
+#else
 	unsigned char szTemp[MACRO_DATA::MAX_VALUE];
+#endif   // UNICODE
 	UUID uuid;
 
 	// precondition
@@ -430,11 +443,15 @@ void CMacrosList::Suggest_VERBUILD(LPTSTR pszDest)
 void CMacrosList::Suggest_UUID(LPTSTR pszDest)
 {
 	UUID uuid;
-	unsigned char* pszTemp;
+#if defined(UNICODE) || defined(_UNICODE)
+	RPC_WSTR pszTemp;
+#else
+	RPC_CSTR pszTemp;
+#endif   // UNICODE
 
 	::CoCreateGuid(&uuid);
 	::UuidToString(&uuid, &pszTemp);
-	_tcscpy(pszDest, _A2T(reinterpret_cast<char*>(pszTemp)));
+	_tcscpy(pszDest, reinterpret_cast<LPTSTR>(pszTemp));
 	::CharUpper(pszDest);
 	::RpcStringFree(&pszTemp);
 }
