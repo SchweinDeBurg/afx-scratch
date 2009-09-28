@@ -453,7 +453,7 @@ void CMainDialog::OnButtonBrowse(void)
 	CString strPrompt;
 
 	strPrompt.LoadString(IDS_LOCATION_PROMPT);
-	CFolderDialog dlgFolder(strPrompt, m_strLocation, this, BIF_NEWDIALOGSTYLE);
+	CFolderDialog dlgFolder(strPrompt, m_strLocation, this, BIF_NEWDIALOGSTYLE | BIF_RETURNONLYFSDIRS);
 	if (dlgFolder.DoModal() == IDOK)
 	{
 		m_strLocation = dlgFolder.GetFolderPath();

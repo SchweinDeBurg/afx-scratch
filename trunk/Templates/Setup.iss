@@ -62,6 +62,7 @@ Type: files; Name: "{app}\mfcm90.dll"
 [Files]
 ;; core application files
 Source: "..\Output.2008\x86\@BUILD_TYPE@\@CHARACTER_SET@\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\Detours\Bin\detoured.dll"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion

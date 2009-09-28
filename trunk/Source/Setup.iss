@@ -19,13 +19,13 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.4908
+AppVerName=AfxScratch 1.1.4924
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.4908
+AppVersion=1.1.4924
 AppCopyright=Copyright © 2004–2009 by Elijah Zarezky
 DefaultDirName={pf}\Elijah Zarezky\AfxScratch
 DefaultGroupName=Elijah Zarezky\AfxScratch
@@ -33,8 +33,8 @@ AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.4908-setup
-VersionInfoVersion=1.1.4908.170
+OutputBaseFilename=AfxScratch-1.1.4924-setup
+VersionInfoVersion=1.1.4924.170
 VersionInfoProductName=Power Gadgets
 VersionInfoProductVersion=1.1
 MinVersion=0,5.0.2195
@@ -62,6 +62,7 @@ Type: files; Name: "{app}\mfcm90.dll"
 [Files]
 ;; core application files
 Source: "..\Output.2008\x86\Release\Unicode\AfxScratch.exe"; DestDir: "{app}"
+Source: "..\Detours\Bin\detoured.dll"; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Flags: ignoreversion
