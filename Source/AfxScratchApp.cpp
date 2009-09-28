@@ -69,10 +69,33 @@ END_MESSAGE_MAP()
 CAfxScratchApp::CAfxScratchApp(void):
 m_hMutexAppInst(NULL)
 {
+	// TortoiseSVN
+	m_mapCatchpit.SetAt(_T("tortoiseoverlays.dll"), true);
+	m_mapCatchpit.SetAt(_T("tortoisestub.dll"), true);
+	m_mapCatchpit.SetAt(_T("tortoisesvn.dll"), true);
+
+	// Nokia PC Suite
+	m_mapCatchpit.SetAt(_T("phonebrowser.dll"), true);
+
+	Detoured();
+
+	(PVOID&)m_pfnLoadLibrary = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibrary));
+	(PVOID&)m_pfnLoadLibraryEx = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibraryEx));
+	
+	DetourTransactionBegin();
+	DetourUpdateThread(::GetCurrentThread());
+	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary), &CAfxScratchApp::LoadLibrary);
+	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx), &CAfxScratchApp::LoadLibraryEx);
+	DetourTransactionCommit();
 }
 
 CAfxScratchApp::~CAfxScratchApp(void)
 {
+	DetourTransactionBegin();
+	DetourUpdateThread(::GetCurrentThread());
+	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary),  &CAfxScratchApp::LoadLibrary);
+	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx),  &CAfxScratchApp::LoadLibraryEx);
+	DetourTransactionCommit();
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
@@ -153,6 +176,54 @@ BOOL CAfxScratchApp::InitInstance(void)
 int CAfxScratchApp::ExitInstance(void)
 {
 	return (__super::ExitInstance());
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// implementation helpers
+
+CAfxScratchApp::PFN_LOAD_LIBRARY CAfxScratchApp::m_pfnLoadLibrary(NULL);
+CAfxScratchApp::PFN_LOAD_LIBRARY_EX CAfxScratchApp::m_pfnLoadLibraryEx(NULL);
+
+HMODULE WINAPI CAfxScratchApp::LoadLibrary(LPCTSTR pszFileName)
+{
+	TRACE(_T("*** CAfxScratchApp::LoadLibrary(%s)\n"), pszFileName);
+
+	CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
+	ASSERT(pApp != NULL);
+
+	CString strFileNameLower(::PathFindFileName(pszFileName));
+	strFileNameLower.MakeLower();
+
+	bool fCatch = false;
+	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch))
+	{
+		::SetLastError(ERROR_FILE_NOT_FOUND);
+		return (NULL);
+	}
+	else {
+		return (m_pfnLoadLibrary(pszFileName));
+	}
+}
+
+HMODULE WINAPI CAfxScratchApp::LoadLibraryEx(LPCTSTR pszFileName, HANDLE hFile, DWORD fdwFlags)
+{
+	TRACE(_T("*** CAfxScratchApp::LoadLibraryEx(%s, 0x%08X, 0x%08X)\n"), pszFileName, hFile, fdwFlags);
+
+	CAfxScratchApp* pApp = DYNAMIC_DOWNCAST(CAfxScratchApp, AfxGetApp());
+	ASSERT(pApp != NULL);
+
+	CString strFileNameLower(::PathFindFileName(pszFileName));
+	strFileNameLower.MakeLower();
+
+	bool fCatch = false;
+	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch))
+	{
+		::SetLastError(ERROR_FILE_NOT_FOUND);
+		return (NULL);
+	}
+	else {
+		return (m_pfnLoadLibraryEx(pszFileName, hFile, fdwFlags));
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////

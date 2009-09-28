@@ -75,6 +75,7 @@ Name: "sources"; Description: "Source Code"; Types: full custom
 [Files]
 ;; core application files
 Source: "..\Output.2008\x86\@BUILD_TYPE@\@CHARACTER_SET@\AfxScratch.exe"; Components: core; DestDir: "{app}"
+Source: "..\Detours\Bin\detoured.dll"; Components: core; DestDir: "{app}"
 Source: "..\HTML\AfxScratch.chm"; DestDir: "{app}"; Components: core; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{commonappdata}\Elijah Zarezky\AfxScratch"; Components: core; Flags: ignoreversion recursesubdirs
 Source: ".\ApacheLicense.rtf"; DestDir: "{app}"; Components: core; Flags: ignoreversion
@@ -116,6 +117,7 @@ Source: "..\HTML\*"; Excludes: ".svn, *.chm"; DestDir: "{app}\Sources\AfxScratch
 Source: "..\HTML\images\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\HTML\images"; Components: sources; Flags: ignoreversion
 Source: "..\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Source"; Components: sources; Flags: ignoreversion recursesubdirs
 Source: "..\Templates\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Templates"; Components: sources; Flags: ignoreversion recursesubdirs
+Source: "..\Detours\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Detours"; Components: sources; Flags: ignoreversion recursesubdirs
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
