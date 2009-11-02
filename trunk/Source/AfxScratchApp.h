@@ -50,6 +50,7 @@ public:
 
 // implementation helpers
 private:
+#if defined(AFXSCRATCH_DETOURED)
 	// LoadLibrary[A/W] catcher
 	typedef HMODULE(WINAPI* PFN_LOAD_LIBRARY)(LPCTSTR);
 	static PFN_LOAD_LIBRARY m_pfnLoadLibrary;
@@ -59,7 +60,9 @@ private:
 	static PFN_LOAD_LIBRARY_EX m_pfnLoadLibraryEx;
 	static HMODULE WINAPI LoadLibraryEx(LPCTSTR pszFileName, HANDLE hFile, DWORD fdwFlags);
 	// catched DLLs
-	CMap<CString, LPCTSTR, bool, bool> m_mapCatchpit;
+	CMap<CString, LPCTSTR, DWORD, DWORD> m_mapCatchpit;
+	INT_PTR RegQueryCatchpit(void);
+#endif   // AFXSCRATCH_DETOURED
 
 // diagnostic services
 #if defined(_DEBUG)

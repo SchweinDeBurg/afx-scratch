@@ -148,6 +148,8 @@ __declspec(selectany) int _forceMFCManifestCUR;
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Detours headers
 
+#define AFXSCRATCH_DETOURED
+
 #include "../Detours/Include/detours.h"
 #include "../Detours/Include/detoured.h"
 
