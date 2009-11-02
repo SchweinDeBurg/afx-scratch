@@ -69,13 +69,8 @@ END_MESSAGE_MAP()
 CAfxScratchApp::CAfxScratchApp(void):
 m_hMutexAppInst(NULL)
 {
-	// TortoiseSVN
-	m_mapCatchpit.SetAt(_T("tortoiseoverlays.dll"), true);
-	m_mapCatchpit.SetAt(_T("tortoisestub.dll"), true);
-	m_mapCatchpit.SetAt(_T("tortoisesvn.dll"), true);
-
-	// Nokia PC Suite
-	m_mapCatchpit.SetAt(_T("phonebrowser.dll"), true);
+#if defined(AFXSCRATCH_DETOURED)
+	RegQueryCatchpit();
 
 	Detoured();
 
@@ -87,6 +82,7 @@ m_hMutexAppInst(NULL)
 	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary), &CAfxScratchApp::LoadLibrary);
 	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx), &CAfxScratchApp::LoadLibraryEx);
 	DetourTransactionCommit();
+#endif   // AFXSCRATCH_DETOURED
 }
 
 CAfxScratchApp::~CAfxScratchApp(void)
@@ -181,6 +177,8 @@ int CAfxScratchApp::ExitInstance(void)
 //////////////////////////////////////////////////////////////////////////////////////////////
 // implementation helpers
 
+#if defined(AFXSCRATCH_DETOURED)
+
 CAfxScratchApp::PFN_LOAD_LIBRARY CAfxScratchApp::m_pfnLoadLibrary(NULL);
 CAfxScratchApp::PFN_LOAD_LIBRARY_EX CAfxScratchApp::m_pfnLoadLibraryEx(NULL);
 
@@ -194,8 +192,8 @@ HMODULE WINAPI CAfxScratchApp::LoadLibrary(LPCTSTR pszFileName)
 	CString strFileNameLower(::PathFindFileName(pszFileName));
 	strFileNameLower.MakeLower();
 
-	bool fCatch = false;
-	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch))
+	DWORD fCatch = FALSE;
+	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch) && fCatch != 0)
 	{
 		::SetLastError(ERROR_FILE_NOT_FOUND);
 		return (NULL);
@@ -215,8 +213,8 @@ HMODULE WINAPI CAfxScratchApp::LoadLibraryEx(LPCTSTR pszFileName, HANDLE hFile, 
 	CString strFileNameLower(::PathFindFileName(pszFileName));
 	strFileNameLower.MakeLower();
 
-	bool fCatch = false;
-	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch))
+	DWORD fCatch = FALSE;
+	if (pApp->m_mapCatchpit.Lookup(strFileNameLower, fCatch) && fCatch != 0)
 	{
 		::SetLastError(ERROR_FILE_NOT_FOUND);
 		return (NULL);
@@ -225,6 +223,48 @@ HMODULE WINAPI CAfxScratchApp::LoadLibraryEx(LPCTSTR pszFileName, HANDLE hFile, 
 		return (m_pfnLoadLibraryEx(pszFileName, hFile, fdwFlags));
 	}
 }
+
+INT_PTR CAfxScratchApp::RegQueryCatchpit(void)
+{
+	CString strKeyName;
+	CRegKey regKey;
+
+	m_mapCatchpit.RemoveAll();
+
+	// build the name of the registry key...
+	::LoadString(::GetModuleHandle(NULL), IDS_REGISTRY_KEY, strKeyName.GetBuffer(_MAX_PATH), _MAX_PATH);
+	strKeyName.ReleaseBuffer();
+	strKeyName.Insert(0, _T("Software\\"));
+	strKeyName += _T("\\AfxScratch\\Catchpit");
+
+	// ...and then open this key
+	regKey.Create(HKEY_CURRENT_USER, strKeyName);
+	
+	DWORD cNumValues = 0;
+	if (::RegQueryInfoKey(regKey, 0, 0, 0, 0, 0, 0, &cNumValues, 0, 0, 0, 0) == ERROR_SUCCESS)
+	{
+		for (DWORD i = 0; i < cNumValues; ++i)
+		{
+			TCHAR szValueName[_MAX_PATH] = { 0 };
+			DWORD cchNameLen = _countof(szValueName);
+			DWORD fdwValueType = REG_NONE;
+			if (::RegEnumValue(regKey, i, szValueName, &cchNameLen, 0, &fdwValueType, 0, 0) == ERROR_SUCCESS)
+			{
+				if (fdwValueType == REG_DWORD)
+				{
+					DWORD fCatch = FALSE;
+					regKey.QueryDWORDValue(szValueName, fCatch);
+					_tcslwr_s(szValueName, cchNameLen + 1);
+					m_mapCatchpit.SetAt(szValueName, fCatch);
+				}
+			}
+		}
+	}
+
+	return (m_mapCatchpit.GetCount());
+}
+
+#endif   // AFXSCRATCH_DETOURED
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // diagnostic services
