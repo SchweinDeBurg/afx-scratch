@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2009 by Elijah Zarezky,
+// Copyright (c) 2004-2010 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -41,8 +41,10 @@ static char THIS_FILE[] = __FILE__;
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Detours libraries
 
+#if defined(AFXSCRATCH_DETOURED)
 #pragma comment(lib, "detours.lib")
 #pragma comment(lib, "detoured.lib")
+#endif   // AFXSCRATCH_DETOURED
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // linker options
