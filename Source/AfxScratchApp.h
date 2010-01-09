@@ -62,6 +62,7 @@ private:
 	// catched DLLs
 	CMap<CString, LPCTSTR, DWORD, DWORD> m_mapCatchpit;
 	INT_PTR RegQueryCatchpit(void);
+	bool IsCatchpitEmpty(void) const;
 #endif   // AFXSCRATCH_DETOURED
 
 // diagnostic services
@@ -71,6 +72,14 @@ public:
 	virtual void Dump(CDumpContext& dumpCtx) const;
 #endif
 };
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// inlines
+
+inline bool CAfxScratchApp::IsCatchpitEmpty(void) const
+{
+	return (m_mapCatchpit.GetCount() == 0);
+}
 
 #endif   // __AfxScratchApp_h
 
