@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2009 by Elijah Zarezky,
+// Copyright (c) 2004-2010 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -87,11 +87,13 @@ m_hMutexAppInst(NULL)
 
 CAfxScratchApp::~CAfxScratchApp(void)
 {
+#if defined(AFXSCRATCH_DETOURED)
 	DetourTransactionBegin();
 	DetourUpdateThread(::GetCurrentThread());
 	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary),  &CAfxScratchApp::LoadLibrary);
 	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx),  &CAfxScratchApp::LoadLibraryEx);
 	DetourTransactionCommit();
+#endif   // AFXSCRATCH_DETOURED
 }
 
 //////////////////////////////////////////////////////////////////////////////////////////////
