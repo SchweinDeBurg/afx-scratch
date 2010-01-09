@@ -70,29 +70,33 @@ CAfxScratchApp::CAfxScratchApp(void):
 m_hMutexAppInst(NULL)
 {
 #if defined(AFXSCRATCH_DETOURED)
-	RegQueryCatchpit();
+	if (RegQueryCatchpit() > 0)
+	{
+		Detoured();
 
-	Detoured();
-
-	(PVOID&)m_pfnLoadLibrary = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibrary));
-	(PVOID&)m_pfnLoadLibraryEx = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibraryEx));
-	
-	DetourTransactionBegin();
-	DetourUpdateThread(::GetCurrentThread());
-	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary), &CAfxScratchApp::LoadLibrary);
-	DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx), &CAfxScratchApp::LoadLibraryEx);
-	DetourTransactionCommit();
+		(PVOID&)m_pfnLoadLibrary = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibrary));
+		(PVOID&)m_pfnLoadLibraryEx = ::DetourFindFunction("kernel32.dll", STRINGIZE(LoadLibraryEx));
+		
+		DetourTransactionBegin();
+		DetourUpdateThread(::GetCurrentThread());
+		DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary), &CAfxScratchApp::LoadLibrary);
+		DetourAttach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx), &CAfxScratchApp::LoadLibraryEx);
+		DetourTransactionCommit();
+	}
 #endif   // AFXSCRATCH_DETOURED
 }
 
 CAfxScratchApp::~CAfxScratchApp(void)
 {
 #if defined(AFXSCRATCH_DETOURED)
-	DetourTransactionBegin();
-	DetourUpdateThread(::GetCurrentThread());
-	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary),  &CAfxScratchApp::LoadLibrary);
-	DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx),  &CAfxScratchApp::LoadLibraryEx);
-	DetourTransactionCommit();
+	if (!IsCatchpitEmpty())
+	{
+		DetourTransactionBegin();
+		DetourUpdateThread(::GetCurrentThread());
+		DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibrary),  &CAfxScratchApp::LoadLibrary);
+		DetourDetach(reinterpret_cast<PVOID*>(&m_pfnLoadLibraryEx),  &CAfxScratchApp::LoadLibraryEx);
+		DetourTransactionCommit();
+	}
 #endif   // AFXSCRATCH_DETOURED
 }
 
