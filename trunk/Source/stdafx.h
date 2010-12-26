@@ -140,7 +140,7 @@ __declspec(selectany) int _forceMFCManifestCUR;
 #include "../../Repository/AfxGadgets/Source/PugXMLplus.h"
 #include "../../Repository/CodeProject/Source/FolderDlg.h"
 #include "../../Repository/CodeProject/Source/ETSLayout.h"
-#include "../../Repository/CodeProject/Source/memdc.h"
+#include "../../Repository/CodeProject/Source/MemDC.h"
 
 #if defined(UNICODE) || defined(_UNICODE)
 #include "../../Repository/CodeProject/Source/textfile.h"
