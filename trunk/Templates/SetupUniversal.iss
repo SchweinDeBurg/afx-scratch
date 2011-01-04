@@ -139,6 +139,29 @@ begin
 	end;
 end;
 
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+var
+	AppDataDir: String;
+	BackupDir: String;
+begin
+	AppDataDir := ExpandConstant('{commonappdata}\Elijah Zarezky\AfxScratch');
+	if (DirExists(AppDataDir)) then
+	begin
+		BackupDir := AppDataDir + GetDateTimeString('.yyyy/mm/dd.hh:nn:ss', '-', '-');
+		if (RenameFile(AppDataDir, BackupDir)) then
+		begin
+			Result := '';
+		end
+		else begin
+			Result := 'Unable to create backup copy of the application data.'
+		end;
+	end
+	else begin
+		Result := '';
+	end;
+	NeedsRestart := False;
+end;
+
 [InstallDelete]
 ;; from 1.0 release
 Type: files; Name: "{app}\msvcr71.dll"

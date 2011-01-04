@@ -19,13 +19,13 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.5161
+AppVerName=AfxScratch 1.1.5668
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.5161
+AppVersion=1.1.5668
 AppCopyright=Copyright © 2004–2011 by Elijah Zarezky
 DefaultDirName={pf}\Elijah Zarezky\AfxScratch
 DefaultGroupName=Elijah Zarezky\AfxScratch
@@ -33,8 +33,8 @@ AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.5161-setup-universal
-VersionInfoVersion=1.1.5161.177
+OutputBaseFilename=AfxScratch-1.1.5668-setup-universal
+VersionInfoVersion=1.1.5668.183
 VersionInfoProductName=Power Gadgets
 VersionInfoProductVersion=1.1
 MinVersion=0,5.0.2195
@@ -137,6 +137,29 @@ begin
 			SaveStringToFile(AfxConfigPath, StringToAnsiString(WideXML, CP_ACP), False);
 		end;
 	end;
+end;
+
+function PrepareToInstall(var NeedsRestart: Boolean): String;
+var
+	AppDataDir: String;
+	BackupDir: String;
+begin
+	AppDataDir := ExpandConstant('{commonappdata}\Elijah Zarezky\AfxScratch');
+	if (DirExists(AppDataDir)) then
+	begin
+		BackupDir := AppDataDir + GetDateTimeString('.yyyy/mm/dd.hh:nn:ss', '-', '-');
+		if (RenameFile(AppDataDir, BackupDir)) then
+		begin
+			Result := '';
+		end
+		else begin
+			Result := 'Unable to create backup copy of the application data.'
+		end;
+	end
+	else begin
+		Result := '';
+	end;
+	NeedsRestart := False;
 end;
 
 [InstallDelete]
