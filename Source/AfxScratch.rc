@@ -95,18 +95,18 @@ BEGIN
     PUSHBUTTON      "Exit",IDC_BUTTON_EXIT,322,226,44,16
 END
 
-IDD_ABOUT DIALOGEX 0, 0, 174, 134
+IDD_ABOUT DIALOGEX 0, 0, 178, 134
 STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "About"
 FONT 8, "MS Shell Dlg 2", 0, 0, 0x0
 BEGIN
     ICON            IDI_APP_ICON,IDC_STATIC,4,4,20,20
     LTEXT           "",IDC_STATIC_TITLE,32,4,138,10
-    LTEXT           "Copyright © 2004–2010 Elijah Zarezky\nAll rights reserved",IDC_STATIC,32,16,138,18
-    DEFPUSHBUTTON   "Close",IDOK,124,112,44,16
-    LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",IDC_STATIC,32,46,138,18
-    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",IDC_STATIC,32,66,138,16
-    LTEXT           "Portions of ResizableLib\nCopyright © 2000-2004 by Paolo Messina",IDC_STATIC,32,86,138,16
+    LTEXT           "Copyright © 2004–2011 by Elijah Zarezky\nAll rights reserved",IDC_STATIC,32,16,142,18
+    LTEXT           "Pugnacious XML parser\nCopyright © 2003 by Kristen Wegner",IDC_STATIC,32,46,142,18
+    LTEXT           "ETS Layout Manager\nCopyright © 1998-2000 by Erwin Tratar",IDC_STATIC,32,66,142,16
+    LTEXT           "Portions of ResizableLib\nCopyright © 2000-2004 by Paolo Messina",IDC_STATIC,32,86,142,16
+    DEFPUSHBUTTON   "Close",IDOK,128,112,44,16
 END
 
 IDD_MACRO_VALUE DIALOG  0, 0, 186, 66

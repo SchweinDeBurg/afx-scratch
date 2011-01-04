@@ -1,5 +1,5 @@
 // AfxScratch application.
-// Copyright (c) 2004-2010 by Elijah Zarezky,
+// Copyright (c) 2004-2011 by Elijah Zarezky,
 // All rights reserved.
 
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -143,7 +143,7 @@ __declspec(selectany) int _forceMFCManifestCUR;
 #include "../../Repository/CodeProject/Source/MemDC.h"
 
 #if defined(UNICODE) || defined(_UNICODE)
-#include "../../Repository/CodeProject/Source/textfile.h"
+#include "../../Repository/CodeProject/Source/TextFileDocument.h"
 #endif	// UNICODE
 
 //////////////////////////////////////////////////////////////////////////////////////////////
