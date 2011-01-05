@@ -1,0 +1,378 @@
+<!doctype html public "-//w3c//dtd html 4.01 transitional//en">
+
+<html>
+
+<!-- page header -->
+
+<head>
+
+<meta name="autor" content="Elijah Zarezky">
+<meta name="description" content="AfxScratch project">
+<meta http-equiv="Content-Type" content="text/html; charset=Windows-1251">
+<meta http-equiv="Content-Language" content="ru">
+<meta http-equiv="Content-Script-Type" content="text/javascript">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="StyleSheet" type="text/css" href="./styles.css">
+
+<title>AfxScratch</title>
+
+</head>
+
+<!-- page body -->
+
+<body>
+
+<!--<table width=100% border=1 cellspacing=0 class="pageCaption">
+<tr><td height=37 class="pageCaption">AfxScratch</td></tr>
+</table>-->
+
+<h1 class="pageSection">Описание</h1>
+
+<p class="pageText">
+<img src="./images/main_window.png" width=446 height=257 align="left" border=0
+class="afxScratchShot"><strong>AfxScratch</strong> представляет собой приложение,
+предназначенное для генерации проектов в формате Microsoft Visual C++ версий 6.0,
+.NET (7.0), .NET 2003 (7.1), 2005 (8.0) и 2008 (9.0) на основании заранее подготовленных
+шаблонов.<br>
+Порядок использования приложения состоит в следующем. В первую очередь, необходимо
+выделить в списке <span class="winText">Projects</span> шаблон, на основе которого будет
+формироваться проект. Список <span class="winText">Macros</span> при этом будет
+отображать все макросы, использующиеся в данном шаблоне. Для назначения или изменения
+значения макроса нужно выделить соответствующую ему строку и нажать на кнопку
+<span class="winText">Change value&#8230;</span> (можно также выполнить двойной щелчок
+левой кнопкой мышки по требуемой строке). И наконец, в поле
+<span class="winText">Location</span> можно указать, где именно следует создать папку со
+сгенерированным проектом (ее имя определяется значением макроса
+<strong>$PROJECT$</strong>, а при его отсутствии &mdash; именем исходного шаблона). Ввод
+значения в это поле осуществляется с помощью кнопки
+<img src="./images/browse_button.gif" width=12 height=11 border=0>, расположенной справа
+от него. После этого остается только нажать на кнопку
+<span class="winText">Generate</span> для создания проекта; статусная панель слева от
+нее будет отображать процесс записи файлов.<br>
+Кнопка <span class="winText">Save as default</span> позволяет сохранить текущие значения
+макросов в качестве значений по умолчанию для выделенного шаблона; нажатие на кнопку
+<span class="winText">Restore defaults</span> присваивает всем макросам значения по
+умолчанию в соответствии с определениями в конфигурационном скрипте шаблона.
+<br clear="left"></p>
+
+<p class="pageText">
+<strong>Системные требования:</strong>
+</p>
+
+<ul style="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
+<li>Windows 2000/XP/2003/Vista/7;</li>
+<li>некоторое количество свободной памяти.</li>
+</ul>
+
+<p class="pageText">
+<strong>Планы на будущее:</strong>
+</p>
+
+<ul style="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
+<li>больше шаблонов, хороших и разных;</li>
+<li>сохранение размеров колонок в списках проектов и макросов.</li>
+</ul>
+
+<h1 class="pageSection">История версий</h1>
+
+<dl class="versionHistory">
+
+<dt><strong>1.1.5669</strong>&nbsp;<span class="versionDate">(05.01.2011)</span></dt>
+<dd>Расширена структура конфигурационных файлов, описывающих шаблоны проектов.
+Добавлены шаблоны проектов для Visual Studio версий .NET 2003 (7.1) и 2008 (9.0);
+общее количество шаблонов теперь составляет 31 против 16 в предыдущей версии. При
+установке &#8222;поверх&#8220; создается резервная копия текущих шаблонов в отдельной
+папке с именем вида <span class="winText">AfxScratch.&#x200B;гггг-мм-дд.&#x200B;чч-мм-сс</span>,
+формируемым на основе текущих даты и времени. Разработка проекта &#8222;переведена&#8220;
+под MS Visual C++ 2008 SP1; <font color="#C00000">начиная с этой версии, совместимость
+исходного кода с компилятором Visual C++ 7.1 SP1 не гарантируется</font>. Для сборки
+этой версии из исходных текстов необходимо использовать проект
+<a href="http://zarezky.spb.ru/projects/repository.html">Repository</a> ревизии 711
+или выше.</dd>
+
+<dt><strong>1.0.3839</strong>&nbsp;<span class="versionDate">(31.07.2007)</span></dt>
+<dd>К приложению и его исходному коду добавлено лицензионное соглашение &mdash;
+<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+Шаблоны проектов переименованы в более &#8222;осмысленный&#8220; вид, поэтому
+<font color="#C00000">перед установкой данной версии настоятельно рекомендуется удалить
+предыдущую</font>. Разработка проекта &#8222;переведена&#8220; под MS Visual C++ 7.1
+SP1; <font color="#C00000">начиная с этой версии, совместимость исходного кода с
+компилятором Visual C++ 7.0 SP1 не гарантируется</font>. Для сборки этой версии из
+исходных текстов необходимо использовать проект
+<a href="http://zarezky.spb.ru/projects/repository.html">Repository</a> ревизии 91
+или выше.</dd>
+
+<dt><strong>1.0.3345</strong>&nbsp;<span class="versionDate">(17.08.2006)</span></dt>
+<dd>Исправлена ошибка, приводившая к тому, что при использовании в Windows XP темы,
+отличной от &#8222;Windows Classic&#8220;, в главном окне не отображались некоторые
+элементы управления. Добавлено несколько новых шаблонов проектов (WinAPI/WTL под
+Windows CE для Visual Studio 2005).</dd>
+
+<dt><strong>1.0.2807</strong>&nbsp;<span class="versionDate">(23.07.2005)</span></dt>
+<dd>Реализована возможность изменения (и восстановления при следующем запуске приложения)
+размеров главного окна; добавлено несколько новых шаблонов проектов. Разработка проекта
+&#8222;переведена&#8220; под MS Visual C++ 7.0 SP1; <font color="#C00000">начиная с этой
+версии, совместимость исходного кода с компилятором Visual C++ 6.0 SP6 не
+гарантируется</font>.</dd>
+
+<dt><strong>1.0.2800</strong>&nbsp;<span class="versionDate">(16.07.2005)</span></dt>
+<dd>Добавлена поддержка &#8222;визуальных стилей&#8220; Windows XP. К шаблонам проектов,
+предназначенным для создания GUI-приложений, добавлены ресурсы типа
+&#8222;манифест&#8220;. Добавлен шаблон &#8222;WinGeneric70&#8220;, позволяющий
+генерировать проект минимального Win32 GUI-приложения для Visual C++ 7.0 (.NET 2002).
+Во всех шаблонах проектов исправлен адрес веб-страницы &#8222;генератора&#8220;.</dd>
+
+<dt><strong>1.0.2461</strong>&nbsp;<span class="versionDate">(29.12.2004)</span></dt>
+<dd>Добавлена документация пользователя в формате HTML Help. <font color="#C00000">Перед
+установкой данной версии настоятельно рекомендуется штатным образом деинсталлировать
+предыдущую.</font></dd>
+
+<dt><strong>1.0.2313</strong>&nbsp;<span class="versionDate">(09.08.2004)</span></dt>
+<dd>Исправлено несколько мелких ошибок. Немного улучшены шаблоны проектов.</dd>
+
+<dt><strong>1.0.2297</strong>&nbsp;<span class="versionDate">(25.07.2004)</span></dt>
+<dd>Исправлено несколько ошибок в шаблонах проектов. Исполняемый файл приложения
+откомпилирован с оптимизацией по размеру.</dd>
+
+<dt><strong>1.0.2222</strong>&nbsp;<span class="versionDate">(14.05.2004)</span></dt>
+<dd>Немного улучшена работа списков проектов и макросов.</dd>
+
+<dt><strong>1.0.2183</strong>&nbsp;<span class="versionDate">(07.04.2004)</span></dt>
+<dd>Реализована типизация макросов, что позволило сделать генерацию для них значений по
+умолчанию более &#8222;интеллектуальной&#8220; и улучшить проверку корректности ввода
+пользователя. Немного дополнены шаблоны проектов. Добавлено несколько &#8222;особых&#8220;
+макросов.</dd>
+
+<dt><strong>1.0.2171</strong>&nbsp;<span class="versionDate">(27.03.2004)</span></dt>
+<dd>Реализована возможность назначения нестандартных иконок для списка шаблонов проектов.
+Добавлено несколько новых шаблонов.</dd>
+
+<dt><strong>1.0.2164</strong>&nbsp;<span class="versionDate">(20.03.2004)</span></dt>
+<dd>Начальная версия приложения.</dd>
+
+</dl>
+
+<h1 class="pageSection">Техническая информация</h1>
+
+<p class="pageText">
+Каждый шаблон проекта состоит из произвольного числа исходных файлов, находящихся в
+отдельной папке, и конфигурационного скрипта в формате XML. Текстовые файлы, входящие
+в шаблон, могут содержать макросы, которые при формировании проекта будут заменены на
+указанные значения; макросы также могут использоваться в имени любого
+&#8222;шаблонного&#8220; файла. Если файл описан в конфигурационном скрипте как двоичный,
+то никакого поиска макросов в его содержимом не производится и он просто копируется в
+заданную папку. Таким образом, если какой-либо текстовый файл шаблона не содержит ни
+одного макроса, то он может быть описан как двоичный, что позволит несколько ускорить
+процесс формирования проекта. Заметим, что обратное действие (то есть пометка
+действительно двоичного файла как текстового) может привести к сбою в работе приложения.
+</p>
+
+<p class="pageText">
+<img src="./images/data_tree.gif" width=104 height=73 align="right" border=0
+style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов должны
+находиться в папке <span class="winText">Elijah Zarezky\AfxScratch</span>, расположенной
+внутри application data folder for all users и имеющей структуру, показанную на рисунке
+справа. Папка <span class="winText">Config</span> предназначена для хранения
+конфигурационных скриптов; при запуске приложение перебирает все находящиеся в ней файлы
+с расширением xml, формируя на их основании список доступных шаблонов. Сами же
+&#8222;шаблонные&#8220; файлы должны быть расположены в папке
+<span class="winText">Sources</span>; еще раз подчеркнем, что внутри нее каждому проекту
+должна соответствовать отдельная папка.
+<br clear="right"></p>
+
+<h1 class="pageSection">Структура конфигурационного скрипта</h1>
+
+<p class="pageText">
+Рассмотрим структуру XML-файла, описывающего шаблон.
+</p>
+
+<ul style="text-align: justify; margin-right: 2pt;">
+
+<li>Корневым является тег <span class="tagName">Project</span>; атрибут
+<span class="attrName">Name</span> этого тега задает имя шаблона, отображаемое в колонке
+<span class="winText">Name</span> списка <span class="winText">Projects</span> главного
+окна приложения&nbsp;<span style="text-decoration: line-through;">, и одновременно &mdash;
+имя папки, в которой находятся файлы шаблона</span>. Максимально допустимая длина имени
+шаблона составляет 31 символ. Имя папки, в которой находятся файлы шаблона, начиная с
+версии 1.1, задается атрибутом <span class="attrName">SrcRoot</span>. Атрибут
+<span class="attrName">Description</span> задает описание шаблона (длиной не более 255
+символов), которое будет отображаться в одноименной колонке списка проектов.
+Необязательный атрибут <span class="attrName">Icon</span> позволяет задать имя файла
+иконки, которая будет отображаться в списке <span class="winText">Projects</span> слева
+от имени проекта; значение этого атрибута не должно содержать пути к файлу, а сам файл
+должен находиться в одной папке с конфигурационным скриптом. Появивишиеся в версии 1.1
+атрибуты <span class="attrName">DevEnv</span> и <span class="attrName">Framework</span>
+позволяют указать (в произвольной форме) интегрированную среду разработки, для которой
+предназначен данный проект (максимум 15 символов), и используемый им &#8222;каркас&#8220;
+(MFC, WTL, etc, максимум 31 символ) соответственно.</li>
+
+<li style="margin-top: 6pt;">Дочерний по отношению к <span class="tagName">Project</span>
+тег <span class="tagName">Macros</span> не имеет атрибутов, но является родительским для
+одного или нескольких тегов <span class="tagName">Macro</span>, каждый из которых
+определяет макрос, использующийся в исходных текстах шаблона.</li>
+
+<li style="margin-top: 6pt;">Каждый тег <span class="tagName">Macro</span> имеет
+атрибуты <span class="attrName">Name</span> и <span class="attrName">Description</span>,
+задающие соответственно имя макроса (длиной не более 15 символов) и его описание,
+максимальная длина которого составляет 255 символов. Этот тег может иметь также атрибут
+<span class="attrName">Default</span>, задающий для макроса значение по умолчанию
+(длиной не более 63 символов); при отсутствии данного атрибута начальным значением
+макроса, не считая особых случаев, будет пустая строка. Начиная с версии 1.0.2183,
+поддерживается необязательный атрибут <span class="attrName">Type</span>, определяющий
+тип макроса, который может иметь значения <span class="attrValue">string</span>
+(строка), <span class="attrValue">number</span> (целое число) или
+<span class="attrValue">uuid</span> (универсальный уникальный идентификатор). Если тип
+макроса отличается от <span class="attrValue">number</span> и
+<span class="attrValue">uuid</span> или вообще не указан &mdash; он считается строковым.
+При отсутствии явно указанных значений по умолчанию для строкового макроса таковым
+становится пустая строка, для числового &mdash; 0, а для макросов типа
+<span class="attrValue">uuid</span> генерируется новый уникальный идентификатор.</li>
+
+<li style="margin-top: 6pt;">Тег <span class="tagName">Files</span>, являющийся, как и
+<span class="tagName">Macros</span>, дочерним по отношению к
+<span class="tagName">Project</span>, тоже не имеет собственных атрибутов; он выступает
+в качестве родительского для одного или нескольких тегов
+<span class="tagName">File</span>, каждый из которых описывает исходный файл шаблона.</li>
+
+<li style="margin-top: 6pt;">Обязательным для тега <span class="tagName">File</span>
+является атрибут <span class="attrName">Name</span>, задающий имя исходного файла
+относительно папки, в которой находятся файлы шаблона. Атрибут
+<span class="attrName">Type</span> определяет, будет ли для данного файла производиться
+поиск макросов и их замена на указанные пользователем значения: если этот атрибут имеет
+значение <span class="attrValue">binary</span>, то файл считается двоичным и копируется
+в целевую папку без изменений; в противном случае (атрибут
+<span class="attrName">Type</span> отсутствует или имеет значение, отличное от
+<span class="attrValue">binary</span>), файл считается текстовым и в нем выполняется
+поиск макросов, которые определены в данном шаблоне, и их замена на указанные
+пользователем значения.</li>
+
+</ul>
+
+<p class="pageText">
+В качестве примера ниже приведен конфигурационный скрипт шаблона
+<span class="winText">AfxConsole</span> предназначенного для генерации проектов
+консольных приложений, использующих MFC.
+</p>
+
+<pre class="codeSample">&lt;?xml version="1.0" encoding="Windows-1251"?&gt;
+&lt;Project Name="AfxConsole" Description="Generic console application"&gt;
+   &lt;Macros&gt;
+      &lt;Macro Name="$PROJECT$" Description="Name of the project"/&gt;
+      &lt;Macro Name="$AUTHOR$" Description="Author of the project"/&gt;
+      &lt;Macro Name="$COMPANY$" Description="Company name"/&gt;
+   &lt;/Macros&gt;
+   &lt;Files&gt;
+      &lt;File Name="\$PROJECT$.dsp" Type="text"/&gt;
+      &lt;File Name="\Source\stdafx.cpp" Type="text"/&gt;
+      &lt;File Name="\Source\stdafx.h" Type="text"/&gt;
+      &lt;File Name="\Source\EntryPoint.cpp" Type="text"/&gt;
+      &lt;File Name="\Source\$PROJECT$.rc" Type="text"/&gt;
+      &lt;File Name="\Source\Resource.h" Type="text"/&gt;
+      &lt;File Name="\Source\BinRes\AppIcon.ico" Type="binary"/&gt;
+   &lt;/Files&gt;
+&lt;/Project&gt;
+</pre>
+
+<h1 class="pageSection">Особые макросы</h1>
+
+<p class="pageText">
+Перечисленные ниже макросы будут иметь при генерации проекта указанные значения,
+даже если сделать их доступными для изменения, поместив соответствующие имена в
+конфигурационный скрипт шаблона.
+</p>
+
+<dl style="text-align: justify; margin-right: 2pt;">
+<dt><strong>$GENERATOR$</strong></dt>
+<dd style="margin-bottom: 6pt;">Строка, содержащая название и номер версии
+приложения.</dd>
+<dt><strong>$DAY$</strong>, <strong>$MONTH$</strong>, <strong>$YEAR$</strong></dt>
+<dd style="margin-bottom: 6pt;">Строковое представление текущих дня, месяца и года
+соответственно.</dd>
+<dt><strong>$HOUR$</strong>, <strong>$MINUTE$</strong>, <strong>$SECOND$</strong></dt>
+<dd style="margin-bottom: 6pt;">Строковое представление текущих часа, минуты и секунды
+соответственно.</dd>
+<dt><strong>$DATE$</strong></dt>
+<dd style="margin-bottom: 6pt;">Строковое представление текущей даты в формате
+<i>dd.MM.yyyy</i>.</dd>
+<dt><strong>$TIME$</strong></dt>
+<dd>Строковое представление текущего времени в формате <i>HH:mm:ss</i>.</dd>
+</dl>
+
+<p class="pageText">
+Если в конфигурационном скрипте отсутствует макрос с именем <strong>$PROJECT$</strong>
+или на момент генерации проекта для него не указано значение, то вместо него
+используется имя шаблона.
+</p>
+
+<p class="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <strong>$AUTHOR$</strong>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+имя текущего пользователя операционной системы.
+</p>
+
+<p class="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <strong>$COMPANY$</strong>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+название организации, на которую зарегистрирована данная копия операционной системы.
+</p>
+
+<p class="pageText">
+Если в конфигурационном скрипте присутствует макрос с именем <strong>$VERMAJOR$</strong>
+и для него не указано значение по умолчанию, то в качестве такого значения используется 1.
+</p>
+
+<p class="pageText" style="margin-bottom: 14pt;">
+Если в конфигурационном скрипте присутствует макрос с именем <strong>$VERBUILD$</strong>
+и для него не указано значение по умолчанию, то в качестве такого значения используется
+число, генерируемое на основании текущей системной даты.
+</p>
+
+<h1 class="pageSection">AfxScratch на Google Code</h1>
+
+<p class="pageText">
+Начиная с 19 декабря 2007 года, проект AfxScratch, помимо &#8222;родного&#8220; сайта, размещен
+также и на <a href="http://code.google.com/">Google Code</a>; его главная страница доступна
+по адресу <a href="http://afx-scratch.googlecode.com/">http://afx-scratch.googlecode.com</a>.
+Там можно найти как последние &#8222;опытные сборки&#8220; (development builds), так и зеркало
+репозитория <a href="http://subversion.tigris.org/">Subversion</a> с последними ревизиями
+исходных текстов проекта. Для анонимного доступа на чтение к этому зеркалу и получения
+локальных копий всех файлов, необходимых для самостоятельной сборки, необходимо выполнить
+следующие действия:
+</p>
+
+<ol style="text-align: justify; margin-top: 0pt; margin-right: 2pt;">
+<li style="margin-top: 6pt;">Создать где-либо в файловой системе новую папку, назвав ее,
+например, <span class="winText">GoogleCode</span>.</li>
+<li style="margin-top: 4pt;">Перейти в эту папку в командной строке и последовательно выполнить
+команды
+<pre style="margin-left: 0pt; margin-right: 0pt;
+margin-top: 4pt;">svn checkout http://repositorium.googlecode.com/svn/trunk/ Repository
+svn checkout http://afx-scratch.googlecode.com/svn/trunk/ AfxScratch</pre>
+</li>
+</ol>
+
+<p class="pageText">
+После этого, для сборки проекта достаточно открыть файл
+<span class="winText">AfxScratch.2008.sln</span> из папки
+<span class="winText">GoogleCode\AfxScratch</span> в среде Microsoft Visual Studio 2008,
+сделать AfxScratch &#8222;стартовым проектом&#8220; и выполнить команду
+<span class="winText">Build Solution</span>. Полностью автоматизированную сборку проекта и
+его дистрибутива можно выполнить при помощи утилиты
+<a href="http://nant.sourceforge.net/">NAnt</a>, передав ей на вход файл
+<span class="winText">AfxScratch.2008.build</span> &mdash; выполнять соответствующую команду
+нужно из Visual Studio 2008 Command Prompt, предварительно перейдя в папку
+<span class="winText">GoogleCode\AfxScratch</span>.
+</p>
+
+<hr width=100% size=1 noshade>
+
+<p class="copyrightNotice">
+Авторские&nbsp;права&nbsp;&copy;&nbsp;2004&mdash;2011&nbsp;И.Зарецкий
+</p>
+
+</body>
+
+</html>
+
+<!-- end of page -->

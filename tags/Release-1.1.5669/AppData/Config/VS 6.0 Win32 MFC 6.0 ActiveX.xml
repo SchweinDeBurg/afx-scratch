@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project
+	Name="ActiveX control"
+	Description="ActiveX control targeting VC++/MFC 6.0 (MBCS build)"
+	DevEnv="VS 6.0"
+	Framework="MFC 6.0"
+	SrcRoot="\VS 6.0 Win32 MFC 6.0 ActiveX">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+		<Macro Name="$CONTROL$" Description="Name of the control"/>
+		<Macro Name="$VENDOR$" Description="Vendor name (single word)"/>
+		<Macro Name="$DISPIID$" Description="ID of the control's primary dispatch interface" Type="uuid"/>
+		<Macro Name="$EVTIID$" Description="ID of the control's event interface" Type="uuid"/>
+		<Macro Name="$CLSID$" Description="Control's coclass GUID" Type="uuid"/>
+		<Macro Name="$LIBID$" Description="Control's type library GUID" Type="uuid"/>
+		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
+		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
+		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.dsp" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\Identifiers.h" Type="text"/>
+		<File Name="\Source\$CONTROL$Ctrl.cpp" Type="text"/>
+		<File Name="\Source\$CONTROL$Ctrl.h" Type="text"/>
+		<File Name="\Source\Ax$CONTROL$App.cpp" Type="text"/>
+		<File Name="\Source\Ax$CONTROL$App.h" Type="text"/>
+		<File Name="\Source\Exports.cpp" Type="text"/>
+		<File Name="\Source\TypeInfo.odl" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\BinRes\PaletteButton.bmp" Type="binary"/>
+		<File Name="\Source\Module.def" Type="text"/>
+	</Files>
+</Project>

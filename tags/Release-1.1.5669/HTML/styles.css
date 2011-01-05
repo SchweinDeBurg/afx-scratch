@@ -1,0 +1,145 @@
+/* Copyright (c) 2004-2011 by Elijah Zarezky */
+
+body
+{
+	font-family: "Verdana", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-weight: normal;
+	text-align: justify;
+	color: #000000;
+	background-color: #EDECE0;
+}
+
+table.pageCaption
+{
+	border-color: #000000;
+	border-width: 1px;
+	border-collapse: collapse;
+}
+
+td.pageCaption
+{
+	font-size: 18pt;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+	background-image: url(./images/texture.jpg);
+	background-color: #F5F5F5;
+}
+
+h1.pageSection
+{
+	font-size: 12pt;
+	font-weight: bold;
+	margin-left: 2pt;
+	text-align: left;
+	color: #4580A0;
+}
+
+p
+{
+	font-family: "Verdana", sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	font-weight: normal;
+}
+
+p.pageText
+{
+	text-align: justify;
+	margin-left: 2pt;
+	margin-right: 2pt;
+	margin-bottom: 2pt;
+}
+
+p.copyrightNotice
+{
+	font-size: 8pt;
+	text-align: center;
+	margin-top: 0px;
+}
+
+img.afxScratchShot
+{
+	margin-left: 0pt;
+	margin-top: 0pt;
+	margin-right: 8pt;
+}
+
+a:link
+{
+	color: #356AA0;
+}
+
+a:link:hover
+{
+	color: #4096EE;
+}
+
+a:visited
+{
+	color: #3F4C6B;
+}
+
+a:visited:hover
+{
+	color: #4096EE;
+}
+
+span.winText
+{
+	font-family: "Tahoma", sans-serif;
+	font-weight: bold;
+}
+
+span.tagName
+{
+	font-weight: bold;
+	color: #800000;
+}
+
+span.attrName
+{
+	font-weight: bold;
+	color: #800080;
+}
+
+span.attrValue
+{
+	font-weight: bold;
+	color: #008080;
+}
+
+pre.codeSample
+{
+	font-size: 10pt;
+	background-color: #F4F4F4;
+	padding-left: 4pt;
+	padding-top: 4pt;
+	padding-right: 4pt;
+	padding-bottom: 4pt;
+	border: 1px solid #C4C4C4;
+	margin-left: 2pt;
+	margin-right: 2pt;
+}
+
+dl.versionHistory
+{
+	text-align: justify;
+	margin-left: 2pt;
+	margin-right: 2pt;
+}
+
+dl.versionHistory dd
+{
+	margin-left: 16pt;
+	margin-bottom: 8pt;
+}
+
+span.versionDate
+{
+	color: #7B7A64;
+}
+
+/* end of file */

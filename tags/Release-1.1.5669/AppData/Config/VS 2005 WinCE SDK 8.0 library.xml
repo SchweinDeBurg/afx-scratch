@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project
+	Name="Static library"
+	Description="Static library for Windows CE targeting VC++ 2005 and Pocket PC 2003 SDK"
+	DevEnv="VS 2005"
+	Framework="PPC 2003 SDK"
+	SrcRoot="\VS 2005 WinCE SDK 8.0 library">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.2005.vcproj" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+	</Files>
+</Project>
