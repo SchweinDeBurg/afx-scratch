@@ -15,26 +15,6 @@
 
 <link rel="StyleSheet" type="text/css" href="./styles.css">
 
-<style type="text/css">
-img.afxScratchShot {
-	margin-left: 0pt;
-	margin-top: 2pt;
-	margin-right: 8pt;
-}
-span.tagName {
-	font-weight: bold;
-	color: #990000;
-}
-span.attrName {
-	font-weight: bold;
-	color: #990099;
-}
-span.attrValue {
-	font-weight: bold;
-	color: #009999;
-}
-</style>
-
 <title>AfxScratch</title>
 
 </head>
@@ -43,15 +23,18 @@ span.attrValue {
 
 <body>
 
-<table width=100% border=1 cellspacing=0 class="pageCaption">
+<!--<table width=100% border=1 cellspacing=0 class="pageCaption">
 <tr><td height=37 class="pageCaption">AfxScratch</td></tr>
-</table>
+</table>-->
+
+<h1 class="pageSection">Описание</h1>
 
 <p class="pageText">
-<img src="./images/main_window.gif" width=281 height=213 align="left" border=0
+<img src="./images/main_window.png" width=446 height=257 align="left" border=0
 class="afxScratchShot"><strong>AfxScratch</strong> представляет собой приложение,
 предназначенное для генерации проектов в формате Microsoft Visual C++ версий 6.0,
-7.0, 7.1, 2005 и 2008 на основании заранее подготовленных шаблонов.<br>
+.NET (7.0), .NET 2003 (7.1), 2005 (8.0) и 2008 (9.0) на основании заранее подготовленных
+шаблонов.<br>
 Порядок использования приложения состоит в следующем. В первую очередь, необходимо
 выделить в списке <span class="winText">Projects</span> шаблон, на основе которого будет
 формироваться проект. Список <span class="winText">Macros</span> при этом будет
@@ -78,62 +61,8 @@ class="afxScratchShot"><strong>AfxScratch</strong> представляет собой приложение
 </p>
 
 <ul style="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
-<li>Windows 2000/XP/Vista/7</li>
-<li>некоторое количество свободной памяти</li>
-</ul>
-
-<p class="pageText"><a name="version_history">
-<strong>История версий:</strong>
-</a></p>
-
-<ul style="text-align: justify; margin-top: 4pt; margin-right: 2pt;">
-<li><strong>1.0.3839</strong> (31.07.2007)<br>
-К приложению и его исходному коду добавлено лицензионное соглашение &mdash;
-<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
-Шаблоны проектов переименованы в более &#8222;осмысленный&#8220; вид, поэтому
-<font color="#FF0000">Перед установкой данной версии настоятельно рекомендуется удалить
-предыдущую</font>. Разработка проекта &#8222;переведена&#8220; под MS Visual C++ 7.1
-SP1; <font color="#FF0000">начиная с этой версии, совместимость исходного кода с
-компилятором Visual C++ 7.0 SP1 не гарантируется</font>. Для сборки этой версии из
-исходных текстов необходимо использовать проект
-<a href="http://zarezky.spb.ru/projects/repository.html">Repository</a> ревизии 91 или
-выше.</li>
-<li style="margin-top: 4pt;"><strong>1.0.3345</strong> (17.08.2006)<br>
-Исправлена ошибка, приводившая к тому, что при использовании в Windows XP темы,
-отличной от &#8222;Windows Classix&#8220;, в главном окне не отображались некоторые
-элементы управления. Добавлено несколько новых шаблонов проектов (WinAPI/WTL под
-Windows CE для Visual Studio 2005).</li>
-<li style="margin-top: 4pt;"><strong>1.0.2807</strong> (23.07.2005)<br>
-Реализована возможность изменения (и восстановления при следующем запуске приложения)
-размеров главного окна; добавлено несколько новых шаблонов проектов. Разработка проекта
-&#8222;переведена&#8220; под MS Visual C++ 7.0 SP1; <font color="#FF0000">начиная с этой
-версии, совместимость исходного кода с компилятором Visual C++ 6.0 SP6 не
-гарантируется</font>.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2800</strong> (16.07.2005)<br>
-Добавлена поддержка &#8222;визуальных стилей&#8220; Windows XP. К шаблонам проектов,
-предназначенным для создания GUI-приложений, добавлены ресурсы типа
-&#8222;манифест&#8220;. Добавлен шаблон &#8222;WinGeneric70&#8220;, позволяющий
-генерировать проект минимального Win32 GUI-приложения для Visual C++ 7.0 (.NET 2002).
-Во всех шаблонах проектов исправлен адрес веб-страницы &#8222;генератора&#8220;.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2461</strong> (29.12.2004)<br>
-Добавлена документация пользователя в формате HTML Help.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2313</strong> (09.08.2004)<br>
-Исправлено несколько мелких ошибок. Немного улучшены шаблоны проектов.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2297</strong> (25.07.2004)<br>
-Исправлено несколько ошибок в шаблонах проектов. Исполняемый файл приложения
-откомпилирован с оптимизацией по размеру.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2222</strong> (14.05.2004)<br>
-Немного улучшена работа списков проектов и макросов.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2183</strong> (07.04.2004)<br>
-Реализована типизация макросов, что позволило сделать генерацию для них значений по
-умолчанию более &#8222;интеллектуальной&#8220; и улучшить проверку корректности ввода
-пользователя. Немного дополнены шаблоны проектов. Добавлено несколько &#8222;особых&#8220;
-макросов.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2171</strong> (27.03.2004)<br>
-Реализована возможность назначения нестандартных иконок для списка шаблонов проектов.
-Добавлено несколько новых шаблонов.</li>
-<li style="margin-top: 4pt;"><strong>1.0.2164</strong> (20.03.2004)<br>
-Начальная версия приложения.</li>
+<li>Windows 2000/XP/2003/Vista/7;</li>
+<li>некоторое количество свободной памяти.</li>
 </ul>
 
 <p class="pageText">
@@ -145,7 +74,86 @@ Windows CE для Visual Studio 2005).</li>
 <li>сохранение размеров колонок в списках проектов и макросов.</li>
 </ul>
 
-<h1 class="subTopic">Техническая информация</h1>
+<h1 class="pageSection">История версий</h1>
+
+<dl class="versionHistory">
+
+<dt><strong>1.1.5669</strong>&nbsp;<span class="versionDate">(05.01.2011)</span></dt>
+<dd>Расширена структура конфигурационных файлов, описывающих шаблоны проектов.
+Добавлены шаблоны проектов для Visual Studio версий .NET 2003 (7.1) и 2008 (9.0);
+общее количество шаблонов теперь составляет 31 против 16 в предыдущей версии. При
+установке &#8222;поверх&#8220; создается резервная копия текущих шаблонов в отдельной
+папке с именем вида <span class="winText">AfxScratch.&#x200B;гггг-мм-дд.&#x200B;чч-мм-сс</span>,
+формируемым на основе текущих даты и времени. Разработка проекта &#8222;переведена&#8220;
+под MS Visual C++ 2008 SP1; <font color="#C00000">начиная с этой версии, совместимость
+исходного кода с компилятором Visual C++ 7.1 SP1 не гарантируется</font>. Для сборки
+этой версии из исходных текстов необходимо использовать проект
+<a href="http://zarezky.spb.ru/projects/repository.html">Repository</a> ревизии 711
+или выше.</dd>
+
+<dt><strong>1.0.3839</strong>&nbsp;<span class="versionDate">(31.07.2007)</span></dt>
+<dd>К приложению и его исходному коду добавлено лицензионное соглашение &mdash;
+<a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License, Version 2.0</a>.
+Шаблоны проектов переименованы в более &#8222;осмысленный&#8220; вид, поэтому
+<font color="#C00000">перед установкой данной версии настоятельно рекомендуется удалить
+предыдущую</font>. Разработка проекта &#8222;переведена&#8220; под MS Visual C++ 7.1
+SP1; <font color="#C00000">начиная с этой версии, совместимость исходного кода с
+компилятором Visual C++ 7.0 SP1 не гарантируется</font>. Для сборки этой версии из
+исходных текстов необходимо использовать проект
+<a href="http://zarezky.spb.ru/projects/repository.html">Repository</a> ревизии 91
+или выше.</dd>
+
+<dt><strong>1.0.3345</strong>&nbsp;<span class="versionDate">(17.08.2006)</span></dt>
+<dd>Исправлена ошибка, приводившая к тому, что при использовании в Windows XP темы,
+отличной от &#8222;Windows Classic&#8220;, в главном окне не отображались некоторые
+элементы управления. Добавлено несколько новых шаблонов проектов (WinAPI/WTL под
+Windows CE для Visual Studio 2005).</dd>
+
+<dt><strong>1.0.2807</strong>&nbsp;<span class="versionDate">(23.07.2005)</span></dt>
+<dd>Реализована возможность изменения (и восстановления при следующем запуске приложения)
+размеров главного окна; добавлено несколько новых шаблонов проектов. Разработка проекта
+&#8222;переведена&#8220; под MS Visual C++ 7.0 SP1; <font color="#C00000">начиная с этой
+версии, совместимость исходного кода с компилятором Visual C++ 6.0 SP6 не
+гарантируется</font>.</dd>
+
+<dt><strong>1.0.2800</strong>&nbsp;<span class="versionDate">(16.07.2005)</span></dt>
+<dd>Добавлена поддержка &#8222;визуальных стилей&#8220; Windows XP. К шаблонам проектов,
+предназначенным для создания GUI-приложений, добавлены ресурсы типа
+&#8222;манифест&#8220;. Добавлен шаблон &#8222;WinGeneric70&#8220;, позволяющий
+генерировать проект минимального Win32 GUI-приложения для Visual C++ 7.0 (.NET 2002).
+Во всех шаблонах проектов исправлен адрес веб-страницы &#8222;генератора&#8220;.</dd>
+
+<dt><strong>1.0.2461</strong>&nbsp;<span class="versionDate">(29.12.2004)</span></dt>
+<dd>Добавлена документация пользователя в формате HTML Help. <font color="#C00000">Перед
+установкой данной версии настоятельно рекомендуется штатным образом деинсталлировать
+предыдущую.</font></dd>
+
+<dt><strong>1.0.2313</strong>&nbsp;<span class="versionDate">(09.08.2004)</span></dt>
+<dd>Исправлено несколько мелких ошибок. Немного улучшены шаблоны проектов.</dd>
+
+<dt><strong>1.0.2297</strong>&nbsp;<span class="versionDate">(25.07.2004)</span></dt>
+<dd>Исправлено несколько ошибок в шаблонах проектов. Исполняемый файл приложения
+откомпилирован с оптимизацией по размеру.</dd>
+
+<dt><strong>1.0.2222</strong>&nbsp;<span class="versionDate">(14.05.2004)</span></dt>
+<dd>Немного улучшена работа списков проектов и макросов.</dd>
+
+<dt><strong>1.0.2183</strong>&nbsp;<span class="versionDate">(07.04.2004)</span></dt>
+<dd>Реализована типизация макросов, что позволило сделать генерацию для них значений по
+умолчанию более &#8222;интеллектуальной&#8220; и улучшить проверку корректности ввода
+пользователя. Немного дополнены шаблоны проектов. Добавлено несколько &#8222;особых&#8220;
+макросов.</dd>
+
+<dt><strong>1.0.2171</strong>&nbsp;<span class="versionDate">(27.03.2004)</span></dt>
+<dd>Реализована возможность назначения нестандартных иконок для списка шаблонов проектов.
+Добавлено несколько новых шаблонов.</dd>
+
+<dt><strong>1.0.2164</strong>&nbsp;<span class="versionDate">(20.03.2004)</span></dt>
+<dd>Начальная версия приложения.</dd>
+
+</dl>
+
+<h1 class="pageSection">Техническая информация</h1>
 
 <p class="pageText">
 Каждый шаблон проекта состоит из произвольного числа исходных файлов, находящихся в
@@ -161,7 +169,7 @@ Windows CE для Visual Studio 2005).</li>
 </p>
 
 <p class="pageText">
-<img src="./images/data_tree.gif" width=96 height=65 align="right" border=0
+<img src="./images/data_tree.gif" width=104 height=73 align="right" border=0
 style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов должны
 находиться в папке <span class="winText">Elijah Zarezky\AfxScratch</span>, расположенной
 внутри application data folder for all users и имеющей структуру, показанную на рисунке
@@ -173,7 +181,7 @@ style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов д
 должна соответствовать отдельная папка.
 <br clear="right"></p>
 
-<h1 class="subTopic">Структура конфигурационного скрипта</h1>
+<h1 class="pageSection">Структура конфигурационного скрипта</h1>
 
 <p class="pageText">
 Рассмотрим структуру XML-файла, описывающего шаблон.
@@ -184,14 +192,20 @@ style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов д
 <li>Корневым является тег <span class="tagName">Project</span>; атрибут
 <span class="attrName">Name</span> этого тега задает имя шаблона, отображаемое в колонке
 <span class="winText">Name</span> списка <span class="winText">Projects</span> главного
-окна приложения, и одновременно &mdash; имя папки, в которой находятся файлы шаблона.
-Максимально допустимая длина имени шаблона составляет 31 символ. Атрибут
+окна приложения&nbsp;<span style="text-decoration: line-through;">, и одновременно &mdash;
+имя папки, в которой находятся файлы шаблона</span>. Максимально допустимая длина имени
+шаблона составляет 31 символ. Имя папки, в которой находятся файлы шаблона, начиная с
+версии 1.1, задается атрибутом <span class="attrName">SrcRoot</span>. Атрибут
 <span class="attrName">Description</span> задает описание шаблона (длиной не более 255
 символов), которое будет отображаться в одноименной колонке списка проектов.
 Необязательный атрибут <span class="attrName">Icon</span> позволяет задать имя файла
 иконки, которая будет отображаться в списке <span class="winText">Projects</span> слева
 от имени проекта; значение этого атрибута не должно содержать пути к файлу, а сам файл
-должен находиться в одной папке с конфигурационным скриптом.</li>
+должен находиться в одной папке с конфигурационным скриптом. Появивишиеся в версии 1.1
+атрибуты <span class="attrName">DevEnv</span> и <span class="attrName">Framework</span>
+позволяют указать (в произвольной форме) интегрированную среду разработки, для которой
+предназначен данный проект (максимум 15 символов), и используемый им &#8222;каркас&#8220;
+(MFC, WTL, etc, максимум 31 символ) соответственно.</li>
 
 <li style="margin-top: 6pt;">Дочерний по отношению к <span class="tagName">Project</span>
 тег <span class="tagName">Macros</span> не имеет атрибутов, но является родительским для
@@ -260,7 +274,7 @@ style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов д
 &lt;/Project&gt;
 </pre>
 
-<h1 class="subTopic">Особые макросы</h1>
+<h1 class="pageSection">Особые макросы</h1>
 
 <p class="pageText">
 Перечисленные ниже макросы будут иметь при генерации проекта указанные значения,
@@ -312,6 +326,43 @@ style="margin-left: 8pt; margin-top: 4pt; margin-right: 0pt;">Шаблоны проектов д
 Если в конфигурационном скрипте присутствует макрос с именем <strong>$VERBUILD$</strong>
 и для него не указано значение по умолчанию, то в качестве такого значения используется
 число, генерируемое на основании текущей системной даты.
+</p>
+
+<h1 class="pageSection">AfxScratch на Google Code</h1>
+
+<p class="pageText">
+Начиная с 19 декабря 2007 года, проект AfxScratch, помимо &#8222;родного&#8220; сайта, размещен
+также и на <a href="http://code.google.com/">Google Code</a>; его главная страница доступна
+по адресу <a href="http://afx-scratch.googlecode.com/">http://afx-scratch.googlecode.com</a>.
+Там можно найти как последние &#8222;опытные сборки&#8220; (development builds), так и зеркало
+репозитория <a href="http://subversion.tigris.org/">Subversion</a> с последними ревизиями
+исходных текстов проекта. Для анонимного доступа на чтение к этому зеркалу и получения
+локальных копий всех файлов, необходимых для самостоятельной сборки, необходимо выполнить
+следующие действия:
+</p>
+
+<ol style="text-align: justify; margin-top: 0pt; margin-right: 2pt;">
+<li style="margin-top: 6pt;">Создать где-либо в файловой системе новую папку, назвав ее,
+например, <span class="winText">GoogleCode</span>.</li>
+<li style="margin-top: 4pt;">Перейти в эту папку в командной строке и последовательно выполнить
+команды
+<pre style="margin-left: 0pt; margin-right: 0pt;
+margin-top: 4pt;">svn checkout http://repositorium.googlecode.com/svn/trunk/ Repository
+svn checkout http://afx-scratch.googlecode.com/svn/trunk/ AfxScratch</pre>
+</li>
+</ol>
+
+<p class="pageText">
+После этого, для сборки проекта достаточно открыть файл
+<span class="winText">AfxScratch.2008.sln</span> из папки
+<span class="winText">GoogleCode\AfxScratch</span> в среде Microsoft Visual Studio 2008,
+сделать AfxScratch &#8222;стартовым проектом&#8220; и выполнить команду
+<span class="winText">Build Solution</span>. Полностью автоматизированную сборку проекта и
+его дистрибутива можно выполнить при помощи утилиты
+<a href="http://nant.sourceforge.net/">NAnt</a>, передав ей на вход файл
+<span class="winText">AfxScratch.2008.build</span> &mdash; выполнять соответствующую команду
+нужно из Visual Studio 2008 Command Prompt, предварительно перейдя в папку
+<span class="winText">GoogleCode\AfxScratch</span>.
 </p>
 
 <hr width=100% size=1 noshade>
