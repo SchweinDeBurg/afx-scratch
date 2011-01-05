@@ -250,14 +250,14 @@ AfxScratch.2008.build - NAnt script to build release
 			program="7z.exe"
 			workingdir="Setup">
 			<arg line="a -tzip -mm=Deflate -mx7 -bd"/>
-			<arg value="afx_scratch-${VerMajor}.${VerMinor}.${VerBuild}-setup.zip"/>
+			<arg value="afx-scratch-${VerMajor}.${VerMinor}.${VerBuild}-setup.zip"/>
 			<arg value="AfxScratch-${VerMajor}.${VerMinor}.${VerBuild}-setup.exe"/>
 		</exec>
 		<exec
 			program="7z.exe"
 			workingdir="Setup">
 			<arg line="a -tzip -mm=Deflate -mx7 -bd"/>
-			<arg value="afx_scratch-${VerMajor}.${VerMinor}.${VerBuild}-setup-universal.zip"/>
+			<arg value="afx-scratch-${VerMajor}.${VerMinor}.${VerBuild}-setup-universal.zip"/>
 			<arg value="AfxScratch-${VerMajor}.${VerMinor}.${VerBuild}-setup-universal.exe"/>
 		</exec>
 	</target>
