@@ -174,6 +174,8 @@ Type: files; Name: "{app}\Microsoft.VC90.MFC.manifest"
 ;; from 1.1 non-Unicode pre-release
 Type: files; Name: "{app}\mfc90.dll"
 Type: files; Name: "{app}\mfcm90.dll"
+;; from 1.1.5669 release
+Type: files; Name: "{group}\Documentation.lnk"
 
 [Files]
 ;; core application files
@@ -203,7 +205,7 @@ Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDi
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
-Name: "{group}\Documentation"; Filename: "{app}\AfxScratch.chm"
+Name: "{group}\Documentation (in Russian)"; Filename: "{app}\AfxScratch.chm"
 Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
 Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"

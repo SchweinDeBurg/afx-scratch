@@ -174,6 +174,8 @@ Type: files; Name: "{app}\Microsoft.VC90.MFC.manifest"
 ;; from 1.1 non-Unicode pre-release
 Type: files; Name: "{app}\mfc90.dll"
 Type: files; Name: "{app}\mfcm90.dll"
+;; from 1.1.5669 release
+Type: files; Name: "{group}\Documentation.lnk"
 ;; application sources
 Type: filesandordirs; Name: "{app}\Sources"
 
@@ -245,7 +247,7 @@ Source: "..\Detours\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScra
 
 [Icons]
 Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
-Name: "{group}\Documentation"; Filename: "{app}\AfxScratch.chm"
+Name: "{group}\Documentation (in Russian)"; Filename: "{app}\AfxScratch.chm"
 Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"
 Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
 Name: "{group}\Build AfxScratch"; FileName: "{app}\Sources\AfxScratch\AfxScratch.2008.sln"; Components: sources
