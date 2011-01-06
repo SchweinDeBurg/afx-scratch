@@ -175,6 +175,8 @@ Type: files; Name: "{app}\Microsoft.VC90.MFC.manifest"
 Type: files; Name: "{app}\mfc90.dll"
 Type: files; Name: "{app}\mfcm90.dll"
 ;; from 1.1.5669 release
+Type: files; Name: "{group}\AfxScratch on the Web.lnk"
+Type: files; Name: "{app}\AfxScratch.url"
 Type: files; Name: "{group}\Documentation.lnk"
 
 [Files]
@@ -204,16 +206,20 @@ Source: "..\Redist\Microsoft.VC90.MFCLOC\mfc90rus.dll"; DestDir: "{app}"
 Source: "..\Redist\Microsoft.VC90.MFCLOC\Microsoft.VC90.MFCLOC.manifest"; DestDir: "{app}"; MinVersion: 0,5.01.2600
 
 [Icons]
-Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"
-Name: "{group}\Documentation (in Russian)"; Filename: "{app}\AfxScratch.chm"
-Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"
-Name: "{group}\AfxScratch on the Web"; Filename: "{app}\AfxScratch.url"
-Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"
-Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon
-Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: quicklaunchicon
+Name: "{group}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Comment: "Launch AfxScratch to generate new project from template"
+Name: "{group}\Documentation (in Russian)"; Filename: "{app}\AfxScratch.chm"; Comment: "View AfxScratch local documentation"; Flags: runmaximized
+Name: "{group}\License Agreement"; Filename: "{app}\ApacheLicense.rtf"; Comment: "View AfxScratch license agreement"
+Name: "{group}\Uninstall AfxScratch"; Filename: "{uninstallexe}"; Comment: "Remove AfxScratch from your computer"
+Name: "{userdesktop}\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: desktopicon; Comment: "Launch AfxScratch to generate new project from template"
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\AfxScratch"; Filename: "{app}\AfxScratch.exe"; Tasks: quicklaunchicon; Comment: "Launch AfxScratch to generate new project from template"
 
 [INI]
-Filename: "{app}\AfxScratch.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://zarezky.spb.ru/projects/afx_scratch.html"
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "URL"; String: "http://zarezky.spb.ru/projects/afx-scratch.html"
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "IconFile"; String: ""
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "IconIndex"; String: "0"
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "Hotkey"; String: "0"
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "WorkingDirectory"; String: ""
+Filename: "{group}\AfxScratch on the Web.url"; Section: "InternetShortcut"; Key: "ShowCommand"; String: "1"
 
 [Registry]
 Root: HKCU; Subkey: "Software\Elijah Zarezky"; Flags: uninsdeletekeyifempty
@@ -233,6 +239,6 @@ Name: quicklaunchicon; Description: "Create a &Quick Launch icon"; GroupDescript
 Filename: "{app}\AfxScratch.exe"; Description: "Launch AfxScratch"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
-Type: files; Name: "{app}\AfxScratch.url"
+Type: files; Name: "{group}\AfxScratch on the Web.url"
 
 ;; end of file
