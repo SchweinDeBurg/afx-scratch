@@ -230,11 +230,17 @@ Source: "..\Redist\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\Redi
 Source: "..\AfxScratch.2008.vcproj"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
 Source: "..\AfxScratch.2008.sln"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
 Source: "..\AfxScratch.2008.build"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
+Source: "..\gbuild.cmd"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
+Source: "..\irbuild.cmd"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
+Source: "..\NAntSettings.txt"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
+Source: "..\rbuild.cmd"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
+Source: "..\sbuild.cmd"; DestDir: "{app}\Sources\AfxScratch"; Components: sources; Flags: ignoreversion
 Source: "..\AppData\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\AppData"; Components: sources; Flags: ignoreversion recursesubdirs
 Source: "..\HTML\*"; Excludes: ".svn, *.chm"; DestDir: "{app}\Sources\AfxScratch\HTML"; Components: sources; Flags: ignoreversion
 Source: "..\HTML\images\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\HTML\images"; Components: sources; Flags: ignoreversion
 Source: "..\Source\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Source"; Components: sources; Flags: ignoreversion recursesubdirs
 Source: "..\Templates\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Templates"; Components: sources; Flags: ignoreversion recursesubdirs
+Source: "..\Tools\*"; Excludes: ".svn"; DestDir: "{app}\Sources\AfxScratch\Tools"; Components: sources; Flags: ignoreversion recursesubdirs
 Source: "..\Detours\*"; Excludes: ".svn, *.aps"; DestDir: "{app}\Sources\AfxScratch\Detours"; Components: sources; Flags: ignoreversion recursesubdirs
 
 [Icons]
