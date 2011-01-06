@@ -18,7 +18,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-AfxScratch.2008.build - NAnt script to build release
+AfxScratch.2008.build - NAnt script to build AfxScratch
 
 -->
 
@@ -68,6 +68,81 @@ AfxScratch.2008.build - NAnt script to build release
 		overwrite="false"/>
 
 	<!-- TARGETS -->
+
+	<!-- 'clean-sln' target -->
+
+	<target
+		name="clean-sln"
+		description="Clean AfxScratch solution.">
+		<exec
+			program="vcbuild.exe"
+			commandline="AfxScratch.2008.sln /clean &quot;${SolutionConfig}&quot;">
+		</exec>
+	</target>
+
+	<!-- 'clean-doc' target -->
+
+	<target
+		name="clean-doc"
+		description="Delete CHM documentation.">
+		<delete
+			file="HTML\AfxScratch.chm"
+			if="${file::exists('HTML\AfxScratch.chm')}"/>
+	</target>
+
+	<!-- 'clean-distr' target -->
+
+	<target
+		name="clean-distr"
+		description="Delete setup packages.">
+		<delete
+			if="${directory::exists('Setup')}">
+			<fileset>
+				<include name="Setup\*.exe"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- 'clean-zip' target -->
+
+	<target
+		name="clean-zip"
+		description="Delete ZIPped setup packages and sources.">
+		<delete
+			if="${directory::exists('Setup')}">
+			<fileset>
+				<include name="Setup\*.zip"/>
+			</fileset>
+		</delete>
+	</target>
+
+	<!-- 'clean-all' target -->
+
+	<target
+		name="clean-all"
+		description="Delete all built files."
+		depends="clean-sln,clean-doc,clean-distr,clean-zip">
+	</target>
+
+	<!-- 'create-doc' target -->
+
+	<target
+		name ="create-doc"
+		description="Create CHM documentation."
+		depends="clean-doc">
+		<exec
+			program="hhc.exe"
+			commandline="AfxScratch.hhp"
+			workingdir="HTML"
+			resultproperty="HhcResult"
+			failonerror="false">
+		</exec>
+		<echo/>
+		<echo message="If return code was 1 it's not a failure but success!"/>
+		<if test="${HhcResult != '1'}">
+			<fail message="AfxScratch.chm compilation failed."/>
+		</if>
+	</target>
 
 	<!-- 'verify-ver' target -->
 
@@ -193,26 +268,6 @@ AfxScratch.2008.build - NAnt script to build release
 		<echo message="AfxScratch solution rebuilt."/>
 	</target>
 
-	<!-- 'create-doc' target -->
-
-	<target
-		name ="create-doc"
-		description="Create CHM documentation."
-		depends="clean-doc">
-		<exec
-			program="hhc.exe"
-			commandline="AfxScratch.hhp"
-			workingdir="HTML"
-			resultproperty="HhcResult"
-			failonerror="false">
-		</exec>
-		<echo/>
-		<echo message="If return code was 1 it's not a failure but success!"/>
-		<if test="${HhcResult != '1'}">
-			<fail message="AfxScratch.chm compilation failed."/>
-		</if>
-	</target>
-
 	<!-- 'create-distr' target -->
 
 	<target
@@ -240,12 +295,30 @@ AfxScratch.2008.build - NAnt script to build release
 		</exec>
 	</target>
 
+	<!-- 'build-all' target -->
+
+	<target
+		name="build-all"
+		description="Build entire AfxScratch project."
+		depends="build-sln,create-doc,create-distr">
+		<echo message="AfxScratch all built."/>
+	</target>
+
+	<!-- 'rebuild-all' target -->
+
+	<target
+		name="rebuild-all"
+		description="Rebuild entire AfxScratch project."
+		depends="rebuild-sln,create-doc,create-distr">
+		<echo message="AfxScratch all rebuilt."/>
+	</target>
+
 	<!-- 'zip-distr' target -->
 
 	<target
 		name="zip-distr"
 		description="Create ZIPped setup packages."
-		depends="create-distr,clean-zip">
+		depends="create-distr">
 		<exec
 			program="7z.exe"
 			workingdir="Setup">
@@ -260,19 +333,6 @@ AfxScratch.2008.build - NAnt script to build release
 			<arg value="afx-scratch-${VerMajor}.${VerMinor}.${VerBuild}-setup-universal.zip"/>
 			<arg value="AfxScratch-${VerMajor}.${VerMinor}.${VerBuild}-setup-universal.exe"/>
 		</exec>
-	</target>
-
-	<!-- 'commit-src' target -->
-
-	<target
-		name="commit-src"
-		description="Commit sources to the SVN repository.">
-		<if test="${property::exists('CommitMsg')}">
-			<exec
-				program="svn.exe"
-				commandline="commit --message &quot;${CommitMsg}&quot;">
-			</exec>
-		</if>
 	</target>
 
 	<!-- 'zip-src' target -->
@@ -296,77 +356,26 @@ AfxScratch.2008.build - NAnt script to build release
 		</if>
 	</target>
 
-	<!-- 'build-all' target -->
+	<!-- 'zip-all' target -->
 
 	<target
-		name="build-all"
-		description="Build entire AfxScratch project."
-		depends="build-sln,create-doc,create-distr,zip-distr">
-		<echo message="AfxScratch all built."/>
+		name="zip-all"
+		description="ZIP entire AfxScratch project."
+		depends="clean-zip,zip-distr,zip-src">
+		<echo message="AfxScratch all ZIPped."/>
 	</target>
 
-	<!-- 'rebuild-all' target -->
+	<!-- 'commit-src' target -->
 
 	<target
-		name="rebuild-all"
-		description="Rebuild entire AfxScratch project."
-		depends="rebuild-sln,create-doc,create-distr,zip-distr">
-		<echo message="AfxScratch all rebuilt."/>
-	</target>
-
-	<!-- 'clean-sln' target -->
-
-	<target
-		name="clean-sln"
-		description="Clean AfxScratch solution.">
-		<exec
-			program="vcbuild.exe"
-			commandline="AfxScratch.2008.sln /clean &quot;${SolutionConfig}&quot;">
-		</exec>
-	</target>
-
-	<!-- 'clean-doc' target -->
-
-	<target
-		name="clean-doc"
-		description="Delete CHM documentation.">
-		<delete
-			file="HTML\AfxScratch.chm"
-			if="${file::exists('HTML\AfxScratch.chm')}"/>
-	</target>
-
-	<!-- 'clean-distr' target -->
-
-	<target
-		name="clean-distr"
-		description="Delete setup packages.">
-		<delete
-			if="${directory::exists('Setup')}">
-			<fileset>
-				<include name="Setup\*.exe"/>
-			</fileset>
-		</delete>
-	</target>
-
-	<!-- 'clean-zip' target -->
-
-	<target
-		name="clean-zip"
-		description="Delete ZIPped setup packages and sources.">
-		<delete
-			if="${directory::exists('Setup')}">
-			<fileset>
-				<include name="Setup\*.zip"/>
-			</fileset>
-		</delete>
-	</target>
-
-	<!-- 'clean-all' target -->
-
-	<target
-		name="clean-all"
-		description="Delete all built files."
-		depends="clean-sln,clean-doc,clean-distr,clean-zip">
+		name="commit-src"
+		description="Commit sources to the SVN repository.">
+		<if test="${property::exists('CommitMsg')}">
+			<exec
+				program="svn.exe"
+				commandline="commit --message &quot;${CommitMsg}&quot;">
+			</exec>
+		</if>
 	</target>
 
 </project>
