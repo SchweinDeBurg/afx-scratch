@@ -275,11 +275,11 @@ AfxScratch.2008.build - NAnt script to build release
 		</if>
 	</target>
 
-	<!-- 'export-src' target -->
+	<!-- 'zip-src' target -->
 
 	<target
-		name="export-src"
-		description="Export sources from the working copy.">
+		name="zip-src"
+		description="Create ZIPped sources from the working copy.">
 		<if test="${property::exists('ExportDir')}">
 			<exec
 				program="svn.exe"
@@ -289,7 +289,7 @@ AfxScratch.2008.build - NAnt script to build release
 				program="7z.exe"
 				workingdir="${ExportDir}">
 				<arg line="a -tzip -mm=Deflate -mx7 -bd"/>
-				<arg value="afx_scratch.zip"/>
+				<arg value="afx-scratch-src.zip"/>
 				<arg value="AfxScratch"/>
 			</exec>
 			<delete dir="${ExportDir}\AfxScratch"/>
@@ -352,7 +352,7 @@ AfxScratch.2008.build - NAnt script to build release
 
 	<target
 		name="clean-zip"
-		description="Delete ZIPped setup packages.">
+		description="Delete ZIPped setup packages and sources.">
 		<delete
 			if="${directory::exists('Setup')}">
 			<fileset>
