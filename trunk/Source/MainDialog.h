@@ -16,12 +16,23 @@
 
 // MainDialog.h - interface of the CMainDialog class
 
-#if !defined(__MainDialog_h)
-#define __MainDialog_h
-
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
 #endif   // _MSC_VER
+
+#if !defined(__MainDialog_h)
+#define __MainDialog_h
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// dependent includes
+
+#include "ResizableLayout.h"
+#include "CustomGroupBox.h"
+#include "ProjectsList.h"
+#include "MacrosList.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CMainDialog
 
 class CMainDialog: public ETSLayoutDialog, public CResizableLayout
 {

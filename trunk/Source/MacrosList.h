@@ -16,12 +16,21 @@
 
 // MacrosList.h - interface of the CMacrosList class
 
-#if !defined(__MacrosList_h)
-#define __MacrosList_h
-
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
 #endif   // _MSC_VER
+
+#if !defined(__MacrosList_h)
+#define __MacrosList_h
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// dependent includes
+
+#include "AuxTypes.h"
+#include "CustomHeaderCtrl.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CMacrosList
 
 class CMacrosList: public CSortingListCtrl
 {

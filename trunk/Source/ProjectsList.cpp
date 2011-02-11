@@ -29,12 +29,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 // other includes
 
-#include "CustomHeaderCtrl.h"
 #include "ProjectsList.h"
-#include "AuxTypes.h"
-#include "MacrosList.h"
-#include "CustomGroupBox.h"
-#include "ResizableLayout.h"
+
 #include "MainDialog.h"
 #include "AfxScratchApp.h"
 
