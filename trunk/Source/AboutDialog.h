@@ -35,13 +35,13 @@ public:
 
 // overridables
 public:
-	virtual BOOL OnInitDialog(void);
+	virtual BOOL OnInitDialog(void) override;
 
 // diagnostic services
 #if defined(_DEBUG)
 public:
-	virtual void AssertValid(void) const;
-	virtual void Dump(CDumpContext& dumpCtx) const;
+	virtual void AssertValid(void) const override;
+	virtual void Dump(CDumpContext& dumpCtx) const override;
 #endif
 };
 

@@ -35,12 +35,12 @@ public:
 
 // overridables
 public:
-	virtual BOOL OnInitDialog(void);
-	virtual CWnd* GetResizableWnd(void) const;
+	virtual BOOL OnInitDialog(void) override;
+	virtual CWnd* GetResizableWnd(void) const override;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);
-	virtual void OnOK(void);
-	virtual void OnCancel(void);
+	virtual void DoDataExchange(CDataExchange* pDX) override;
+	virtual void OnOK(void) override;
+	virtual void OnCancel(void) override;
 
 // message map functions
 protected:
@@ -85,8 +85,8 @@ private:
 // diagnostic services
 #if defined(_DEBUG)
 public:
-	virtual void AssertValid(void) const;
-	virtual void Dump(CDumpContext& dumpCtx) const;
+	virtual void AssertValid(void) const override;
+	virtual void Dump(CDumpContext& dumpCtx) const override;
 #endif
 };
 

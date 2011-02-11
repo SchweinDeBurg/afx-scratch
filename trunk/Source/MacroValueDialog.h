@@ -35,9 +35,9 @@ public:
 
 // overridables
 public:
-	virtual BOOL OnInitDialog(void);
+	virtual BOOL OnInitDialog(void) override;
 protected:
-	virtual void DoDataExchange(CDataExchange* pDX);
+	virtual void DoDataExchange(CDataExchange* pDX) override;
 
 // message map functions
 protected:
@@ -53,8 +53,8 @@ public:
 // diagnostic services
 #if defined(_DEBUG)
 public:
-	virtual void AssertValid(void) const;
-	virtual void Dump(CDumpContext& dumpCtx) const;
+	virtual void AssertValid(void) const override;
+	virtual void Dump(CDumpContext& dumpCtx) const override;
 #endif
 };
 
