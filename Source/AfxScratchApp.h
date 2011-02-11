@@ -41,8 +41,8 @@ public:
 
 // overridables
 public:
-	virtual BOOL InitInstance(void);
-	virtual int ExitInstance(void);
+	virtual BOOL InitInstance(void) override;
+	virtual int ExitInstance(void) override;
 
 // attributes
 public:
@@ -68,8 +68,8 @@ private:
 // diagnostic services
 #if defined(_DEBUG)
 public:
-	virtual void AssertValid(void) const;
-	virtual void Dump(CDumpContext& dumpCtx) const;
+	virtual void AssertValid(void) const override;
+	virtual void Dump(CDumpContext& dumpCtx) const override;
 #endif
 };
 

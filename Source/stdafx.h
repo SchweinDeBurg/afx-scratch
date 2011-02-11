@@ -164,6 +164,13 @@ __declspec(selectany) int _forceMFCManifestCUR;
 #pragma conform(forScope, on)
 #endif   // _MSC_VER
 
+// use explicit 'override' specifier for the appropriate methods
+#if (_MSC_VER < 1400)
+#define override
+#else
+#pragma warning(disable: 4481)
+#endif   // _MSC_VER
+
 // helper macro STRINGIZE
 // converts the parameter 'text' to a string after
 // macro replacement on 'text' has been performed

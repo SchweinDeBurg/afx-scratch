@@ -42,7 +42,7 @@ public:
 
 // overridables
 protected:
-	virtual int CompareItems(int iItemLhs, int iItemRhs);
+	virtual int CompareItems(int iItemLhs, int iItemRhs) override;
 
 // message map functions
 protected:
@@ -78,8 +78,8 @@ private:
 // diagnostic services
 #if defined(_DEBUG)
 public:
-	virtual void AssertValid(void) const;
-	virtual void Dump(CDumpContext& dumpCtx) const;
+	virtual void AssertValid(void) const override;
+	virtual void Dump(CDumpContext& dumpCtx) const override;
 #endif
 };
 
