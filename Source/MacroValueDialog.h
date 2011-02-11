@@ -16,12 +16,20 @@
 
 // MacroValueDialog.h - interface of the CMacroValueDialog class
 
-#if !defined(__MacroValueDialog_h)
-#define __MacroValueDialog_h
-
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
 #endif   // _MSC_VER
+
+#if !defined(__MacroValueDialog_h)
+#define __MacroValueDialog_h
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// dependent includes
+
+#include "AuxTypes.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CMacroValueDialog
 
 class CMacroValueDialog: public CDialog
 {

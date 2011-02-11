@@ -29,13 +29,8 @@
 //////////////////////////////////////////////////////////////////////////////////////////////
 // other includes
 
-#include "AuxTypes.h"
-#include "CustomHeaderCtrl.h"
-#include "ProjectsList.h"
-#include "MacrosList.h"
-#include "CustomGroupBox.h"
-#include "ResizableLayout.h"
 #include "MainDialog.h"
+
 #include "AfxScratchApp.h"
 #include "AboutDialog.h"
 #include "MacroValueDialog.h"

@@ -16,12 +16,20 @@
 
 // ProjectsList.h - interface of the CProjectsList class
 
-#if !defined(__ProjectsList_h)
-#define __ProjectsList_h
-
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
 #endif   // _MSC_VER
+
+#if !defined(__ProjectsList_h)
+#define __ProjectsList_h
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// dependent includes
+
+#include "CustomHeaderCtrl.h"
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CProjectsList
 
 class CProjectsList: public CSortingListCtrl
 {

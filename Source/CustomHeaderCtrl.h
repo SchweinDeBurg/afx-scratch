@@ -16,12 +16,15 @@
 
 // CustomHeaderCtrl.h - interface of the CCustomHeaderCtrl class
 
-#if !defined(__CustomHeaderCtrl_h)
-#define __CustomHeaderCtrl_h
-
 #if defined(_MSC_VER) && (_MSC_VER > 1000)
 #pragma once
 #endif   // _MSC_VER
+
+#if !defined(__CustomHeaderCtrl_h)
+#define __CustomHeaderCtrl_h
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+// CCustomHeaderCtrl
 
 class CCustomHeaderCtrl: public CHeaderCtrl
 {
