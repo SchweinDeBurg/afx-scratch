@@ -2,5 +2,5 @@
 -emacs
 -D:VerMajor=1
 -D:VerMinor=1
--D:VerBuild=5673
--D:SvnRev=192
+-D:VerBuild=5793
+-D:SvnRev=197
