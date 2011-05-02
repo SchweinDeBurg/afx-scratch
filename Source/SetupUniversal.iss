@@ -19,13 +19,13 @@
 
 [Setup]
 AppName=AfxScratch
-AppVerName=AfxScratch 1.1.5793
+AppVerName=AfxScratch 1.1.5794
 AppID={{9BE84A05-C061-49C5-BAFF-6D6E2737AAE7}
 AppPublisher=Elijah Zarezky
 AppPublisherURL=http://zarezky.spb.ru/
 AppSupportURL=http://zarezky.spb.ru/projects/afx_scratch.html
 AppUpdatesURL=http://zarezky.spb.ru/projects/afx_scratch.html
-AppVersion=1.1.5793
+AppVersion=1.1.5794
 AppCopyright=Copyright © 2004–2011 by Elijah Zarezky
 DefaultDirName={pf}\Elijah Zarezky\AfxScratch
 DefaultGroupName=Elijah Zarezky\AfxScratch
@@ -33,8 +33,8 @@ AllowNoIcons=true
 Compression=lzma
 SolidCompression=true
 OutputDir=..\Setup
-OutputBaseFilename=AfxScratch-1.1.5793-setup-universal
-VersionInfoVersion=1.1.5793.197
+OutputBaseFilename=AfxScratch-1.1.5794-setup-universal
+VersionInfoVersion=1.1.5794.198
 VersionInfoProductName=Power Gadgets
 VersionInfoProductVersion=1.1
 MinVersion=0,5.0.2195
