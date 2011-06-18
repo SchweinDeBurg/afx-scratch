@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<Project
+	Name="GUI application"
+	Description="Win32 GUI application targeting VC++ 7.1 and CRT/PSDK (MBCS and Unicode builds)"
+	DevEnv="VS 2003"
+	Framework="SDK 7.1"
+	SrcRoot="\VS 2003 Win32 SDK 7.1 GUI">
+	<Macros>
+		<Macro Name="$PROJECT$" Description="Name of the project" Default="NewProject" Optional="yes"/>
+		<Macro Name="$AUTHOR$" Description="Author of the project"/>
+		<Macro Name="$COMPANY$" Description="Company name"/>
+		<Macro Name="$VERMAJOR$" Description="Major version number" Type="number"/>
+		<Macro Name="$VERMINOR$" Description="Minor version number" Type="number"/>
+		<Macro Name="$VERBUILD$" Description="Build number" Type="number"/>
+		<Macro Name="$PRJGUID$" Description="Project GUID (used by the IDE)" Type="uuid"/>
+	</Macros>
+	<Files>
+		<File Name="\$PROJECT$.2003.vcproj" Type="text"/>
+		<File Name="\Source\stdafx.cpp" Type="text"/>
+		<File Name="\Source\stdafx.h" Type="text"/>
+		<File Name="\Source\EntryPoint.cpp" Type="text"/>
+		<File Name="\Source\Manifest.xml" Type="text"/>
+		<File Name="\Source\$PROJECT$.rc" Type="text"/>
+		<File Name="\Source\Resource.h" Type="text"/>
+		<File Name="\Source\BinRes\AppIcon.ico" Type="binary"/>
+	</Files>
+</Project>
